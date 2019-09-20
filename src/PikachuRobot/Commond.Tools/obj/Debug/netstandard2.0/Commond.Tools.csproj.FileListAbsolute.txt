@@ -1,0 +1,12 @@
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\bin\Debug\netstandard2.0\Commond.Tools.deps.json
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\bin\Debug\netstandard2.0\Commond.Tools.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\bin\Debug\netstandard2.0\Commond.Tools.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\bin\Debug\netstandard2.0\System.Configuration.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\bin\Debug\netstandard2.0\System.Security.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\obj\Debug\netstandard2.0\Commond.Tools.csprojAssemblyReference.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\obj\Debug\netstandard2.0\Commond.Tools.csproj.CoreCompileInputs.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\obj\Debug\netstandard2.0\Commond.Tools.AssemblyInfoInputs.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\obj\Debug\netstandard2.0\Commond.Tools.AssemblyInfo.cs
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\obj\Debug\netstandard2.0\Commond.Tools.csproj.CopyComplete
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\obj\Debug\netstandard2.0\Commond.Tools.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Commond.Tools\obj\Debug\netstandard2.0\Commond.Tools.pdb

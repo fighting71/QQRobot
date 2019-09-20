@@ -1,0 +1,13 @@
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\GenerateMsg.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\GenerateMsg.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\IServiceSupply.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\IServiceSupply.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Autofac.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Newbe.Mahua.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Autofac.xml
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Newbe.Mahua.xml
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\NLog.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\NLog.xml
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.csprojResolveAssemblyReference.cache
