@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Commond.Tools;
+using Data.Pikachu;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -21,10 +23,20 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Middleware
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string GetConfig(string key)
+        public static string GetConfig(string key,string defaultValue = null)
         {
-            // 默认使用appSettings
+
             return ConfigurationManager.AppSettings[key];
+
+            // bug
+            // 构建时 读取不到dbContext....
+            //PikachuDataContext context = InstanceFactory.Get<PikachuDataContext>();
+
+            //// 从db中获取
+            //return context.configInfos.FirstOrDefault(u => u.Enable && key.Equals(key, StringComparison.CurrentCultureIgnoreCase))?.Value ?? defaultValue;
+
+            // 默认使用appSettings
+            //return ConfigurationManager.AppSettings[key];
         }
 
     }

@@ -1,1 +1,1 @@
-start G:\dick\MPQ_Ver20190521\Core.exe
+start D:\empty\MPQ_Ver20190521\Core.exe

@@ -22,13 +22,21 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
             if (context.JoinedQq.Equals(_mahuaApi.GetLoginQq()))// 排除机器人入群
             {
+
+                _mahuaApi.SendGroupMessage(context.FromGroup)
+                    .AtlAll()
+                    .Text("欢迎您加入技术交流群，我是Pikachu机器人，艾特我回复“指令”两个字可以为您提供服务哦。")
+                    .Done();
                 return;
             }
-            
-            _mahuaApi.SendGroupMessage(context.FromGroup)
-                .At(context.JoinedQq)
-                .Text("欢迎您加入技术交流群，我是Pikachu机器人，艾特我回复“指令”两个字可以为您提供服务哦。")
-                .Done();
+            else
+            {
+
+                _mahuaApi.SendGroupMessage(context.FromGroup)
+                    .At(context.JoinedQq)
+                    .Text("欢迎您加入技术交流群，我是Pikachu机器人，艾特我回复“指令”两个字可以为您提供服务哦。")
+                    .Done();
+            }
 
             // todo 填充处理逻辑
             //throw new NotImplementedException();

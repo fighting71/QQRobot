@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GenerateMsg;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
+using Data.Pikachu;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 {
@@ -36,7 +37,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 "));
             
             GroupMsgGroup.AddDeal(new NoticeDeal());
-            
+
         }
     }
 }

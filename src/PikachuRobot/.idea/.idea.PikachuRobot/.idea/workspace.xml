@@ -1,7 +1,70 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6fd4fb6-5f18-4402-afd1-2c8681c98eb9" name="Default Changelist" comment="" />
+    <list default="true" id="d6fd4fb6-5f18-4402-afd1-2c8681c98eb9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PikachuRobot/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PikachuRobot/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PikachuRobot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PikachuRobot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/PikachuRobot/DesignTimeBuild/.dtbcache" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/PikachuRobot/DesignTimeBuild/.dtbcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/Commond.Tools.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/bin/Debug/netstandard2.0/Commond.Tools.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Commond.Tools.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Commond.Tools.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Commond.Tools.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Commond.Tools.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Debug/netstandard2.0/Commond.Tools.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Debug/netstandard2.0/Commond.Tools.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Debug/netstandard2.0/Commond.Tools.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Debug/netstandard2.0/Commond.Tools.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Debug/netstandard2.0/Commond.Tools.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Debug/netstandard2.0/Commond.Tools.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/Debug/netstandard2.0/Commond.Tools.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commond.Tools/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GenerateMsg/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/GenerateMsg/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GenerateMsg/obj/Debug/GenerateMsg.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GenerateMsg/obj/Debug/GenerateMsg.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IServiceSupply/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/IServiceSupply/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IServiceSupply/obj/Debug/IServiceSupply.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/IServiceSupply/obj/Debug/IServiceSupply.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Middleware/ConfigMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Middleware/ConfigMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/PluginInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/PluginInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CQP/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CQP/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.dll.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CQP/YUELUO/Newbe.Mahua.Plugins.Pikachu/Refit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CQP/YUELUO/Newbe.Mahua.Plugins.Pikachu/hash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CQP/YUELUO/Newbe.Mahua.Plugins.Pikachu/hash.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CleverQQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CleverQQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.dll.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CleverQQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/Refit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CleverQQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/hash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/CleverQQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/hash.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/Debug/Newbe.Mahua.Plugins.Pikachu.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/Debug/Newbe.Mahua.Plugins.Pikachu.dll.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/Debug/Refit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/MPQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/MPQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.dll.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/MPQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/Refit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/MPQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/hash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/MPQ/YUELUO/Newbe.Mahua.Plugins.Pikachu/hash.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/NLog.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/Autofac.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/MessagePack.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/NLog.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.CQP.ApiExtensions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.PluginLoader.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.Plugins.Pikachu.dll.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newbe.Mahua.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/Newtonsoft.Json.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/Refit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/System.Threading.Tasks.Extensions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/bin/QQLight/YUELUO/Newbe.Mahua.Plugins.Pikachu/hash.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/build.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/build.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/Newbe.Mahua.Plugins.Pikachu.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/Newbe.Mahua.Plugins.Pikachu.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/Newbe.Mahua.Plugins.Pikachu.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/Newbe.Mahua.Plugins.Pikachu.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/Newbe.Mahua.Plugins.Pikachu.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/obj/Debug/Newbe.Mahua.Plugins.Pikachu.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/run.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PikachuRobot.sln" beforeDir="false" afterPath="$PROJECT_DIR$/PikachuRobot.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PikachuRobot.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/PikachuRobot.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/Refit.4.4.17/build/net45/refit.targets" beforeDir="false" afterPath="$PROJECT_DIR$/packages/Refit.4.4.17/build/net45/refit.targets" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,29 +75,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupJoiningInvitationReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberDecreasedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/MahuaMenuClickedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80AAD43A-9A03-456C-98F4-B4438654752C/dc/c4aa4be3/CommandCenterMahuaApi.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/ApiExtension/MahuaApiExt.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80AAD43A-9A03-456C-98F4-B4438654752C/c0/8a2839c9/GetGroupMemebersWithModelApiMahuaCommandResult.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80AAD43A-9A03-456C-98F4-B4438654752C/ec/d5e98caf/GetGroupMemebersWithModelApiMahuaCommand.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86FF289F-F21E-4E16-B08B-EA76D4201C99/87/85a0dd62/IMahuaApi.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80AAD43A-9A03-456C-98F4-B4438654752C/9f/f4e576cb/PluginLoaderMahuaModule.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/IServiceSupply/IGenerateMsg.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/736E4AF2-A8AC-4AD2-ACFC-4FC3B134447B/4f/713d12e8/CqpApiExtensionsModule.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MyMenuProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86FF289F-F21E-4E16-B08B-EA76D4201C99/c1/20c9dfec/MahuaApiExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgGroup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/PluginInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GenerateMsg/NoticeDeal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GenerateMsg/RegexBaseDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data.Pikachu/PikachuDataContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Middleware/ConfigMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/CusTools/CatchTools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/PluginInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GenerateMsg/RegexBaseDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GenerateMsg/NoticeDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data.Pikachu/Models/ConfigInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB3709D4-3DAE-4F5F-B978-5D5202B86B97/a9/5d52a7f0/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberDecreasedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MyMenuProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Pikachu.Data/PikachuDataContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupJoiningInvitationReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/MahuaMenuClickedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/IServiceSupply/IGenerateMsg.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data.Pikachu/App.Config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/ApiExtension/MahuaApiExt.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgGroup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Data.Pikachu/Models/BaseModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -51,6 +115,11 @@
         <option value="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80AAD43A-9A03-456C-98F4-B4438654752C/dc/c4aa4be3/CommandCenterMahuaApi.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/NoticeDeal.cs" />
+        <option value="$PROJECT_DIR$/Pikachu.Data/DbContext/PikachuDataContext.cs" />
+        <option value="$PROJECT_DIR$/Pikachu.Data/PikachuDataContext.cs" />
+        <option value="$PROJECT_DIR$/Data.Pikachu/Models/BaseModel.cs" />
+        <option value="$PROJECT_DIR$/Data.Pikachu/Models/ConfigInfo.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
       </list>
     </option>
   </component>
@@ -66,6 +135,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -79,6 +149,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -90,20 +180,24 @@
       <option name="presentableId" value="Default" />
       <updated>1568948593808</updated>
       <workItem from="1568948619932" duration="7062000" />
+      <workItem from="1569139646077" duration="2305000" />
+      <workItem from="1569146977721" duration="2763000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -115,6 +209,13 @@
   <component name="WindowStateProjectService">
     <state x="481" y="100" key="RiderGenerateDialog" />
     <state x="481" y="100" key="RiderGenerateDialog/1600.900" />
+    <state x="481" y="100" key="RiderGenerateDialog/1920.1080" />
+    <state x="445" y="161" width="1057" height="717" key="SettingsEditor" />
+    <state x="445" y="161" width="1057" height="717" key="SettingsEditor/1920.1080" />
+    <state x="616" y="240" key="run.anything.popup" />
+    <state x="616" y="240" key="run.anything.popup/1920.1080" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.1080" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

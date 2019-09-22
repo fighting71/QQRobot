@@ -26,9 +26,7 @@
            ContinueOnError="false"
            />
     
-    <GenerateStubsTask SourceFiles="@(Compile)" BaseDirectory="$(MSBuildProjectDirectory)" OutputFile="$(IntermediateOutputPath)\RefitStubs.g.cs" />
-
-    <Message Text="Processed Refit Stubs" />      
+    <!--<Message Text="Processed Refit Stubs" />-->      
    
     <ItemGroup Condition="Exists('$(IntermediateOutputPath)\RefitStubs.g.cs')">
         <Compile Include="$(IntermediateOutputPath)\RefitStubs.g.cs" />

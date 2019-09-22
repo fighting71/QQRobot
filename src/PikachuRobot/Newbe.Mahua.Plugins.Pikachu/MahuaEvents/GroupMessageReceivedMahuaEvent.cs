@@ -2,7 +2,6 @@
 using Newbe.Mahua.MahuaEvents;
 using Newbe.Mahua.Messages;
 using Newbe.Mahua.Plugins.Pikachu.ApiExtension;
-using Newbe.Mahua.Plugins.Pikachu.CusTools;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Newtonsoft.Json;
 using NLog;

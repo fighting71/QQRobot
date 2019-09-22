@@ -11,7 +11,7 @@ namespace Newbe.Mahua.Plugins.Pikachu
         /// <summary>
         /// 版本号，建议采用 主版本.次版本.修订号 的形式
         /// </summary>
-        public string Version { get; set; } = ConfigConst.AppName ?? "1.0.0";// 避免构建时异常
+        public string Version { get; set; } = ConfigConst.Version ?? "1.0.0";// 避免构建时异常
 
         /// <summary>
         /// 插件名称
