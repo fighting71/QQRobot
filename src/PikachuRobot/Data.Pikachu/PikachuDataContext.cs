@@ -12,9 +12,13 @@ namespace Data.Pikachu
 
         }
 
-        public DbSet<ConfigInfo> configInfos { get; set; }
+        public DbSet<ConfigInfo> ConfigInfos { get; set; }
 
-        public DbSet<Manager> managers { get; set; }
+        public DbSet<Manager> Managers { get; set; }
+
+        public DbSet<GroupAuth> GroupAuths { get; set; }
+
+        public DbSet<GroupMsgCopy> GroupMsgCopys { get; set; }
 
 
     }

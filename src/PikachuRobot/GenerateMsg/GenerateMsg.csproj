@@ -36,6 +36,12 @@
       <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newbe.Mahua, Version=1.15.1.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Newbe.Mahua.1.15.1\lib\net452\Newbe.Mahua.dll</HintPath>
       <Private>True</Private>
@@ -44,7 +50,11 @@
       <HintPath>..\packages\NLog.4.6.7\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -60,16 +70,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NoticeDeal.cs" />
+    <Compile Include="PrivateMsg\ConfigDeal.cs" />
+    <Compile Include="PrivateMsg\GroupManageDeal.cs" />
+    <Compile Include="PrivateMsg\GroupMsgCopyDeal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexBaseDeal.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.Pikachu\Data.Pikachu.csproj">
+      <Project>{A771044C-4BC1-4927-9FE8-2981FBF8C536}</Project>
+      <Name>Data.Pikachu</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IServiceSupply\IServiceSupply.csproj">
       <Project>{B66A8B91-CE93-4971-8220-590C00C15641}</Project>
       <Name>IServiceSupply</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

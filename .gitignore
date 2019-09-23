@@ -192,3 +192,5 @@ bld/
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the
+src/PikachuRobot/Newbe.Mahua.Plugins.Pikachu/run.bat
+src/PikachuRobot/Newbe.Mahua.Plugins.Pikachu/build.bat

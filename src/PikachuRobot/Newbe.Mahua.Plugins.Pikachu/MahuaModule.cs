@@ -81,11 +81,13 @@ namespace Newbe.Mahua.Plugins.Pikachu
                 builder.RegisterType<GroupMemberDecreasedMahuaEvent>()
                     .As<IGroupMemberDecreasedMahuaEvent>();
 
-                builder.RegisterType<FriendAddingRequestMahuaEvent>()
-                    .As<IFriendAddingRequestMahuaEvent>();
+                // 无法处理...
+                //builder.RegisterType<FriendAddingRequestMahuaEvent>()
+                    //.As<IFriendAddingRequestMahuaEvent>();
 
-                builder.RegisterType<GroupJoiningInvitationReceivedMahuaEvent>()
-                    .As<IGroupJoiningInvitationReceivedMahuaEvent>();
+                // 无法处理...
+                //builder.RegisterType<GroupJoiningInvitationReceivedMahuaEvent>()
+                //    .As<IGroupJoiningInvitationReceivedMahuaEvent>();
 
             }
         }

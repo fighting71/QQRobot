@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\monster_yj\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\monster_yj\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_PikachuRobot.1909400508.00" t="ExcludeRecursive" />
-    <e p="D:\git\QQRobot\src\PikachuRobot" t="IncludeFlat">
+    <e p="C:\Users\Administrator\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_PikachuRobot.1202966084.00" t="ExcludeRecursive" />
+    <e p="G:\dick\git\QQRobot\QQRobot\src\PikachuRobot" t="IncludeFlat">
       <e p="ConsoleTest" t="IncludeRecursive">
         <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -14,6 +13,7 @@
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
+        <e p="SolutionDeal.cs" t="Include" />
       </e>
       <e p="Data.Pikachu" t="IncludeRecursive">
         <e p="app.config" t="Include" />
@@ -26,11 +26,15 @@
           <e p="201909221003041_Little.cs" t="Include" />
           <e p="201909221003041_Little.Designer.cs" t="Include" />
           <e p="201909221003041_Little.resx" t="Include" />
+          <e p="201909230748181_AuthGroup.cs" t="Include" />
+          <e p="201909230748181_AuthGroup.Designer.cs" t="Include" />
+          <e p="201909230748181_AuthGroup.resx" t="Include" />
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="BaseModel.cs" t="Include" />
           <e p="ConfigInfo.cs" t="Include" />
+          <e p="GroupAuth.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
@@ -38,11 +42,16 @@
         <e p="PikachuDataContext.cs" t="Include" />
       </e>
       <e p="GenerateMsg" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="GenerateMsg.csproj" t="IncludeRecursive" />
         <e p="NoticeDeal.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="PrivateMsg" t="Include">
+          <e p="ConfigDeal.cs" t="Include" />
+          <e p="GroupManageDeal.cs" t="Include" />
+        </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
@@ -50,7 +59,8 @@
       </e>
       <e p="IServiceSupply" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="IGenerateMsg.cs" t="Include" />
+        <e p="IGroupMsgDeal.cs" t="Include" />
+        <e p="IPrivateMsgDeal.cs" t="Include" />
         <e p="IServiceSupply.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
@@ -77,7 +87,9 @@
             <e p="InstanceFactory.cs" t="Include" />
           </e>
           <e p="Manage" t="Include">
-            <e p="GroupMsgGroup.cs" t="Include" />
+            <e p="BaseList.cs" t="Include" />
+            <e p="GroupMsgManage.cs" t="Include" />
+            <e p="PrivateMsgManage.cs" t="Include" />
           </e>
           <e p="Middleware" t="Include">
             <e p="ConfigMiddleware.cs" t="Include" />

@@ -16,7 +16,7 @@ namespace GenerateMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class RegexBaseDeal : IGenerateMsg
+    public class RegexBaseDeal : IGroupMsgDeal
     {
         public RegexBaseDeal(string regex, string result) : this(regex, () => result)
         {

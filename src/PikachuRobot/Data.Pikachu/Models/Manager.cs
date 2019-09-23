@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Data.Pikachu.Models
 {
     /// <summary>
-    /// @desc : Manager  
+    /// @desc : 管理者账号  
     /// @author : monster_yj
     /// @create : 2019/9/22 17:40:13 
     /// @source : 

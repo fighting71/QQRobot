@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IGenerateMsg.cs" />
+    <Compile Include="IGroupMsgDeal.cs" />
+    <Compile Include="IPrivateMsgDeal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

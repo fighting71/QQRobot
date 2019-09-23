@@ -31,7 +31,6 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Deb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.PluginLoader.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newtonsoft.Json.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\NLog.dll
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Refit.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\System.Threading.Tasks.Extensions.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Autofac.xml
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.xml
@@ -39,7 +38,6 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Deb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.PluginLoader.xml
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newtonsoft.Json.xml
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\NLog.xml
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Refit.xml
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\System.Threading.Tasks.Extensions.xml
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.Plugins.Pikachu.dll.config
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.Plugins.Pikachu.dll
@@ -53,9 +51,6 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Deb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\System.ValueTuple.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\MessagePack.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\MessagePack.xml
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojResolveAssemblyReference.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojAssemblyReference.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csproj.CoreCompileInputs.cache
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojAssemblyReference.cache
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csproj.CoreCompileInputs.cache
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.Plugins.Pikachu.dll.config
@@ -96,3 +91,19 @@ D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\EntityFram
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\EntityFramework.SqlServer.dll
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\EntityFramework.SqlServer.xml
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\app.config
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\app.config
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.Pikachu.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\EntityFramework.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\EntityFramework.SqlServer.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\MySql.Data.Entity.EF6.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.Pikachu.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\EntityFramework.xml
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\EntityFramework.SqlServer.xml
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\StackExchange.Redis.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\StackExchange.Redis.xml
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\MySql.Data.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.Pikachu.dll.config
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\GenerateMsg.dll.config
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojAssemblyReference.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csproj.CoreCompileInputs.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csproj.CopyComplete

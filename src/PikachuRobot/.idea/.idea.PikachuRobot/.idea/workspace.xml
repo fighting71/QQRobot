@@ -75,30 +75,32 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Data.Pikachu/PikachuDataContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Middleware/ConfigMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/CusTools/CatchTools.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/PluginInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GenerateMsg/RegexBaseDeal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GenerateMsg/NoticeDeal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data.Pikachu/Models/ConfigInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB3709D4-3DAE-4F5F-B978-5D5202B86B97/a9/5d52a7f0/String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberDecreasedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MyMenuProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Pikachu.Data/PikachuDataContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupJoiningInvitationReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/MahuaMenuClickedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/IServiceSupply/IGenerateMsg.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data.Pikachu/App.Config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GenerateMsg/NoticeDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86FF289F-F21E-4E16-B08B-EA76D4201C99/f8/fda4a684/PrivateMessageFromFriendReceivedContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/ApiExtension/MahuaApiExt.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgGroup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Data.Pikachu/Models/BaseModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GenerateMsg/RegexBaseDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/IServiceSupply/IGroupMsgDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/91/9073c220/RegistrationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MyMenuProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/PluginInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusConst/ConfigConst.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Middleware/ConfigMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/CusTools/CatchTools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GenerateMsg/PrivateMsg/ConfigDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/IServiceSupply/IPrivateMsgDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6F1C57DA-A38A-4D04-9434-FBAF9B11154B/75/5cb02240/IDatabase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GenerateMsg/PrivateMsg/GroupManageDeal.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -109,9 +111,6 @@
         <option value="$PROJECT_DIR$/IServiceSupply/IGenerateMsg.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/RegexBaseDeal.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgGroup.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
         <option value="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80AAD43A-9A03-456C-98F4-B4438654752C/dc/c4aa4be3/CommandCenterMahuaApi.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/NoticeDeal.cs" />
@@ -119,7 +118,19 @@
         <option value="$PROJECT_DIR$/Pikachu.Data/PikachuDataContext.cs" />
         <option value="$PROJECT_DIR$/Data.Pikachu/Models/BaseModel.cs" />
         <option value="$PROJECT_DIR$/Data.Pikachu/Models/ConfigInfo.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgGroup.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/BaseManage.cs" />
+        <option value="$PROJECT_DIR$/IServiceSupply/IGroupMsgDeal.cs" />
+        <option value="$PROJECT_DIR$/IServiceSupply/IPrivateMsgDeal.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusConst/ConfigConst.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
+        <option value="$PROJECT_DIR$/GenerateMsg/PrivateMsg/ConfigDeal.cs" />
+        <option value="$PROJECT_DIR$/GenerateMsg/PrivateMsg/GroupManageDeal.cs" />
       </list>
     </option>
   </component>
@@ -182,6 +193,9 @@
       <workItem from="1568948619932" duration="7062000" />
       <workItem from="1569139646077" duration="2305000" />
       <workItem from="1569146977721" duration="2763000" />
+      <workItem from="1569205727476" duration="1323000" />
+      <workItem from="1569208066093" duration="477000" />
+      <workItem from="1569210947743" duration="5014000" />
     </task>
     <servers />
   </component>

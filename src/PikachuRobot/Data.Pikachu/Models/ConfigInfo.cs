@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Data.Pikachu.Models
 {
     /// <summary>
-    /// @desc : ConfigInfo  
+    /// @desc : 配置信息  
     /// @author : monster_yj
     /// @create : 2019/9/22 16:25:36 
-    /// @source : 配置信息
+    /// @source : 
     /// </summary>
     public class ConfigInfo:BaseModel<int>
     {

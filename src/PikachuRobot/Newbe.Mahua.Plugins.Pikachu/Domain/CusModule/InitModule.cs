@@ -2,12 +2,19 @@
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Commond.Tools;
 using GenerateMsg;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Data.Pikachu;
+using GenerateMsg.PrivateMsg;
+using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
+using StackExchange.Redis;
+using IServiceSupply;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 {
@@ -17,27 +24,67 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
     /// @source : 
     /// @des : 
     /// </summary>
-    public class InitModule: Module
+    public class InitModule : Module
     {
-
         private static readonly Logger _logger = LogManager.GetLogger(nameof(MahuaModule));
+
+        private static ConnectionMultiplexer ctx = ConnectionMultiplexer.Connect(ConfigConst.RedisClient);
+
+        PikachuDataContext dbContext = InstanceFactory.Get<PikachuDataContext>();
 
         public InitModule()
         {
             _logger.Debug("开始进行初始化");
         }
 
+
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            
-            GroupMsgGroup.AddDeal(new RegexBaseDeal(@"[\s|\n|\r]*菜单列表[\s|\n|\r]*",@"
-当前支持内容:
-    [公告设置] [新人提示] [退群提示]  
-"));
-            
-            GroupMsgGroup.AddDeal(new NoticeDeal());
 
+            builder.RegisterType<PikachuDataContext>();// 此处若是注入单例 会引起 context 随着依赖的对象释放而释放
+            builder.RegisterType<PrivateMsgManage>().As<IPrivateMsgDeal>();
+            builder.RegisterType<GroupMsgManage>().As<IGroupMsgDeal>();
+
+            InitPrivateMsgManage();
+
+            InitGroupMsgManage();
+        }
+
+        private void InitPrivateMsgManage()
+        {
+            int.TryParse(ConfigConst.RedisDb, out var db);
+            PrivateMsgManage.AddDeal(new ConfigDeal(ctx.GetDatabase(db), InstanceFactory.Get<PikachuDataContext>()).Run);
+            PrivateMsgManage.AddDeal(new GroupManageDeal(InstanceFactory.Get<PikachuDataContext>()).Run);
+            PrivateMsgManage.AddDeal(new GroupMsgCopyDeal(InstanceFactory.Get<PikachuDataContext>()).Run);
+
+            PrivateMsgManage.AddDeal((context, api) =>
+                {
+                    return dbContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Private.Confirm.Default"))?.Value;
+                }
+            );
+
+        }
+
+
+        private void InitGroupMsgManage()
+        {
+
+            //GroupMsgManage.AddDeal(new NoticeDeal().Run);
+            //GroupMsgManage.AddDeal((context,api)=>
+            //{
+            //    if (!string.IsNullOrWhiteSpace(context.Message))
+            //    {
+            //        return context.Message;
+            //    }
+            //    return string.Empty;
+            //}); // 复读
+
+            GroupMsgManage.AddDeal((context, api) =>
+               {
+                   return dbContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Group.Confirm.Default"))?.Value;
+               }
+            );
         }
     }
 }

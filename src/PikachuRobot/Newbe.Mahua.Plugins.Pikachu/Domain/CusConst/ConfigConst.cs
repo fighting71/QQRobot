@@ -17,13 +17,15 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusConst
     public class ConfigConst
     {
 
-        public static string Version = ConfigMiddleware.GetConfig(nameof(Version));
-        public static string AppName = ConfigMiddleware.GetConfig(nameof(AppName));
-        public static string Author = ConfigMiddleware.GetConfig(nameof(Author));
-        public static string AppId = ConfigMiddleware.GetConfig(nameof(AppId));
-        public static string Description = ConfigMiddleware.GetConfig(nameof(Description));
-        public static string DefaultGroupMsg = ConfigMiddleware.GetConfig(nameof(DefaultGroupMsg));
-        public static string DefaultPrivateMsg = ConfigMiddleware.GetConfig(nameof(DefaultPrivateMsg));
+        public static readonly string Version = ConfigMiddleware.GetConfig(nameof(Version));
+        public static readonly string AppName = ConfigMiddleware.GetConfig(nameof(AppName));
+        public static readonly string Author = ConfigMiddleware.GetConfig(nameof(Author));
+        public static readonly string AppId = ConfigMiddleware.GetConfig(nameof(AppId));
+        public static readonly string Description = ConfigMiddleware.GetConfig(nameof(Description));
+        public static readonly string DefaultGroupMsg = ConfigMiddleware.GetConfig(nameof(DefaultGroupMsg));
+        public static readonly string DefaultPrivateMsg = ConfigMiddleware.GetConfig(nameof(DefaultPrivateMsg));
+        public static readonly string RedisClient = ConfigMiddleware.GetConfig(nameof(RedisClient));
+        public static readonly string RedisDb = ConfigMiddleware.GetConfig(nameof(RedisDb));
 
     }
 }

@@ -30,12 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
@@ -73,9 +72,19 @@
     <Compile Include="Migrations\201909221003041_Little.Designer.cs">
       <DependentUpon>201909221003041_Little.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909230748181_AuthGroup.cs" />
+    <Compile Include="Migrations\201909230748181_AuthGroup.Designer.cs">
+      <DependentUpon>201909230748181_AuthGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909230859084_GroupMsgCopy.cs" />
+    <Compile Include="Migrations\201909230859084_GroupMsgCopy.Designer.cs">
+      <DependentUpon>201909230859084_GroupMsgCopy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ConfigInfo.cs" />
+    <Compile Include="Models\GroupAuth.cs" />
+    <Compile Include="Models\GroupMsgCopy.cs" />
     <Compile Include="Models\Manager.cs" />
     <Compile Include="PikachuDataContext.cs" />
   </ItemGroup>
@@ -85,6 +94,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909221003041_Little.resx">
       <DependentUpon>201909221003041_Little.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909230748181_AuthGroup.resx">
+      <DependentUpon>201909230748181_AuthGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909230859084_GroupMsgCopy.resx">
+      <DependentUpon>201909230859084_GroupMsgCopy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
