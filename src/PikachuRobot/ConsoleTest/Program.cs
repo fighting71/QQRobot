@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Data.PetSystem;
 using Data.Pikachu;
 using StackExchange.Redis;
 using System;
@@ -17,7 +18,12 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            TestCache();
+
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("test");
+            builder.AppendLine("test");
+
+            Console.WriteLine(builder);
 
             Console.WriteLine("Hello World");
 

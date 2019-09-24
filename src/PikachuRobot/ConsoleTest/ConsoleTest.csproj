@@ -70,6 +70,10 @@
       <Project>{a771044c-4bc1-4927-9fe8-2981fbf8c536}</Project>
       <Name>Data.Pikachu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Module\Data\Data.PetSystem\Data.PetSystem.csproj">
+      <Project>{487e0181-ceb1-4740-89eb-d8215ad02d39}</Project>
+      <Name>Data.PetSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

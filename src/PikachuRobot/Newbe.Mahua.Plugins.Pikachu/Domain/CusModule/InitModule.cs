@@ -15,6 +15,7 @@ using GenerateMsg.PrivateMsg;
 using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
 using StackExchange.Redis;
 using IServiceSupply;
+using GenerateMsg.Services;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 {
@@ -30,8 +31,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
         private static ConnectionMultiplexer ctx = ConnectionMultiplexer.Connect(ConfigConst.RedisClient);
 
-        PikachuDataContext dbContext = InstanceFactory.Get<PikachuDataContext>();
-
         public InitModule()
         {
             _logger.Debug("开始进行初始化");
@@ -46,21 +45,39 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             builder.RegisterType<PrivateMsgManage>().As<IPrivateMsgDeal>();
             builder.RegisterType<GroupMsgManage>().As<IGroupMsgDeal>();
 
-            InitPrivateMsgManage();
+            try
+            {
+                //InitPrivateMsgManage();
 
-            InitGroupMsgManage();
+                //InitGroupMsgManage();
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e);
+            }
         }
 
         private void InitPrivateMsgManage()
         {
             int.TryParse(ConfigConst.RedisDb, out var db);
-            PrivateMsgManage.AddDeal(new ConfigDeal(ctx.GetDatabase(db), InstanceFactory.Get<PikachuDataContext>()).Run);
+
+            PrivateMsgManage.AddDeal(new ConfigCacheDeal(
+                ctx.GetDatabase(db), 
+                InstanceFactory.Get(()=>new ConfigService(InstanceFactory.Get<PikachuDataContext>()))
+                ).Run);
+
+            PrivateMsgManage.AddDeal(new ConfigDeal(
+                ctx.GetDatabase(db),
+                InstanceFactory.Get(() => new ConfigService(InstanceFactory.Get<PikachuDataContext>()))
+                ).Run);
+
             PrivateMsgManage.AddDeal(new GroupManageDeal(InstanceFactory.Get<PikachuDataContext>()).Run);
+
             PrivateMsgManage.AddDeal(new GroupMsgCopyDeal(InstanceFactory.Get<PikachuDataContext>()).Run);
 
             PrivateMsgManage.AddDeal((context, api) =>
                 {
-                    return dbContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Private.Confirm.Default"))?.Value;
+                    return InstanceFactory.Get<PikachuDataContext>().ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Private.Confirm.Default"))?.Value;
                 }
             );
 
@@ -82,7 +99,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
             GroupMsgManage.AddDeal((context, api) =>
                {
-                   return dbContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Group.Confirm.Default"))?.Value;
+                   return InstanceFactory.Get<PikachuDataContext>().ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Group.Confirm.Default"))?.Value;
                }
             );
         }

@@ -37,8 +37,6 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\EntityFramewo
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\StackExchange.Redis.xml
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\zh-Hans\EntityFramework.resources.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\MySql.Data.dll
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Data.Pikachu.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.csprojAssemblyReference.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.csproj.CoreCompileInputs.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.csproj.CopyComplete
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Data.PetSystem.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Data.PetSystem.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.csprojResolveAssemblyReference.cache

@@ -33,5 +33,24 @@ namespace Commond.Tools
 
         }
 
+        public static T Get<T>(Func<T> ctor) 
+        {
+            var type = typeof(T);
+
+            if (_cache.ContainsKey(type))
+            {
+                var value = _cache[type];
+                if (value != null && value is T t)
+                    return t;
+            }
+
+            var ret = ctor();
+            _cache.Add(type, ret);
+
+            return ret;
+
+        }
+
+
     }
 }

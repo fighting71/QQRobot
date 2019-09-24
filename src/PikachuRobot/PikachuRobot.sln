@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateMsg", "GenerateMsg\GenerateMsg.csproj", "{03C3179B-1E33-4C13-97A2-9E567F648B14}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Pikachu", "Data.Pikachu\Data.Pikachu.csproj", "{A771044C-4BC1-4927-9FE8-2981FBF8C536}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{3A14A3A7-DC24-4891-AB09-D75D5E078F29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data.Module", "Data.Module", "{C7232367-FDA3-464D-A564-F048EB8F9188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.PetSystem", "Module\Data\Data.PetSystem\Data.PetSystem.csproj", "{487E0181-CEB1-4740-89EB-D8215AD02D39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{3A14A3A7-DC24-4891-AB09-D75D5E078F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A14A3A7-DC24-4891-AB09-D75D5E078F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A14A3A7-DC24-4891-AB09-D75D5E078F29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487E0181-CEB1-4740-89EB-D8215AD02D39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487E0181-CEB1-4740-89EB-D8215AD02D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487E0181-CEB1-4740-89EB-D8215AD02D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487E0181-CEB1-4740-89EB-D8215AD02D39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{487E0181-CEB1-4740-89EB-D8215AD02D39} = {C7232367-FDA3-464D-A564-F048EB8F9188}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D0589EC-F140-4F84-BAF6-78141455FF3F}

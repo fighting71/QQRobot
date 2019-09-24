@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Data.Pikachu;
 using Data.Pikachu.Models;
+using GenerateMsg.Services;
 using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
@@ -19,7 +20,7 @@ namespace GenerateMsg.PrivateMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class ConfigDeal : IPrivateMsgDeal
+    public class ConfigCacheDeal : IPrivateMsgDeal
     {
         private const string AddFlag = "add";
         private const string RemoveFlag = "remove";
@@ -31,35 +32,17 @@ namespace GenerateMsg.PrivateMsg
 
         private IDatabase _database;
 
-        private PikachuDataContext _dbContext;
-
-        public ConfigDeal(IDatabase database, PikachuDataContext dbContext)
+        public ConfigCacheDeal(IDatabase database, ConfigService configService)
         {
             _database = database;
-            _dbContext = dbContext;
+            ConfigService = configService;
         }
+
+        private ConfigService ConfigService { get; }
 
         public string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
         {
             var key = $"{nameof(ConfigDeal)}_{context.FromQq}";
-
-            // 查看是否存在操作
-
-            var cache = _database.StringGet(key).ToString();
-
-            if (!string.IsNullOrWhiteSpace(cache))
-            {
-                _database.KeyDelete(key); // 移除key
-                if (AddFlag.Equals(cache))
-                {
-                    return AddInfo(context.Message);
-                }
-
-                if (RemoveFlag.Equals(cache))
-                {
-                    return RemoveKey(context.Message.Trim());
-                }
-            }
 
             Match match;
             if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*配置管理[\s|\n|\r]*$"))
@@ -71,7 +54,7 @@ namespace GenerateMsg.PrivateMsg
 
             if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*查看配置[\s|\n|\r]*$"))
             {
-                var list = _dbContext.ConfigInfos.Where(u => u.Enable).OrderByDescending(u => u.UpdateTime)
+                var list = ConfigService.GetAll().OrderByDescending(u => u.UpdateTime)
                     .ThenByDescending(u => u.CreateTime).ToList();
 
                 if (list.Count == 0) return "暂无配置";
@@ -104,8 +87,8 @@ namespace GenerateMsg.PrivateMsg
 
                     return "缓存key失败！";
                 }
-
-                return AddInfo(info);
+                ConfigService.AddInfo(info, out var msg);
+                return msg;
             }
 
             if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*禁用配置([\s|\S]*)$")).Success)
@@ -122,69 +105,12 @@ namespace GenerateMsg.PrivateMsg
                     return "缓存key失败！";
                 }
 
-                return RemoveKey(info.Trim());
+                ConfigService.RemoveKey(info.Trim(),out var msg);
+                return msg;
             }
 
             return String.Empty;
         }
 
-        protected string RemoveKey(string key)
-        {
-            var search =
-                _dbContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals(key));
-            if (search != null)
-            {
-                search.Enable = false;
-                _dbContext.SaveChanges();
-            }
-
-            return "删除成功";
-        }
-
-        protected string AddInfo(string input)
-        {
-            var info = input.Split('|');
-            if (info.Length == 3)
-            {
-                if (!string.IsNullOrWhiteSpace(info[0]))
-                {
-                    var config = new ConfigInfo()
-                    {
-                        CreateTime = DateTime.Now,
-                        Key = info[0].Trim(),
-                        Value = info[1],
-                        Description = info[2],
-                        Enable = true
-                    };
-
-                    var old = _dbContext.ConfigInfos.FirstOrDefault(u =>
-                        u.Enable && u.Key.Equals(config.Key, StringComparison.CurrentCultureIgnoreCase));
-
-                    if (old != null)
-                    {
-                        old.Value = config.Value;
-                        old.UpdateTime = DateTime.Now;
-                    }
-                    else
-                    {
-                        config.UpdateTime = DateTime.Now;
-                        config.CreateTime = DateTime.Now;
-                        _dbContext.ConfigInfos.Add(config);
-                    }
-
-                    _dbContext.SaveChanges();
-
-                    return "   添加成功！";
-                }
-                else
-                {
-                    return "   配置key不能为空！";
-                }
-            }
-            else
-            {
-                return "   输入格式有误！";
-            }
-        }
     }
 }
