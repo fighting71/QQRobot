@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Data.Pikachu;
-using Data.Pikachu.Models;
-using GenerateMsg.Services;
 using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
+using Services.PikachuSystem;
 using StackExchange.Redis;
 
 namespace GenerateMsg.PrivateMsg
@@ -22,13 +15,9 @@ namespace GenerateMsg.PrivateMsg
     /// </summary>
     public class ConfigDeal : IPrivateMsgDeal
     {
-        private const string AddFlag = "add";
-        private const string RemoveFlag = "remove";
 
-        /// <summary>
-        /// 有效期
-        /// </summary>
-        private static TimeSpan Expiry = TimeSpan.FromSeconds(30);
+        private const string AddFlag = nameof(AddFlag);
+        private const string RemoveFlag = nameof(RemoveFlag);
 
         private IDatabase _database;
 

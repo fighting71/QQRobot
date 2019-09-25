@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="C:\Users\Administrator\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Administrator\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_PikachuRobot.1202966084.00" t="ExcludeRecursive" />
     <e p="G:\dick\git\QQRobot\QQRobot\src\PikachuRobot" t="IncludeFlat">
       <e p="ConsoleTest" t="IncludeRecursive">
@@ -15,10 +16,14 @@
         </e>
         <e p="SolutionDeal.cs" t="Include" />
       </e>
+      <e p="Data.Module" t="Include" />
       <e p="Data.Pikachu" t="IncludeRecursive">
         <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data.Pikachu.csproj" t="IncludeRecursive" />
+        <e p="Menu" t="Include">
+          <e p="GroupConfigTypes.cs" t="Include" />
+        </e>
         <e p="Migrations" t="Include">
           <e p="201909220955011_Init.cs" t="Include" />
           <e p="201909220955011_Init.Designer.cs" t="Include" />
@@ -29,12 +34,20 @@
           <e p="201909230748181_AuthGroup.cs" t="Include" />
           <e p="201909230748181_AuthGroup.Designer.cs" t="Include" />
           <e p="201909230748181_AuthGroup.resx" t="Include" />
+          <e p="201909230859084_GroupMsgCopy.cs" t="Include" />
+          <e p="201909230859084_GroupMsgCopy.Designer.cs" t="Include" />
+          <e p="201909230859084_GroupMsgCopy.resx" t="Include" />
+          <e p="201909250654347_Little3.cs" t="Include" />
+          <e p="201909250654347_Little3.Designer.cs" t="Include" />
+          <e p="201909250654347_Little3.resx" t="Include" />
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="BaseModel.cs" t="Include" />
           <e p="ConfigInfo.cs" t="Include" />
           <e p="GroupAuth.cs" t="Include" />
+          <e p="GroupConfig.cs" t="Include" />
+          <e p="GroupMsgCopy.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
@@ -45,12 +58,18 @@
         <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="GenerateMsg.csproj" t="IncludeRecursive" />
+        <e p="GroupMsg" t="Include">
+          <e p="GroupConfigDeal.cs" t="Include" />
+          <e p="PetDeal.cs" t="Include" />
+        </e>
         <e p="NoticeDeal.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="PrivateMsg" t="Include">
+          <e p="ConfigCacheDeal.cs" t="Include" />
           <e p="ConfigDeal.cs" t="Include" />
           <e p="GroupManageDeal.cs" t="Include" />
+          <e p="GroupMsgCopyDeal.cs" t="Include" />
         </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
@@ -64,6 +83,41 @@
         <e p="IServiceSupply.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Module\Data\Data.PetSystem" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Data.PetSystem.csproj" t="IncludeRecursive" />
+        <e p="Menu" t="Include">
+          <e p="Gender.cs" t="Include" />
+          <e p="QualityTypes.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="201909240315293_Init.cs" t="Include" />
+          <e p="201909240315293_Init.Designer.cs" t="Include" />
+          <e p="201909240315293_Init.resx" t="Include" />
+          <e p="201909240356169_Little.cs" t="Include" />
+          <e p="201909240356169_Little.Designer.cs" t="Include" />
+          <e p="201909240356169_Little.resx" t="Include" />
+          <e p="201909240403044_Little2.cs" t="Include" />
+          <e p="201909240403044_Little2.Designer.cs" t="Include" />
+          <e p="201909240403044_Little2.resx" t="Include" />
+          <e p="Configuration.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="BaseModel.cs" t="Include" />
+          <e p="PetInfo.cs" t="Include" />
+          <e p="PetProp.cs" t="Include" />
+          <e p="PropType.cs" t="Include" />
+          <e p="UserPet.cs" t="Include" />
+          <e p="UserProp.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="PetContext.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
@@ -85,6 +139,7 @@
           </e>
           <e p="Factory" t="Include">
             <e p="InstanceFactory.cs" t="Include" />
+            <e p="ThreadInstanceFactory.cs" t="Include" />
           </e>
           <e p="Manage" t="Include">
             <e p="BaseList.cs" t="Include" />
@@ -127,6 +182,36 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="PikachuRobot.sln" t="IncludeFlat" />
+      <e p="Services" t="Include">
+        <e p="Services.PetSystem" t="IncludeRecursive">
+          <e p="app.config" t="Include" />
+          <e p="BaseService.cs" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="packages.config" t="Include" />
+          <e p="PetService.cs" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+          </e>
+          <e p="Services.PetSystem.csproj" t="IncludeRecursive" />
+        </e>
+        <e p="Services.PikachuSystem" t="IncludeRecursive">
+          <e p="app.config" t="Include" />
+          <e p="BaseService.cs" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="ConfigService.cs" t="Include" />
+          <e p="GroupConfigService.cs" t="Include" />
+          <e p="GroupManageService.cs" t="Include" />
+          <e p="GroupMsgCopyService.cs" t="Include" />
+          <e p="ManageService.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="packages.config" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+          </e>
+          <e p="Services.PikachuSystem.csproj" t="IncludeRecursive" />
+        </e>
+      </e>
     </e>
   </component>
 </project>

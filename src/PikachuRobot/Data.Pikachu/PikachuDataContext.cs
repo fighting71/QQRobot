@@ -20,6 +20,8 @@ namespace Data.Pikachu
 
         public DbSet<GroupMsgCopy> GroupMsgCopys { get; set; }
 
+        public DbSet<GroupConfig> GroupConfigs { get; set; }
+
 
     }
 }

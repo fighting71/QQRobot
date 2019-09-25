@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Commond.Tools
 {
@@ -17,6 +18,7 @@ namespace Commond.Tools
 
         public static T Get<T>() where T : new()
         {
+
             var type = typeof(T);
 
             if (_cache.ContainsKey(type))

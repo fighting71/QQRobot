@@ -40,7 +40,7 @@ namespace Newbe.Mahua.Samples.ApiExtensions.MahuaApis
                     .Done();
             }
 
-            if (!dbContext.GroupAuths.Where(u => u.Enable && u.GroupNo.Equals(context.FromGroup)).Any())// 群号尚未授权
+            if (!dbContext.GroupAuths.Any(u => u.Enable && u.GroupNo.Equals(context.FromGroup)))// 群号尚未授权
             {
                 return;
             }
@@ -54,6 +54,10 @@ namespace Newbe.Mahua.Samples.ApiExtensions.MahuaApis
                 if (!string.IsNullOrWhiteSpace(res))
                     _mahuaApi.SendGroupMessage(context.FromGroup).Text(res).Done();
 
+            }
+            else
+            {
+                _mahuaApi.SendGroupMessage(context.FromGroup).Text(context.Message).Done();
             }
         }
     }

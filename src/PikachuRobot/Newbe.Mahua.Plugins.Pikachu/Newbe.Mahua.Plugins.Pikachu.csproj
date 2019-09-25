@@ -108,6 +108,7 @@
     <Compile Include="Domain\CusConst\ConfigConst.cs" />
     <Compile Include="Domain\CusModule\InitModule.cs" />
     <Compile Include="Domain\Factory\InstanceFactory.cs" />
+    <Compile Include="Domain\Factory\ThreadInstanceFactory.cs" />
     <Compile Include="Domain\Manage\BaseList.cs" />
     <Compile Include="Domain\Manage\GroupMsgManage.cs" />
     <Compile Include="Domain\Manage\PrivateMsgManage.cs" />
@@ -152,6 +153,18 @@
     <ProjectReference Include="..\IServiceSupply\IServiceSupply.csproj">
       <Project>{b66a8b91-ce93-4971-8220-590c00c15641}</Project>
       <Name>IServiceSupply</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Module\Data\Data.PetSystem\Data.PetSystem.csproj">
+      <Project>{487E0181-CEB1-4740-89EB-D8215AD02D39}</Project>
+      <Name>Data.PetSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.PetSystem\Services.PetSystem.csproj">
+      <Project>{5AF54F24-0CD4-43FF-805F-8A7A28D418BA}</Project>
+      <Name>Services.PetSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.PikachuSystem\Services.PikachuSystem.csproj">
+      <Project>{83C170D5-07E1-4420-838B-77E0F0F771A1}</Project>
+      <Name>Services.PikachuSystem</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

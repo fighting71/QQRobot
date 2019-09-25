@@ -14,7 +14,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// @source : 
     /// @des : 
     /// </summary>
-    public class GroupMsgManage : BaseList<DelGroupMsgDeal>, IGroupMsgDeal
+    public class GroupMsgManage : BaseList<Func<DelGroupMsgDeal>>, IGroupMsgDeal
     {
 
         public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
@@ -22,7 +22,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
             string res = string.Empty;
             for (int i = 0; i < list.Count && res == string.Empty; i++)
             {
-                res = list[i].Invoke(context, mahuaApi);
+                res = list[i]()(context, mahuaApi);
             }
 
             return res;

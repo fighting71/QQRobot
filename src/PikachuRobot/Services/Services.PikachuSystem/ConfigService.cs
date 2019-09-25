@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenerateMsg.Services
+namespace Services.PikachuSystem
 {
     /// <summary>
     /// @auth : monster
@@ -14,16 +14,12 @@ namespace GenerateMsg.Services
     /// @source : 
     /// @des : 
     /// </summary>
-    public class ConfigService
+    public class ConfigService:BaseService
     {
-
-
-        private PikachuDataContext _dbContext;
-
-        public ConfigService(PikachuDataContext dbContext)
+        public ConfigService(PikachuDataContext pikachuDataContext) : base(pikachuDataContext)
         {
-            _dbContext = dbContext;
         }
+
 
         /// <summary>
         /// 获取所有配置
@@ -31,7 +27,7 @@ namespace GenerateMsg.Services
         /// <returns></returns>
         public IQueryable<ConfigInfo> GetAll()
         {
-            return _dbContext.ConfigInfos.Where(u => u.Enable);
+            return PikachuDataContext.ConfigInfos.Where(u => u.Enable);
         }
 
         /// <summary>
@@ -42,11 +38,11 @@ namespace GenerateMsg.Services
         public void RemoveKey(string key,out string msg)
         {
             var search =
-                _dbContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals(key));
+                PikachuDataContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals(key));
             if (search != null)
             {
                 search.Enable = false;
-                _dbContext.SaveChanges();
+                PikachuDataContext.SaveChanges();
             }
 
             msg = "删除成功";
@@ -73,7 +69,7 @@ namespace GenerateMsg.Services
                         Enable = true
                     };
 
-                    var old = _dbContext.ConfigInfos.FirstOrDefault(u =>
+                    var old = PikachuDataContext.ConfigInfos.FirstOrDefault(u =>
                         u.Enable && u.Key.Equals(config.Key, StringComparison.CurrentCultureIgnoreCase));
 
                     if (old != null)
@@ -85,10 +81,10 @@ namespace GenerateMsg.Services
                     {
                         config.UpdateTime = DateTime.Now;
                         config.CreateTime = DateTime.Now;
-                        _dbContext.ConfigInfos.Add(config);
+                        PikachuDataContext.ConfigInfos.Add(config);
                     }
 
-                    _dbContext.SaveChanges();
+                    PikachuDataContext.SaveChanges();
 
                     msg = "   添加成功！";
                 }

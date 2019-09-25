@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Data.Pikachu;
-using Data.Pikachu.Models;
-using GenerateMsg.Services;
 using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
+using Services.PikachuSystem;
 using StackExchange.Redis;
 
 namespace GenerateMsg.PrivateMsg
@@ -22,13 +18,11 @@ namespace GenerateMsg.PrivateMsg
     /// </summary>
     public class ConfigCacheDeal : IPrivateMsgDeal
     {
-        private const string AddFlag = "add";
-        private const string RemoveFlag = "remove";
 
-        /// <summary>
-        /// 有效期
-        /// </summary>
-        private static TimeSpan Expiry = TimeSpan.FromSeconds(30);
+
+        private const string AddFlag = nameof(AddFlag);
+        private const string RemoveFlag = nameof(RemoveFlag);
+        private readonly static TimeSpan Expiry = TimeSpan.FromSeconds(30);
 
         private IDatabase _database;
 
@@ -48,7 +42,7 @@ namespace GenerateMsg.PrivateMsg
             if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*配置管理[\s|\n|\r]*$"))
             {
                 return @"当前配置管理支持内容:
-[查看配置] [添加配置] [禁用配置]
+[查看配置] [添加配置] [删除配置]
 ";
             }
 
@@ -61,15 +55,17 @@ namespace GenerateMsg.PrivateMsg
 
                 StringBuilder builder = new StringBuilder();
 
-                builder.Append($"  [配置key]|[配置value]|[配置描述]");
-                builder.AppendLine();
+                builder.AppendLine($"  [配置key]|[配置value]|[配置描述]");
 
                 for (int i = 0; i < list.Count(); i++)
                 {
-                    builder.Append(
+                    builder.AppendLine(
                         $"{(i + 1).ToString()}. {list[i].Key}|{list[i].Value}|{list[i].Description}");
-                    builder.AppendLine();
                 }
+
+                builder.AppendLine();
+                builder.AppendLine("添加配置:[配置key]|[配置value]|[配置描述](请注意内容中不要使用'|')");
+                builder.AppendLine("示例: 添加配置 monster|怪兽|翻译测试  ");
 
                 return builder.ToString();
             }
@@ -91,7 +87,7 @@ namespace GenerateMsg.PrivateMsg
                 return msg;
             }
 
-            if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*禁用配置([\s|\S]*)$")).Success)
+            if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*删除配置([\s|\S]*)$")).Success)
             {
                 var info = match.Groups[1].Value;
                 if (string.IsNullOrWhiteSpace(info))

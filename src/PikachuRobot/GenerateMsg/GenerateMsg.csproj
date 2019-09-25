@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GroupMsg\GroupConfigDeal.cs" />
     <Compile Include="GroupMsg\PetDeal.cs" />
     <Compile Include="NoticeDeal.cs" />
     <Compile Include="PrivateMsg\ConfigCacheDeal.cs" />
@@ -77,8 +78,6 @@
     <Compile Include="PrivateMsg\GroupMsgCopyDeal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexBaseDeal.cs" />
-    <Compile Include="Services\ConfigService.cs" />
-    <Compile Include="Services\PetService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data.Pikachu\Data.Pikachu.csproj">
@@ -92,6 +91,14 @@
     <ProjectReference Include="..\Module\Data\Data.PetSystem\Data.PetSystem.csproj">
       <Project>{487E0181-CEB1-4740-89EB-D8215AD02D39}</Project>
       <Name>Data.PetSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.PetSystem\Services.PetSystem.csproj">
+      <Project>{5af54f24-0cd4-43ff-805f-8a7a28d418ba}</Project>
+      <Name>Services.PetSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.PikachuSystem\Services.PikachuSystem.csproj">
+      <Project>{83c170d5-07e1-4420-838b-77e0f0f771a1}</Project>
+      <Name>Services.PikachuSystem</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

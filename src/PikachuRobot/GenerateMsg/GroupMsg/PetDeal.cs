@@ -1,14 +1,10 @@
-﻿using Data.PetSystem;
-using GenerateMsg.Services;
-using IServiceSupply;
+﻿using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
-using System;
-using System.Collections.Generic;
+using Services.PetSystem;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace GenerateMsg.GroupMsg
 {
@@ -31,14 +27,14 @@ namespace GenerateMsg.GroupMsg
         public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
 
-            if(Regex.IsMatch(context.Message, @"[\s|\n|\r]*宠物系统[\s|\n|\r]*"))
+            if(Regex.IsMatch(context.Message, @"^[\s|\n|\r]*宠物系统[\s|\n|\r]*$"))
             {
                 return @"当前宠物系统支持:
     [宠物商店] [宠物道具商店] [查看宠物] [放养宠物]
 ";
             }
 
-            if(Regex.IsMatch(context.Message, @"[\s|\n|\r]*宠物商店[\s|\n|\r]*"))
+            if(Regex.IsMatch(context.Message, @"^[\s|\n|\r]*宠物商店[\s|\n|\r]*$"))
             {
                 var list = PetService.GetAll().OrderByDescending(u => u.Id).ToList();
 
@@ -56,6 +52,7 @@ namespace GenerateMsg.GroupMsg
                     builder.AppendLine($"{(i+1).ToString()}. {list[i].Face}  {list[i].Name}  [{list[i].Description}]");
                 }
 
+                builder.AppendLine();
                 builder.AppendLine(" 试试对我说 [领养宠物] [宠物名称] 吧~");
 
                 return builder.ToString();

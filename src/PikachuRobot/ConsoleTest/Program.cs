@@ -7,33 +7,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleTest
 {
-
     public delegate string Deal(int num);
+
+    public class InstanceFactory<T> where T : class
+    {
+        private static readonly ThreadLocal<T> threadLocal = new ThreadLocal<T>();
+
+        public static T Get(Func<T> func)
+        {
+            return threadLocal.Value = threadLocal.Value ?? func();
+        }
+    }
 
     class Program
     {
+
+        public Program()
+        {
+            Console.WriteLine($"{Thread.CurrentThread.ManagedThreadId.ToString()} 构建了一个Program");
+        }
+        
         static void Main(string[] args)
         {
-
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("test");
-            builder.AppendLine("test");
-
-            Console.WriteLine(builder);
-
             Console.WriteLine("Hello World");
 
             Console.ReadKey(true);
-
         }
 
+        public static void TestThreadLocal()
+        {
+            InstanceFactory<Program>.Get((() => new Program()));
+
+            ThreadPool.QueueUserWorkItem((state =>
+            {
+                InstanceFactory<Program>.Get((() => new Program()));
+            }));
+            ThreadPool.QueueUserWorkItem((state =>
+            {
+                InstanceFactory<Program>.Get((() => new Program()));
+            }));
+            ThreadPool.QueueUserWorkItem((state =>
+            {
+                InstanceFactory<Program>.Get((() => new Program()));
+            }));
+            
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+            InstanceFactory<Program>.Get((() => new Program()));
+        }
+        
+        public static void TestThreadLocal2()
+        {
+            InstanceFactory<Program>.Get((() => new Program()));
+        }
+        
         public static void TestAutoFac()
         {
-
             ContainerBuilder builder = new ContainerBuilder();
 
             builder.RegisterType<SolutionDeal>();
@@ -51,12 +91,10 @@ namespace ConsoleTest
             var info = builder.Build();
 
             var test = info.Resolve<SolutionDeal>();
-
         }
 
         public static void TestDeletageLink()
         {
-
             Deal deal = a => a.ToString();
 
             deal += a => (a * 10).ToString();
@@ -97,14 +135,11 @@ namespace ConsoleTest
 
         public static void TestDb()
         {
-
             PikachuDataContext context = new PikachuDataContext();
 
             context.Database.CreateIfNotExists();
 
             context.SaveChanges();
-
         }
-
     }
 }

@@ -15,14 +15,15 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     public class BaseList<T>
     {
         
-        protected static IList<T> list = new List<T>();
+        protected IList<T> list = new List<T>();
 
-        public static void AddDeal(T deal)
+        public BaseList<T> AddDeal(T deal)
         {
             list.Add(deal);
+            return this;
         }
 
-        public static void AddDeal(int index, T deal)
+        public void AddDeal(int index, T deal)
         {
             list.Insert(index, deal);
         }

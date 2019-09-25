@@ -39,4 +39,8 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\zh-Hans\Entit
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Data.PetSystem.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Data.PetSystem.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Services.PetSystem.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Services.PikachuSystem.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Services.PetSystem.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\bin\Debug\Services.PikachuSystem.pdb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\GenerateMsg\obj\Debug\GenerateMsg.csprojResolveAssemblyReference.cache

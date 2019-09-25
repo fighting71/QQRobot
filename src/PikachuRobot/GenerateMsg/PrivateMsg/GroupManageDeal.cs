@@ -1,14 +1,11 @@
-﻿using Data.Pikachu;
-using Data.Pikachu.Models;
-using IServiceSupply;
+﻿using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
+using Services.PikachuSystem;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace GenerateMsg.PrivateMsg
 {
@@ -20,12 +17,13 @@ namespace GenerateMsg.PrivateMsg
     /// </summary>
     public class GroupManageDeal : IPrivateMsgDeal
     {
-        private PikachuDataContext _dbContext;
 
-        public GroupManageDeal(PikachuDataContext dbContext)
+        public GroupManageDeal(GroupManageService groupManageService)
         {
-            _dbContext = dbContext;
+            GroupManageService = groupManageService;
         }
+
+        public GroupManageService GroupManageService { get; }
 
         public string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
         {
@@ -35,7 +33,7 @@ namespace GenerateMsg.PrivateMsg
             {
                 StringBuilder builder = new StringBuilder();
 
-                var list = _dbContext.GroupAuths.Where(u => u.Enable).OrderByDescending(u => u.UpdateTime)
+                var list = GroupManageService.GetAll().OrderByDescending(u => u.UpdateTime)
                     .ThenByDescending(u => u.CreateTime).ToList();
 
                 if (list.Count == 0)
@@ -45,9 +43,12 @@ namespace GenerateMsg.PrivateMsg
 
                 for (int i = 0; i < list.Count; i++)
                 {
-                    builder.Append($"{(i + 1).ToString()}.{list[i].GroupNo}");
-                    builder.AppendLine();
+                    builder.AppendLine($"{(i + 1).ToString()}.{list[i].GroupNo}");
                 }
+
+                builder.AppendLine();
+                builder.AppendLine("可使用 [添加群授权] [群号] 来添加授权");
+                builder.AppendLine("示例：添加群授权 10086");
 
                 return builder.ToString();
             }
@@ -56,59 +57,35 @@ namespace GenerateMsg.PrivateMsg
                 var info = match.Groups[1].Value;
                 if (!string.IsNullOrWhiteSpace(info))
                 {
-                    return AddGroupAuth(info);
+
+                    GroupManageService.AddGroupAuth(info, out var msg);
+
+                    StringBuilder builder = new StringBuilder(msg);
+
+                    builder.AppendLine();
+                    builder.AppendLine();
+                    builder.AppendLine("可使用 [取消群授权] [群号] 来取消授权");
+                    builder.AppendLine("示例：取消群授权 10086");
+
+                    return builder.ToString();
                 }
             }
             else if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*取消群授权[\s|\n|\r]*(\d*)[\s|\n|\r]*$")).Success)
             {
                 var info = match.Groups[1].Value;
+
                 if (!string.IsNullOrWhiteSpace(info))
                 {
-                    return RemoveGroupAuth(info);
+                    GroupManageService.RemoveGroupAuth(info, out var msg);
+                    return msg;
+
                 }
+
             }
 
             return String.Empty;
         }
 
-        public string RemoveGroupAuth(string groupNo)
-        {
-            var old = _dbContext.GroupAuths.FirstOrDefault(u => u.GroupNo.Equals(groupNo));
-
-            if (old != null)
-            {
-                old.Enable = false;
-                old.UpdateTime = DateTime.Now;
-                _dbContext.SaveChanges();
-            }
-
-            return "取消授权成功!";
-        }
-
-        public string AddGroupAuth(string groupNo)
-        {
-            var old = _dbContext.GroupAuths.FirstOrDefault(u => u.GroupNo.Equals(groupNo));
-
-            if (old != null)
-            {
-                old.Enable = true;
-                old.UpdateTime = DateTime.Now;
-            }
-            else
-            {
-                _dbContext.GroupAuths.Add(new GroupAuth()
-                {
-                    GroupNo = groupNo,
-                    CreateTime = DateTime.Now,
-                    UpdateTime = DateTime.Now,
-                    Enable = true
-                });
-                ;
-            }
-
-            _dbContext.SaveChanges();
-
-            return "添加授权成功!";
-        }
+       
     }
 }

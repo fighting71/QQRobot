@@ -1,21 +1,20 @@
 ﻿using Autofac;
 using NLog;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using Commond.Tools;
-using GenerateMsg;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Data.Pikachu;
 using GenerateMsg.PrivateMsg;
 using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
 using StackExchange.Redis;
 using IServiceSupply;
-using GenerateMsg.Services;
+using GenerateMsg.GroupMsg;
+using Data.PetSystem;
+using Data.Pikachu.Menu;
+using Services.PikachuSystem;
+using Services.PetSystem;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Factory;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 {
@@ -27,13 +26,18 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
     /// </summary>
     public class InitModule : Module
     {
-        private static readonly Logger _logger = LogManager.GetLogger(nameof(MahuaModule));
+        private static readonly Logger Logger = LogManager.GetLogger(nameof(MahuaModule));
 
-        private static ConnectionMultiplexer ctx = ConnectionMultiplexer.Connect(ConfigConst.RedisClient);
+        private static readonly ConnectionMultiplexer ctx = ConnectionMultiplexer.Connect(ConfigConst.RedisClient);
+
+        private T Get<T>() where T : class, new()
+        {
+            return ThreadInstanceFactory<T>.Get((() => new T()));
+        }
 
         public InitModule()
         {
-            _logger.Debug("开始进行初始化");
+            Logger.Debug("开始进行初始化");
         }
 
 
@@ -41,67 +45,67 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
         {
             base.Load(builder);
 
-            builder.RegisterType<PikachuDataContext>();// 此处若是注入单例 会引起 context 随着依赖的对象释放而释放
-            builder.RegisterType<PrivateMsgManage>().As<IPrivateMsgDeal>();
-            builder.RegisterType<GroupMsgManage>().As<IGroupMsgDeal>();
+            builder.RegisterType<PikachuDataContext>(); // 此处若是注入单例 会引起 context 随着依赖的对象释放而释放
 
-            try
-            {
-                //InitPrivateMsgManage();
-
-                //InitGroupMsgManage();
-            }
-            catch (Exception e)
-            {
-                _logger.Error(e);
-            }
+            builder.Register(context => InitGroupMsgManage()).As<IGroupMsgDeal>().SingleInstance();
+            builder.Register(context => InitPrivateMsgManage()).As<IPrivateMsgDeal>().SingleInstance();
         }
 
-        private void InitPrivateMsgManage()
+        private IPrivateMsgDeal InitPrivateMsgManage()
         {
             int.TryParse(ConfigConst.RedisDb, out var db);
 
-            PrivateMsgManage.AddDeal(new ConfigCacheDeal(
-                ctx.GetDatabase(db), 
-                InstanceFactory.Get(()=>new ConfigService(InstanceFactory.Get<PikachuDataContext>()))
-                ).Run);
+            PrivateMsgManage manage = new PrivateMsgManage();
 
-            PrivateMsgManage.AddDeal(new ConfigDeal(
-                ctx.GetDatabase(db),
-                InstanceFactory.Get(() => new ConfigService(InstanceFactory.Get<PikachuDataContext>()))
-                ).Run);
-
-            PrivateMsgManage.AddDeal(new GroupManageDeal(InstanceFactory.Get<PikachuDataContext>()).Run);
-
-            PrivateMsgManage.AddDeal(new GroupMsgCopyDeal(InstanceFactory.Get<PikachuDataContext>()).Run);
-
-            PrivateMsgManage.AddDeal((context, api) =>
+            manage
+                .AddDeal(
+                    () => new ConfigCacheDeal(ctx.GetDatabase(db), new ConfigService(
+                        Get<PikachuDataContext>()
+                    )).Run)
+                .AddDeal(() => new ConfigDeal(ctx.GetDatabase(db), new ConfigService(
+                    Get<PikachuDataContext>()
+                )).Run)
+                .AddDeal(
+                    () => new GroupManageDeal(new GroupManageService(
+                        Get<PikachuDataContext>()
+                    )).Run)
+                .AddDeal(
+                    () => new GroupMsgCopyDeal(new GroupMsgCopyService(
+                        Get<PikachuDataContext>()
+                    )).Run)
+                .AddDeal(() => (context, api) =>
                 {
-                    return InstanceFactory.Get<PikachuDataContext>().ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Private.Confirm.Default"))?.Value;
-                }
-            );
+                    return Get<PikachuDataContext>().ConfigInfos
+                        .FirstOrDefault(u => u.Enable && u.Key.Equals("Private.Confirm.Default"))?.Value;
+                });
 
+            return manage;
         }
 
 
-        private void InitGroupMsgManage()
+        private IGroupMsgDeal InitGroupMsgManage()
         {
+            GroupMsgManage manage = new GroupMsgManage();
 
-            //GroupMsgManage.AddDeal(new NoticeDeal().Run);
-            //GroupMsgManage.AddDeal((context,api)=>
-            //{
-            //    if (!string.IsNullOrWhiteSpace(context.Message))
-            //    {
-            //        return context.Message;
-            //    }
-            //    return string.Empty;
-            //}); // 复读
+            manage
+                .AddDeal(() => new PetDeal(new PetService(new PetContext())).Run)
+                .AddDeal(() => new GroupConfigDeal(
+                    new ManageService(Get<PikachuDataContext>()),
+                    new GroupConfigService(Get<PikachuDataContext>())
+                ).Run)
+                .AddDeal(() => (context, api) =>
+                    {
+                        var pikachuDataContext = Get<PikachuDataContext>();
 
-            GroupMsgManage.AddDeal((context, api) =>
-               {
-                   return InstanceFactory.Get<PikachuDataContext>().ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals("Group.Confirm.Default"))?.Value;
-               }
-            );
+                        var account = api.GetLoginQq();
+
+                        return pikachuDataContext.GroupConfigs.FirstOrDefault(u =>
+                            u.Enable && u.GetGroupConfigType == GroupConfigTypes.DefaultConfirm
+                                     && u.Account.Equals(account) && u.Group.Equals(context.FromGroup))?.Value;
+                    }
+                );
+
+            return manage;
         }
     }
 }
