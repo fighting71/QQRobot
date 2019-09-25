@@ -22,6 +22,10 @@ namespace Data.Pikachu
 
         public DbSet<GroupConfig> GroupConfigs { get; set; }
 
+        public DbSet<MemberInfo> MemberInfos { get; set; }
+
+        public DbSet<BillFlow> BillFlows { get; set; }
+
 
     }
 }

@@ -70,7 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GroupMsg\GroupConfigDeal.cs" />
+    <Compile Include="GroupMsg\MemberAmountDeal.cs" />
     <Compile Include="GroupMsg\PetDeal.cs" />
+    <Compile Include="GroupMsg\SignDeal.cs" />
     <Compile Include="NoticeDeal.cs" />
     <Compile Include="PrivateMsg\ConfigCacheDeal.cs" />
     <Compile Include="PrivateMsg\ConfigDeal.cs" />

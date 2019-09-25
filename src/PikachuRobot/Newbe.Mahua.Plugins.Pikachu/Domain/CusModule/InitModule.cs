@@ -88,6 +88,8 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             GroupMsgManage manage = new GroupMsgManage();
 
             manage
+                .AddDeal(() => new MemberAmountDeal(Get<PikachuDataContext>()).Run)
+                .AddDeal(() => new SignDeal(Get<PikachuDataContext>()).Run)
                 .AddDeal(() => new PetDeal(new PetService(new PetContext())).Run)
                 .AddDeal(() => new GroupConfigDeal(
                     new ManageService(Get<PikachuDataContext>()),

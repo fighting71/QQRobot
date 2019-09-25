@@ -64,6 +64,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\BillTypes.cs" />
     <Compile Include="Menu\GroupConfigTypes.cs" />
     <Compile Include="Migrations\201909220955011_Init.cs" />
     <Compile Include="Migrations\201909220955011_Init.Designer.cs">
@@ -85,13 +86,19 @@
     <Compile Include="Migrations\201909250654347_Little3.Designer.cs">
       <DependentUpon>201909250654347_Little3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909250927368_MemberAndBill.cs" />
+    <Compile Include="Migrations\201909250927368_MemberAndBill.Designer.cs">
+      <DependentUpon>201909250927368_MemberAndBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\BillFlow.cs" />
     <Compile Include="Models\ConfigInfo.cs" />
     <Compile Include="Models\GroupAuth.cs" />
     <Compile Include="Models\GroupConfig.cs" />
     <Compile Include="Models\GroupMsgCopy.cs" />
     <Compile Include="Models\Manager.cs" />
+    <Compile Include="Models\MemberInfo.cs" />
     <Compile Include="PikachuDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909250654347_Little3.resx">
       <DependentUpon>201909250654347_Little3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909250927368_MemberAndBill.resx">
+      <DependentUpon>201909250927368_MemberAndBill.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
