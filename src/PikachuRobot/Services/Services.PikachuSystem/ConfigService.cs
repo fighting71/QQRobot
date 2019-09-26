@@ -62,7 +62,6 @@ namespace Services.PikachuSystem
                 {
                     var config = new ConfigInfo()
                     {
-                        CreateTime = DateTime.Now,
                         Key = info[0].Trim(),
                         Value = info[1],
                         Description = info[2],
@@ -80,7 +79,6 @@ namespace Services.PikachuSystem
                     else
                     {
                         config.UpdateTime = DateTime.Now;
-                        config.CreateTime = DateTime.Now;
                         PikachuDataContext.ConfigInfos.Add(config);
                     }
 

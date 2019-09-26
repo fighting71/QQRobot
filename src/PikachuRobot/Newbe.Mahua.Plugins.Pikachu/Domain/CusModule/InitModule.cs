@@ -15,6 +15,8 @@ using Data.Pikachu.Menu;
 using Services.PikachuSystem;
 using Services.PetSystem;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Factory;
+using Services.Utils;
+using Data.Utils;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 {
@@ -35,6 +37,12 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             return ThreadInstanceFactory<T>.Get((() => new T()));
         }
 
+        public IDatabase GetDatabase()
+        {
+            int.TryParse(ConfigConst.RedisDb, out var db);
+            return ctx.GetDatabase(db);
+        }
+
         public InitModule()
         {
             Logger.Debug("开始进行初始化");
@@ -47,22 +55,21 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
             builder.RegisterType<PikachuDataContext>(); // 此处若是注入单例 会引起 context 随着依赖的对象释放而释放
 
-            builder.Register(context => InitGroupMsgManage()).As<IGroupMsgDeal>().SingleInstance();
-            builder.Register(context => InitPrivateMsgManage()).As<IPrivateMsgDeal>().SingleInstance();
+            builder.Register(context => InitGroupMsgManage()).SingleInstance();
+            builder.Register(context => InitPrivateMsgManage()).SingleInstance();
         }
 
         private IPrivateMsgDeal InitPrivateMsgManage()
         {
-            int.TryParse(ConfigConst.RedisDb, out var db);
 
             PrivateMsgManage manage = new PrivateMsgManage();
 
             manage
                 .AddDeal(
-                    () => new ConfigCacheDeal(ctx.GetDatabase(db), new ConfigService(
+                    () => new ConfigCacheDeal(GetDatabase(), new ConfigService(
                         Get<PikachuDataContext>()
                     )).Run)
-                .AddDeal(() => new ConfigDeal(ctx.GetDatabase(db), new ConfigService(
+                .AddDeal(() => new ConfigDeal(GetDatabase(), new ConfigService(
                     Get<PikachuDataContext>()
                 )).Run)
                 .AddDeal(
@@ -88,9 +95,19 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             GroupMsgManage manage = new GroupMsgManage();
 
             manage
-                .AddDeal(() => new MemberAmountDeal(Get<PikachuDataContext>()).Run)
-                .AddDeal(() => new SignDeal(Get<PikachuDataContext>()).Run)
-                .AddDeal(() => new PetDeal(new PetService(new PetContext())).Run)
+                .AddDeal(() => new IdiomsSolitaireCacheDeal(
+                    new IdiomsService(Get<UtilsContext>()),
+                    GetDatabase(),
+                    new BillFlowService(Get<PikachuDataContext>()),
+                    new MemberInfoService(Get<PikachuDataContext>())
+                    ).Run)
+                .AddDeal(() => new IdiomsSolitaireDeal(
+                    new IdiomsService(Get<UtilsContext>()),
+                    GetDatabase()
+                    ).Run)
+                .AddDeal(() => new MemberAmountDeal(new MemberInfoService(Get<PikachuDataContext>())).Run)
+                .AddDeal(() => new SignDeal(new BillFlowService(Get<PikachuDataContext>()), new MemberInfoService(Get<PikachuDataContext>())).Run)
+                .AddDeal(() => new PetDeal(new PetService(new PetContext()), new MemberInfoService(Get<PikachuDataContext>())).Run)
                 .AddDeal(() => new GroupConfigDeal(
                     new ManageService(Get<PikachuDataContext>()),
                     new GroupConfigService(Get<PikachuDataContext>())

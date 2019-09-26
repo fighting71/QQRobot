@@ -16,6 +16,11 @@ namespace Services.PetSystem
         {
         }
 
+        public PetInfo GetInfoByName (string name)
+        {
+            return PetContext.PetInfos.FirstOrDefault(u => u.Enable && u.Name.Equals(name));
+        }
+
         public IQueryable<PetInfo> GetAll()
         {
             return PetContext.PetInfos.Where(u => u.Enable);

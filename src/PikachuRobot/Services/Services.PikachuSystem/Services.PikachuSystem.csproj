@@ -52,11 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="BillFlowService.cs" />
     <Compile Include="ConfigService.cs" />
     <Compile Include="GroupConfigService.cs" />
     <Compile Include="GroupManageService.cs" />
     <Compile Include="GroupMsgCopyService.cs" />
     <Compile Include="ManageService.cs" />
+    <Compile Include="MemberInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

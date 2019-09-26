@@ -31,9 +31,8 @@ namespace Newbe.Mahua.Plugins.Pikachu
                 new MahuaEventsModule(),
 
                 new InitModule(),
+                new ApiModule(),
 
-                // 引入CQP的API扩展包的模块注册
-                new CqpApiExtensionsModule(),
             };
         }
 

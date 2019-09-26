@@ -15,6 +15,10 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="SolutionDeal.cs" t="Include" />
+        <e p="Tools" t="Include">
+          <e p="CodeTimer.cs" t="Include" />
+          <e p="CodeTimerResult.cs" t="Include" />
+        </e>
       </e>
       <e p="Data.Module" t="Include" />
       <e p="Data.Pikachu" t="IncludeRecursive">
@@ -22,6 +26,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data.Pikachu.csproj" t="IncludeRecursive" />
         <e p="Menu" t="Include">
+          <e p="BillTypes.cs" t="Include" />
           <e p="GroupConfigTypes.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
@@ -40,27 +45,62 @@
           <e p="201909250654347_Little3.cs" t="Include" />
           <e p="201909250654347_Little3.Designer.cs" t="Include" />
           <e p="201909250654347_Little3.resx" t="Include" />
+          <e p="201909250927368_MemberAndBill.cs" t="Include" />
+          <e p="201909250927368_MemberAndBill.Designer.cs" t="Include" />
+          <e p="201909250927368_MemberAndBill.resx" t="Include" />
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="BaseModel.cs" t="Include" />
+          <e p="BillFlow.cs" t="Include" />
           <e p="ConfigInfo.cs" t="Include" />
           <e p="GroupAuth.cs" t="Include" />
           <e p="GroupConfig.cs" t="Include" />
           <e p="GroupMsgCopy.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
+          <e p="MemberInfo.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="PikachuDataContext.cs" t="Include" />
       </e>
+      <e p="Data.Utils" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Data.Utils.csproj" t="IncludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="201909260806010_IdiomInfo.cs" t="Include" />
+          <e p="201909260806010_IdiomInfo.Designer.cs" t="Include" />
+          <e p="201909260806010_IdiomInfo.resx" t="Include" />
+          <e p="201909260836154_Little.cs" t="Include" />
+          <e p="201909260836154_Little.Designer.cs" t="Include" />
+          <e p="201909260836154_Little.resx" t="Include" />
+          <e p="Configuration.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="BaseModel.cs" t="Include" />
+          <e p="IdiomInfo.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="UtilsContext.cs" t="Include" />
+      </e>
       <e p="GenerateMsg" t="IncludeRecursive">
         <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="CusConst" t="Include">
+          <e p="CacheConst.cs" t="Include" />
+        </e>
         <e p="GenerateMsg.csproj" t="IncludeRecursive" />
         <e p="GroupMsg" t="Include">
           <e p="GroupConfigDeal.cs" t="Include" />
+          <e p="IdiomsSolitaireDeal.cs" t="Include" />
+          <e p="MemberAmountDeal.cs" t="Include" />
           <e p="PetDeal.cs" t="Include" />
+          <e p="SignDeal.cs" t="Include" />
         </e>
         <e p="NoticeDeal.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
@@ -135,6 +175,7 @@
             <e p="ConfigConst.cs" t="Include" />
           </e>
           <e p="CusModule" t="Include">
+            <e p="ApiModule.cs" t="Include" />
             <e p="InitModule.cs" t="Include" />
           </e>
           <e p="Factory" t="Include">
@@ -151,6 +192,11 @@
           </e>
         </e>
         <e p="MahuaApis" t="Include">
+          <e p="Mpq" t="Include">
+            <e p="GetGroupMemebersWithModelApiMahuaCommandHandler.cs" t="Include" />
+            <e p="MpqApiMahuaCommandHandlerBase.cs" t="Include" />
+            <e p="MpqHelper.cs" t="Include" />
+          </e>
           <e p="readme.md" t="Include" />
           <e p="SendLikeApiMahuaCommandHandler1.cs" t="Include" />
         </e>
@@ -198,12 +244,14 @@
         <e p="Services.PikachuSystem" t="IncludeRecursive">
           <e p="app.config" t="Include" />
           <e p="BaseService.cs" t="Include" />
+          <e p="BillFlowService.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="ConfigService.cs" t="Include" />
           <e p="GroupConfigService.cs" t="Include" />
           <e p="GroupManageService.cs" t="Include" />
           <e p="GroupMsgCopyService.cs" t="Include" />
           <e p="ManageService.cs" t="Include" />
+          <e p="MemberInfoService.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive" />
           <e p="packages.config" t="Include" />
           <e p="Properties" t="Include">

@@ -69,7 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CusConst\CacheConst.cs" />
     <Compile Include="GroupMsg\GroupConfigDeal.cs" />
+    <Compile Include="GroupMsg\IdiomsSolitaireCacheDeal.cs" />
+    <Compile Include="GroupMsg\IdiomsSolitaireDeal.cs" />
     <Compile Include="GroupMsg\MemberAmountDeal.cs" />
     <Compile Include="GroupMsg\PetDeal.cs" />
     <Compile Include="GroupMsg\SignDeal.cs" />
@@ -86,6 +89,10 @@
       <Project>{A771044C-4BC1-4927-9FE8-2981FBF8C536}</Project>
       <Name>Data.Pikachu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data.Utils\Data.Utils.csproj">
+      <Project>{4E90189A-8537-42B0-AE8C-6042CE8D1166}</Project>
+      <Name>Data.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IServiceSupply\IServiceSupply.csproj">
       <Project>{B66A8B91-CE93-4971-8220-590C00C15641}</Project>
       <Name>IServiceSupply</Name>
@@ -101,6 +108,10 @@
     <ProjectReference Include="..\Services\Services.PikachuSystem\Services.PikachuSystem.csproj">
       <Project>{83c170d5-07e1-4420-838b-77e0f0f771a1}</Project>
       <Name>Services.PikachuSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.Utils\Services.Utils.csproj">
+      <Project>{BA1698E3-D937-460D-93FC-ED89F9DE69C5}</Project>
+      <Name>Services.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

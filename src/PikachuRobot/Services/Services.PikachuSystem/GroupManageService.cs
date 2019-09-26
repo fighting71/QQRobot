@@ -55,7 +55,6 @@ namespace Services.PikachuSystem
                 PikachuDataContext.GroupAuths.Add(new GroupAuth()
                 {
                     GroupNo = groupNo,
-                    CreateTime = DateTime.Now,
                     UpdateTime = DateTime.Now,
                     Enable = true
                 });

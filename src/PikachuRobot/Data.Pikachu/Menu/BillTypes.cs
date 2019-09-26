@@ -25,5 +25,10 @@ namespace Data.Pikachu.Menu
         /// </summary>
         Consume = 1,
 
+        /// <summary>
+        /// 奖励
+        /// </summary>
+        Reward = 2
+
     }
 }

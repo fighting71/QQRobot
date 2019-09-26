@@ -1,4 +1,5 @@
 ﻿using System;
+using GenerateMsg.CusConst;
 using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
@@ -16,9 +17,6 @@ namespace GenerateMsg.PrivateMsg
     public class ConfigDeal : IPrivateMsgDeal
     {
 
-        private const string AddFlag = nameof(AddFlag);
-        private const string RemoveFlag = nameof(RemoveFlag);
-
         private IDatabase _database;
 
         public ConfigService ConfigService { get; }
@@ -31,7 +29,7 @@ namespace GenerateMsg.PrivateMsg
 
         public string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
         {
-            var key = $"{nameof(ConfigDeal)}_{context.FromQq}";
+            var key = CacheConst.GetConfigKey(context.FromQq);
 
             // 查看是否存在操作
 
@@ -40,13 +38,13 @@ namespace GenerateMsg.PrivateMsg
             if (!string.IsNullOrWhiteSpace(cache))
             {
                 _database.KeyDelete(key); // 移除key
-                if (AddFlag.Equals(cache))
+                if (CacheConst.AddFlag.Equals(cache))
                 {
                     ConfigService.AddInfo(context.Message,out var msg);
                     return msg;
                 }
 
-                if (RemoveFlag.Equals(cache))
+                if (CacheConst.RemoveFlag.Equals(cache))
                 {
                     ConfigService.RemoveKey(context.Message.Trim(),out var msg);
                     return msg;

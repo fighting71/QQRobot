@@ -31,6 +31,8 @@ namespace Newbe.Mahua.Samples.ApiExtensions.MahuaApis
             _logger.Debug($"[receiver][group][msg][{context.FromGroup}]:{context.Message}");
 
             var loginQq = _mahuaApi.GetLoginQq();
+
+            // 存在群消息转载
             var list = dbContext.GroupMsgCopys.Where(u => u.FromGroup.Equals(context.FromGroup) && u.Person.Equals(loginQq));
 
             foreach (var item in list)

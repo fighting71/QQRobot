@@ -1,9 +1,14 @@
 ﻿using Autofac;
+using Consoles.Tools;
 using Data.PetSystem;
 using Data.Pikachu;
+using Data.Utils;
+using Data.Utils.Models;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -31,12 +36,114 @@ namespace ConsoleTest
         {
             Console.WriteLine($"{Thread.CurrentThread.ManagedThreadId.ToString()} 构建了一个Program");
         }
-        
+
         static void Main(string[] args)
         {
+
+            AddIdiomInfo();
+
             Console.WriteLine("Hello World");
 
             Console.ReadKey(true);
+        }
+
+        /// <summary>
+        /// 添加成语字典....
+        /// </summary>
+        public static void AddIdiomInfo()
+        {
+            var json = File.ReadAllText(@"G:\dick\download\uc\chinese-xinhua-master\data\idiom.json");
+
+            var list = JsonConvert.DeserializeObject<DicModel[]>(json);
+
+            list = list.Where(u => !string.IsNullOrWhiteSpace(u.word)).ToArray();
+
+            UtilsContext utilsContext = new UtilsContext();
+
+            int start = utilsContext.IdiomInfos.Count(), count = list.Length;
+            while (start <= count)
+            {
+
+                utilsContext.IdiomInfos.AddRange(list.Skip(start).Take(1000).Select(u =>
+                    {
+                        var spellArr = u.pinyin.Split(' ');
+                        return new IdiomInfo()
+                        {
+                            Derivation = u.derivation,
+                            Example = u.example,
+                            Explanation = u.explanation,
+                            Spell = u.pinyin,
+                            Word = u.word,
+                            Abbreviation = u.abbreviation,
+                            FirstSpell = spellArr[0],
+                            LastSpell = spellArr[spellArr.Length - 1]
+                        };
+                    }
+                ));
+                utilsContext.SaveChanges();
+                start += 1000;
+                Console.WriteLine("添加成功！");
+            }
+
+        }
+
+        /// <summary>
+        /// 成语解析模型
+        /// </summary>
+        class DicModel
+        {
+            /// <summary>
+            /// 来源
+            /// </summary>
+            public string derivation { get; set; }
+            /// <summary>
+            /// 示例
+            /// </summary>
+            public string example { get; set; }
+            /// <summary>
+            /// 解释
+            /// </summary>
+            public string explanation { get; set; }
+            /// <summary>
+            /// 拼音
+            /// </summary>
+            public string pinyin { get; set; }
+            /// <summary>
+            /// 词语
+            /// </summary>
+            public string word { get; set; }
+            /// <summary>
+            /// 首字母组合
+            /// </summary>
+            public string abbreviation { get; set; }
+        }
+
+        public static void DeserGroupMemberA()
+        {
+            var json =
+                "{\"ec\":0,\"errcode\":0,\"em\":\"\",\"adm_num\":0,\"adm_max\":10,\"vecsize\":1,\"0\":0,\"mems\":[{\"uin\":1844867503,\"role\":0,\"flag\":0,\"g\":-1,\"join_time\":1569138527,\"last_speak_time\":1569465871,\"lv\":{\"point\":0,\"level\":1},\"nick\":\".\",\"card\":\"\",\"qage\":7,\"tags\":\"-1\",\"rm\":0},{\"uin\":2758938447,\"role\":2,\"flag\":0,\"g\":-1,\"join_time\":1569139041,\"last_speak_time\":1569465854,\"lv\":{\"point\":0,\"level\":1},\"nick\":\"\\u5c0f\\u9ed1\",\"card\":\"\",\"qage\":0,\"tags\":\"-1\",\"rm\":0},{\"uin\":1036504373,\"role\":2,\"flag\":0,\"g\":0,\"join_time\":1569229350,\"last_speak_time\":1569233318,\"lv\":{\"point\":0,\"level\":1},\"nick\":\"\\uff02\\u7eed\\u5fc3\\u8a00\\u3001\",\"card\":\"\",\"qage\":9,\"tags\":\"-1\",\"rm\":0}]{\"ec\":0,\"errcode\":0,\"em\":\"\",\"adm_num\":0,\"adm_max\":10,\"vecsize\":1,\"0\":0,\"count\":3,\"svr_time\":1569465874,\"max_count\":200,\"search_count\":3}";
+
+            var match = Regex.Match(json, @"^[\s|\S]*(\[[\s|\S]*\])[\s|\r|\n]*([\s|\S]*)$");
+
+            if (match.Success)
+            {
+                var members = match.Groups[1].Value;
+                var groupInfo = match.Groups[2].Value;
+            }
+        }
+
+        public static void DeserGroupMemberB()
+        {
+
+            var json = "_GroupMember_Callback({\"code\":0,\"data\":{\"alpha\":0,\"bbscount\":0,\"class\":10012,\"create_time\":1569138527,\"filecount\":0,\"finger_memo\":\"\",\"group_memo\":\"\",\"group_name\":\"PikachuRobot\",\"item\":[{\"iscreator\":1,\"ismanager\":0,\"nick\":\".\",\"uin\":1844867503},{\"iscreator\":0,\"ismanager\":0,\"nick\":\"小黑\",\"uin\":2758938447}],\"level\":0,\"nick\":\"小黑\",\"option\":2,\"total\":3},\"default\":0,\"message\":\"\",\"subcode\":0});";
+
+            var match = Regex.Match(json, @"^_GroupMember_Callback\(([\s|\S]*)\);$");
+
+            if (match.Success)
+            {
+                var info = match.Groups[1].Value;
+
+            }
         }
 
         public static void TestThreadLocal()
@@ -55,7 +162,7 @@ namespace ConsoleTest
             {
                 InstanceFactory<Program>.Get((() => new Program()));
             }));
-            
+
             InstanceFactory<Program>.Get((() => new Program()));
             InstanceFactory<Program>.Get((() => new Program()));
             InstanceFactory<Program>.Get((() => new Program()));
@@ -66,12 +173,12 @@ namespace ConsoleTest
             InstanceFactory<Program>.Get((() => new Program()));
             InstanceFactory<Program>.Get((() => new Program()));
         }
-        
+
         public static void TestThreadLocal2()
         {
             InstanceFactory<Program>.Get((() => new Program()));
         }
-        
+
         public static void TestAutoFac()
         {
             ContainerBuilder builder = new ContainerBuilder();

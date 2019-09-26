@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using GenerateMsg.CusConst;
 using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
@@ -19,11 +20,6 @@ namespace GenerateMsg.PrivateMsg
     public class ConfigCacheDeal : IPrivateMsgDeal
     {
 
-
-        private const string AddFlag = nameof(AddFlag);
-        private const string RemoveFlag = nameof(RemoveFlag);
-        private readonly static TimeSpan Expiry = TimeSpan.FromSeconds(30);
-
         private IDatabase _database;
 
         public ConfigCacheDeal(IDatabase database, ConfigService configService)
@@ -36,7 +32,7 @@ namespace GenerateMsg.PrivateMsg
 
         public string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
         {
-            var key = $"{nameof(ConfigDeal)}_{context.FromQq}";
+            var key = CacheConst.GetConfigKey(context.FromQq);
 
             Match match;
             if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*配置管理[\s|\n|\r]*$"))
@@ -76,7 +72,7 @@ namespace GenerateMsg.PrivateMsg
                 if (string.IsNullOrWhiteSpace(info))
                 {
                     // 添加标记
-                    if (_database.StringSet(key, AddFlag, Expiry))
+                    if (_database.StringSet(key, CacheConst.AddFlag, CacheConst.PrivateOptExpiry))
                     {
                         return "请按照此格式填写你要添加的配置:[配置key]|[配置value]|[配置描述](请注意内容中不要使用'|')";
                     }
@@ -93,7 +89,7 @@ namespace GenerateMsg.PrivateMsg
                 if (string.IsNullOrWhiteSpace(info))
                 {
                     // 添加标记
-                    if (_database.StringSet(key, RemoveFlag, Expiry))
+                    if (_database.StringSet(key, CacheConst.RemoveFlag, CacheConst.PrivateOptExpiry))
                     {
                         return "请输入你要删除的'配置key':";
                     }

@@ -47,7 +47,6 @@ namespace Services.PikachuSystem
                     Enable = true,
                     Value = info,
                     GetGroupConfigType = type,
-                    CreateTime = DateTime.Now
                 }) ;
             }
 

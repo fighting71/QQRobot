@@ -22,6 +22,6 @@ namespace Services.PetSystem
             PetContext = petContext;
         }
 
-        public PetContext PetContext { get; }
+        protected PetContext PetContext { get; }
     }
 }

@@ -1363,6 +1363,22 @@
             点击时间
             </summary>
         </member>
+        <member name="T:Newbe.Mahua.MahuaEvents.IPlatformExitedMahuaEvent">
+            <summary>
+            机器人平台退出事件
+            </summary>
+        </member>
+        <member name="M:Newbe.Mahua.MahuaEvents.IPlatformExitedMahuaEvent.Exited(Newbe.Mahua.MahuaEvents.PlatformExitedContext)">
+            <summary>
+            处理事件
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Newbe.Mahua.MahuaEvents.PlatformExitedContext">
+            <summary>
+            事件上下文
+            </summary>
+        </member>
         <member name="T:Newbe.Mahua.MahuaEvents.IPlatfromExitedMahuaEvent">
             <summary>
             机器人平台退出事件

@@ -1,13 +1,10 @@
-﻿using Data.Pikachu;
-using IServiceSupply;
+﻿using IServiceSupply;
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
+using Services.PikachuSystem;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace GenerateMsg.GroupMsg
 {
@@ -19,14 +16,17 @@ namespace GenerateMsg.GroupMsg
     /// </summary>
     public class SignDeal : IGroupMsgDeal
     {
-        private readonly PikachuDataContext pikachuDataContext;
 
         private Random random = new Random();
 
-        public SignDeal(PikachuDataContext pikachuDataContext)
+        public SignDeal(BillFlowService billFlowService,MemberInfoService memberInfoService)
         {
-            this.pikachuDataContext = pikachuDataContext;
+            BillFlowService = billFlowService;
+            MemberInfoService = memberInfoService;
         }
+
+        public BillFlowService BillFlowService { get; }
+        public MemberInfoService MemberInfoService { get; }
 
         public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
@@ -44,7 +44,7 @@ namespace GenerateMsg.GroupMsg
                 var today = new DateTime(now.Year, now.Month, now.Day);
                 var tomorrow = today.AddDays(1);
 
-                if (pikachuDataContext.BillFlows.Any(u => u.Enable && u.Group == context.FromGroup && u.Account == context.FromQq
+                if (BillFlowService.GetAll().Any(u => u.Group == context.FromGroup && u.Account == context.FromQq
                   && u.BillType == Data.Pikachu.Menu.BillTypes.Sign && u.CreateTime >= today && u.CreateTime < tomorrow))
                 {
                     return "已签到";
@@ -56,10 +56,10 @@ namespace GenerateMsg.GroupMsg
                 var firstDay = new DateTime(now.Year, now.Month, 1);
                 var nextMon = firstDay.AddMonths(1);
 
-                var count = pikachuDataContext.BillFlows.Count(u => u.Enable && u.Group == context.FromGroup && u.Account == context.FromQq
+                var count = BillFlowService.GetAll().Count(u=>u.Group == context.FromGroup && u.Account == context.FromQq
                  && u.BillType == Data.Pikachu.Menu.BillTypes.Sign && u.CreateTime >= firstDay && u.CreateTime < nextMon);
 
-                if (pikachuDataContext.BillFlows.Any(u => u.Enable && u.Group == context.FromGroup
+                if (BillFlowService.GetAll().Any(u => u.Group == context.FromGroup
                    && u.BillType == Data.Pikachu.Menu.BillTypes.Sign && u.CreateTime >= today && u.CreateTime < tomorrow))
                 {
                     amount = random.Next((count + 1) * 10);
@@ -73,27 +73,9 @@ namespace GenerateMsg.GroupMsg
 
                 amount += 5 + now.Month;
 
-                pikachuDataContext.BillFlows.Add(new Data.Pikachu.Models.BillFlow()
-                {
-                    Account = context.FromQq,
-                    Amount = amount,
-                    ActualAmount = amount,
-                    BillType = Data.Pikachu.Menu.BillTypes.Sign,
-                    Group = context.FromGroup,
-                    Description = desc,
-                    Enable = true,
-                    CreateTime = DateTime.Now
-                });
+                BillFlowService.AddBill(context.FromGroup, context.FromQq, amount, amount, Data.Pikachu.Menu.BillTypes.Sign, desc);
 
-                var memberInfo = pikachuDataContext.MemberInfos.FirstOrDefault(u => u.Enable && u.Group == context.FromGroup && u.Account == context.FromQq);
-
-                if (memberInfo != null)
-                {
-                    memberInfo.Amount += amount;// 更新用户信息
-                    memberInfo.UpdateTime = DateTime.Now;
-                }
-
-                pikachuDataContext.SaveChanges();
+                MemberInfoService.ChangeAmount(context.FromGroup, context.FromQq, amount);
 
                 return $"签到成功，此次签到共获取{amount}钻石!";
 

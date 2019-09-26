@@ -53,16 +53,14 @@
     <Reference Include="MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.Entity.6.9.12\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
-    <Reference Include="Newbe.Mahua, Version=1.15.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Newbe.Mahua.1.15.1\lib\net452\Newbe.Mahua.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newbe.Mahua, Version=1.16.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newbe.Mahua.1.16.1\lib\net452\Newbe.Mahua.dll</HintPath>
     </Reference>
     <Reference Include="Newbe.Mahua.CQP.ApiExtensions, Version=1.15.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Newbe.Mahua.CQP.ApiExtensions.1.15.1\lib\net452\Newbe.Mahua.CQP.ApiExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Newbe.Mahua.PluginLoader, Version=1.15.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Newbe.Mahua.PluginLoader.1.15.1\lib\net452\Newbe.Mahua.PluginLoader.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newbe.Mahua.PluginLoader, Version=1.16.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newbe.Mahua.PluginLoader.1.16.1\lib\net452\Newbe.Mahua.PluginLoader.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -106,6 +104,7 @@
   <ItemGroup>
     <Compile Include="ApiExtension\MahuaApiExt.cs" />
     <Compile Include="Domain\CusConst\ConfigConst.cs" />
+    <Compile Include="Domain\CusModule\ApiModule.cs" />
     <Compile Include="Domain\CusModule\InitModule.cs" />
     <Compile Include="Domain\Factory\InstanceFactory.cs" />
     <Compile Include="Domain\Factory\ThreadInstanceFactory.cs" />
@@ -113,6 +112,9 @@
     <Compile Include="Domain\Manage\GroupMsgManage.cs" />
     <Compile Include="Domain\Manage\PrivateMsgManage.cs" />
     <Compile Include="Domain\Middleware\ConfigMiddleware.cs" />
+    <Compile Include="MahuaApis\Mpq\GetGroupMemebersWithModelApiMahuaCommandHandler.cs" />
+    <Compile Include="MahuaApis\Mpq\MpqApiMahuaCommandHandlerBase.cs" />
+    <Compile Include="MahuaApis\Mpq\MpqHelper.cs" />
     <Compile Include="MahuaApis\SendLikeApiMahuaCommandHandler1.cs" />
     <Compile Include="MahuaEvents\FriendAddingRequestMahuaEvent.cs" />
     <Compile Include="MahuaEvents\GroupJoiningInvitationReceivedMahuaEvent.cs" />
@@ -146,6 +148,10 @@
       <Project>{a771044c-4bc1-4927-9fe8-2981fbf8c536}</Project>
       <Name>Data.Pikachu</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data.Utils\Data.Utils.csproj">
+      <Project>{4E90189A-8537-42B0-AE8C-6042CE8D1166}</Project>
+      <Name>Data.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenerateMsg\GenerateMsg.csproj">
       <Project>{03c3179b-1e33-4c13-97a2-9e567f648b14}</Project>
       <Name>GenerateMsg</Name>
@@ -165,6 +171,10 @@
     <ProjectReference Include="..\Services\Services.PikachuSystem\Services.PikachuSystem.csproj">
       <Project>{83C170D5-07E1-4420-838B-77E0F0F771A1}</Project>
       <Name>Services.PikachuSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.Utils\Services.Utils.csproj">
+      <Project>{BA1698E3-D937-460D-93FC-ED89F9DE69C5}</Project>
+      <Name>Services.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,6 +16,6 @@ namespace Services.PikachuSystem
             PikachuDataContext = pikachuDataContext;
         }
 
-        public PikachuDataContext PikachuDataContext { get; }
+        protected PikachuDataContext PikachuDataContext { get; }
     }
 }

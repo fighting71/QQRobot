@@ -107,4 +107,8 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Deb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.PikachuSystem.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.PetSystem.pdb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.PikachuSystem.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.Utils.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.Utils.pdb
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.Utils.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.Utils.pdb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojResolveAssemblyReference.cache

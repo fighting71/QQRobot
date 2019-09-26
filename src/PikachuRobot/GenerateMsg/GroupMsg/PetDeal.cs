@@ -2,6 +2,7 @@
 using Newbe.Mahua;
 using Newbe.Mahua.MahuaEvents;
 using Services.PetSystem;
+using Services.PikachuSystem;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -17,12 +18,14 @@ namespace GenerateMsg.GroupMsg
     public class PetDeal : IGroupMsgDeal
     {
 
-        public PetDeal(PetService petService)
+        public PetDeal(PetService petService,MemberInfoService memberInfoService)
         {
             PetService = petService;
+            MemberInfoService = memberInfoService;
         }
 
         public PetService PetService { get; }
+        public MemberInfoService MemberInfoService { get; }
 
         public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
@@ -56,6 +59,30 @@ namespace GenerateMsg.GroupMsg
                 builder.AppendLine(" 试试对我说 [领养宠物] [宠物名称] 吧~");
 
                 return builder.ToString();
+
+            }
+
+            Match match;
+
+            if((match = Regex.Match(context.Message, @"^[\s|\n|\r]*领养宠物([\s|\S]*)$")).Success)
+            {
+                var petName = match.Groups[1].Value.Trim();
+
+                var pet = PetService.GetInfoByName(petName);
+
+                if(pet == null)
+                {
+                    return $"宠物-{petName} 不存在!";
+                }
+
+                var memberInfo = MemberInfoService.GetInfo(context.FromGroup, context.FromQq);
+
+                if(pet.Price > memberInfo.Amount)
+                {
+                    return $"宠物-{petName}的价格为{pet.Price} , 而您的余额为{memberInfo.Amount} , 不足以支付!";
+                }
+
+
 
             }
 
