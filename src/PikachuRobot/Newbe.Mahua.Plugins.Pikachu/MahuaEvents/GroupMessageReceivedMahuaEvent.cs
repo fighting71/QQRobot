@@ -53,9 +53,24 @@ namespace Newbe.Mahua.Samples.ApiExtensions.MahuaApis
 
                 var res = _groupMsgDeal.Run(context, _mahuaApi);
 
-                if (!string.IsNullOrWhiteSpace(res))
-                    _mahuaApi.SendGroupMessage(context.FromGroup).Text(res).Done();
-
+                if(res != null)
+                {
+                    foreach (var item in res.Data)
+                    {
+                        var msg = _mahuaApi.SendGroupMessage(context.FromGroup);
+                        if (item.AtAll)
+                        {
+                            msg.AtlAll().Text(item.Msg).Done();
+                        }else if (item.AtTa)
+                        {
+                            msg.At(context.FromQq).Text(item.Msg).Done();
+                        }
+                        else
+                        {
+                            msg.Text(item.Msg).Done();
+                        }
+                    }
+                }
             }
             else
             {

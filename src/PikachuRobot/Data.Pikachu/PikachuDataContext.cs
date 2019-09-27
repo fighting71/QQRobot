@@ -26,6 +26,7 @@ namespace Data.Pikachu
 
         public DbSet<BillFlow> BillFlows { get; set; }
 
+        public DbSet<ActivityLog> ActivityLogs { get; set; }
 
     }
 }

@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CusConst\CacheConst.cs" />
+    <Compile Include="CusConst\RuleConst.cs" />
     <Compile Include="GroupMsg\GroupConfigDeal.cs" />
     <Compile Include="GroupMsg\IdiomsSolitaireCacheDeal.cs" />
     <Compile Include="GroupMsg\IdiomsSolitaireDeal.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="PrivateMsg\GroupManageDeal.cs" />
     <Compile Include="PrivateMsg\GroupMsgCopyDeal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegexBaseDeal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data.Pikachu\Data.Pikachu.csproj">

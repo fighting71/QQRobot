@@ -10,7 +10,7 @@ namespace GenerateMsg.CusConst
     /// @auth : monster
     /// @since : 2019/9/26 16:25:26
     /// @source : 
-    /// @des : 
+    /// @des : 缓存常量
     /// </summary>
     public class CacheConst
     {
@@ -71,13 +71,23 @@ namespace GenerateMsg.CusConst
         }
 
         /// <summary>
-        /// 获取成语接龙日志key[群][缓存尝试次数]
+        /// 获取成语接龙key[群][缓存尝试次数]
         /// </summary>
         /// <param name="group"></param>
         /// <returns></returns>
         public static string GetIdiomsTryCountKey(string group)
         {
             return $"Group_Idioms_Try_Count_{group}";
+        }
+
+        /// <summary>
+        /// 获取成语接龙key[群][日志记录]
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        public static string GetActivityLogKey(string group)
+        {
+            return $"Group_Idioms_Log_Id_{group}";
         }
 
     }

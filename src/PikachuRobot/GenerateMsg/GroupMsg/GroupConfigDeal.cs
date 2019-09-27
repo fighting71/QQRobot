@@ -28,11 +28,11 @@ namespace GenerateMsg.GroupMsg
             this.groupConfigService = groupConfigService;
         }
 
-        public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
 
             // 非管理员无权访问
-            if (!manageService.IsManage(context.FromQq)) return string.Empty;
+            if (!manageService.IsManage(context.FromQq)) return null;
 
             Match match;
 
@@ -89,7 +89,8 @@ namespace GenerateMsg.GroupMsg
                 return "删除成功!";
             }
 
-            return string.Empty;
+            return null;
         }
+
     }
 }

@@ -38,36 +38,38 @@ namespace GenerateMsg.GroupMsg
         public BillFlowService BillFlowService { get; }
         public MemberInfoService MemberInfoService { get; }
 
-        public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
 
-            var groupActivity = database.StringGet(CacheConst.GetGroupActivityKey(context.FromGroup));
+            var activityKey = CacheConst.GetGroupActivityKey(context.FromGroup);
+
+            var groupActivity = database.StringGet(activityKey);
 
             if (CacheConst.IdiomsSolitaire.Equals(groupActivity))
             {
 
                 // 增加尝试次数
-                database.StringIncrement(CacheConst.GetIdiomsTryCountKey(context.FromGroup));
+                var tryCount = database.StringIncrement(CacheConst.GetIdiomsTryCountKey(context.FromGroup));
 
                 var word = context.Message.Trim();
 
                 if (word.Length != 4)
                 {
-                    return "输入格式有误！";
+                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "输入格式有误！" }, GetTryCountRes(tryCount, activityKey));
                 }
 
                 var info = IdiomsService.GetInfo(word);
 
                 if(info == null)
                 {
-                    return "词语不存在！";
+                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "词语输入有误！" }, GetTryCountRes(tryCount, activityKey));
                 }
 
                 var spell = database.StringGet(CacheConst.GetIdiomsKey(context.FromGroup));
 
                 if (!spell.Equals(info.FirstSpell))
                 {
-                    return "你输入的词语并不能接上呢";
+                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "你输入的词语并不能接上呢！" }, GetTryCountRes(tryCount, activityKey));
                 }
 
                 // 积分奖励
@@ -83,17 +85,36 @@ namespace GenerateMsg.GroupMsg
                 // 重新缓存
                 database.StringSet(CacheConst.GetIdiomsTryCountKey(context.FromGroup), 0, CacheConst.GroupActivityExpiry);
 
-                return $@"恭喜你获得{amount.ToString()}钻石奖励
 
->>>>>>>>>next<<<<<<<<<<<<
+                return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = $"恭喜你获得{ amount.ToString() }钻石奖励！" },
+                    @"
+>>>>>>>>>【成语接龙】下一回合<<<<<<<<<<<<
     当前成语:{info.Word}
     尾拼:{info.LastSpell}
     成语解析:{info.Explanation}
-";
+"
+                    );
 
             }
 
-            return string.Empty;
+            return null;
         }
+
+        public string GetTryCountRes(long tryCount,string activityKey)
+        {
+
+            if(tryCount > RuleConst.IdiomsMaxTryCount)
+            {
+                // 移除活动缓存
+                database.KeyDelete(CacheConst.GetIdiomsKey(activityKey));
+                return "尝试次数已用完，欢迎下次再来挑战!";
+            }
+            else
+            {
+                return $"还剩下{(RuleConst.IdiomsMaxTryCount - tryCount).ToString()} 尝试次数!";
+            }
+
+        }
+
     }
 }

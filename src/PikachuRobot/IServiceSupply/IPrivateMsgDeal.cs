@@ -17,9 +17,9 @@ namespace IServiceSupply
     public interface IPrivateMsgDeal
     {
 
-        string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi);
+        PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi);
 
     }
     
-    public delegate string DelPrivateMsgDeal(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi);
+    public delegate PrivateRes DelPrivateMsgDeal(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi);
 }

@@ -11,7 +11,7 @@ namespace GenerateMsg
     {
         private static Logger _logger = LogManager.GetLogger(nameof(NoticeDeal));
         
-        public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
 
             if (Regex.IsMatch(context.Message, @"[\s|\n|\r]*公告设置[\s|\n|\r]*"))
@@ -19,7 +19,7 @@ namespace GenerateMsg
                 return "请输入Cron表达式 参考:https://www.cnblogs.com/knowledgesea/p/4705796.html";
             }
 
-            return string.Empty;
+            return null;
 
         }
     }

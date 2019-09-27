@@ -25,7 +25,7 @@ namespace GenerateMsg.PrivateMsg
 
         public GroupMsgCopyService GroupMsgCopyService { get; }
 
-        public string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
+        public PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
         {
             Match match;
 
@@ -84,7 +84,7 @@ namespace GenerateMsg.PrivateMsg
                 }
             }
 
-            return String.Empty;
+            return null;
         }
 
     }

@@ -51,5 +51,10 @@ namespace Data.Pikachu.Models
         /// </summary>
         public bool Enable { get; set; }
 
+        /// <summary>
+        /// 扩展字段方便查询
+        /// </summary>
+        public string Ext { get; set; }
+
     }
 }

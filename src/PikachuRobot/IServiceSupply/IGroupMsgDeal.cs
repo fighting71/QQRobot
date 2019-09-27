@@ -16,9 +16,9 @@ namespace IServiceSupply
     /// </summary>
     public interface IGroupMsgDeal
     {
-        string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi);
+        GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi);
     }
     
-    public delegate string DelGroupMsgDeal(GroupMessageReceivedContext context, IMahuaApi mahuaApi);
+    public delegate GroupRes DelGroupMsgDeal(GroupMessageReceivedContext context, IMahuaApi mahuaApi);
     
 }

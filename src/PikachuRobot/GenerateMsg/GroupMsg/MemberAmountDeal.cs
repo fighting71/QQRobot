@@ -29,7 +29,7 @@ namespace GenerateMsg.GroupMsg
 
         public MemberInfoService MemberInfoService { get; }
 
-        public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
 
             if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*[查看积分|我的钱包][\s|\n|\r]*$"))
@@ -40,7 +40,7 @@ namespace GenerateMsg.GroupMsg
 
             }
 
-            return string.Empty;
+            return null;
         }
     }
 }

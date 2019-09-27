@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newbe.Mahua.MahuaEvents;
+using NLog;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
 {
@@ -17,12 +18,21 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     public class GroupMsgManage : BaseList<Func<DelGroupMsgDeal>>, IGroupMsgDeal
     {
 
-        public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        private static Logger _logger = LogManager.GetLogger(nameof(GroupMsgManage));
+
+        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
-            string res = string.Empty;
-            for (int i = 0; i < list.Count && res == string.Empty; i++)
+            GroupRes res = null;
+            for (int i = 0; i < list.Count && res == null; i++)
             {
-                res = list[i]()(context, mahuaApi);
+                try
+                {
+                    res = list[i]()(context, mahuaApi);
+                }
+                catch (Exception e)
+                {
+                    _logger.Error(e);
+                }
             }
 
             return res;

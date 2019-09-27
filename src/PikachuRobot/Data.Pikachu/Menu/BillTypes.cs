@@ -18,17 +18,17 @@ namespace Data.Pikachu.Menu
         /// <summary>
         /// 签到
         /// </summary>
-        Sign = 0,
+        Sign = 1,
 
         /// <summary>
         /// 消费
         /// </summary>
-        Consume = 1,
+        Consume = 2,
 
         /// <summary>
         /// 奖励
         /// </summary>
-        Reward = 2
+        Reward = 3
 
     }
 }

@@ -103,7 +103,8 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                     ).Run)
                 .AddDeal(() => new IdiomsSolitaireDeal(
                     new IdiomsService(Get<UtilsContext>()),
-                    GetDatabase()
+                    GetDatabase(),
+                    new ActivityLogService(Get<PikachuDataContext>())
                     ).Run)
                 .AddDeal(() => new MemberAmountDeal(new MemberInfoService(Get<PikachuDataContext>())).Run)
                 .AddDeal(() => new SignDeal(new BillFlowService(Get<PikachuDataContext>()), new MemberInfoService(Get<PikachuDataContext>())).Run)

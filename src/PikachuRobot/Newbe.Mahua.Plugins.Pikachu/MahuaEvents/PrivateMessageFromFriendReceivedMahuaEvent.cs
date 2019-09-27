@@ -39,10 +39,18 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
             var res = _privateMsgDeal.Run(context, _mahuaApi);
 
-            if (!string.IsNullOrWhiteSpace(res))
-                _mahuaApi.SendPrivateMessage(context.FromQq)
-                    .Text(res)
-                    .Done();
+            if(res != null)
+            {
+                foreach (var item in res.Data)
+                {
+                    var msg = _mahuaApi.SendPrivateMessage(context.FromQq);
+                    if (item.CallTa)
+                    {
+                        msg.Shake().Done();
+                    }
+                    msg.Text(item.Msg).Done();
+                }
+            }
         }
     }
 }

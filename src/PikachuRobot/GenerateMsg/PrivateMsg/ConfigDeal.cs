@@ -30,7 +30,7 @@ namespace GenerateMsg.PrivateMsg
 
         private ConfigService ConfigService { get; }
 
-        public string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
+        public PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
         {
             var key = CacheConst.GetConfigKey(context.FromQq);
 
@@ -101,7 +101,7 @@ namespace GenerateMsg.PrivateMsg
                 return msg;
             }
 
-            return String.Empty;
+            return null;
         }
 
     }

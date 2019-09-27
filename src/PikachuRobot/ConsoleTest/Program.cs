@@ -40,7 +40,9 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
 
-            AddIdiomInfo();
+            var timer = new Timer(state => {
+                Console.WriteLine("timer test~");
+            }, null, TimeSpan.FromSeconds(3), TimeSpan.Zero);
 
             Console.WriteLine("Hello World");
 

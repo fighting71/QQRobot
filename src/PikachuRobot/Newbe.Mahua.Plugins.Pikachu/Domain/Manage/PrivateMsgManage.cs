@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
+using NLog;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
 {
@@ -16,12 +17,22 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// </summary>
     public class PrivateMsgManage : BaseList<Func<DelPrivateMsgDeal>>, IPrivateMsgDeal
     {
-        public string Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
+
+        private static Logger _logger = LogManager.GetLogger(nameof(PrivateMsgManage));
+
+        public PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
         {
-            string res = string.Empty;
-            for (int i = 0; i < list.Count && res == string.Empty; i++)
+            PrivateRes res = null;
+            for (int i = 0; i < list.Count && res == null; i++)
             {
-                res = list[i]()(context, mahuaApi);
+                try
+                {
+                    res = list[i]()(context, mahuaApi);
+                }
+                catch (Exception e)
+                {
+                    _logger.Error(e);
+                }
             }
 
             return res;

@@ -28,12 +28,12 @@ namespace GenerateMsg.GroupMsg
         public BillFlowService BillFlowService { get; }
         public MemberInfoService MemberInfoService { get; }
 
-        public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
 
             var math = Regex.Match(context.Message, @"^[\s|\n|\r]*(.{2})[\s|\n|\r]*$");
 
-            if (!math.Success) return string.Empty;
+            if (!math.Success) return null;
 
             var info = math.Groups[1].Value;
 
@@ -81,7 +81,7 @@ namespace GenerateMsg.GroupMsg
 
             }
 
-            return string.Empty;
+            return null;
         }
     }
 }

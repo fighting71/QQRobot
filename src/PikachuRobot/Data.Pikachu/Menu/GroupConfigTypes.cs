@@ -17,16 +17,16 @@ namespace Data.Pikachu.Menu
         /// <summary>
         /// 入群提醒
         /// </summary>
-        JoinConfirm = 0,
+        JoinConfirm = 1,
 
         /// <summary>
         /// 默认提醒
         /// </summary>
-        DefaultConfirm = 1,
+        DefaultConfirm = 2,
 
         /// <summary>
         /// 退群/飞机票提醒
         /// </summary>
-        LeaveConfirm = 2,
+        LeaveConfirm = 3,
     }
 }

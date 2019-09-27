@@ -26,6 +26,8 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data.Pikachu.csproj" t="IncludeRecursive" />
         <e p="Menu" t="Include">
+          <e p="ActivityStateTypes.cs" t="Include" />
+          <e p="ActivityTypes.cs" t="Include" />
           <e p="BillTypes.cs" t="Include" />
           <e p="GroupConfigTypes.cs" t="Include" />
         </e>
@@ -51,6 +53,7 @@
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
+          <e p="ActivityLog.cs" t="Include" />
           <e p="BaseModel.cs" t="Include" />
           <e p="BillFlow.cs" t="Include" />
           <e p="ConfigInfo.cs" t="Include" />
@@ -69,12 +72,9 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data.Utils.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
-          <e p="201909260806010_IdiomInfo.cs" t="Include" />
-          <e p="201909260806010_IdiomInfo.Designer.cs" t="Include" />
-          <e p="201909260806010_IdiomInfo.resx" t="Include" />
-          <e p="201909260836154_Little.cs" t="Include" />
-          <e p="201909260836154_Little.Designer.cs" t="Include" />
-          <e p="201909260836154_Little.resx" t="Include" />
+          <e p="201909261015145_Init.cs" t="Include" />
+          <e p="201909261015145_Init.Designer.cs" t="Include" />
+          <e p="201909261015145_Init.resx" t="Include" />
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -93,10 +93,12 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="CusConst" t="Include">
           <e p="CacheConst.cs" t="Include" />
+          <e p="RuleConst.cs" t="Include" />
         </e>
         <e p="GenerateMsg.csproj" t="IncludeRecursive" />
         <e p="GroupMsg" t="Include">
           <e p="GroupConfigDeal.cs" t="Include" />
+          <e p="IdiomsSolitaireCacheDeal.cs" t="Include" />
           <e p="IdiomsSolitaireDeal.cs" t="Include" />
           <e p="MemberAmountDeal.cs" t="Include" />
           <e p="PetDeal.cs" t="Include" />
@@ -114,13 +116,13 @@
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
-        <e p="RegexBaseDeal.cs" t="Include" />
       </e>
       <e p="IServiceSupply" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="IGroupMsgDeal.cs" t="Include" />
         <e p="IPrivateMsgDeal.cs" t="Include" />
         <e p="IServiceSupply.csproj" t="IncludeRecursive" />
+        <e p="MsgRes.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Properties" t="Include">
@@ -242,6 +244,7 @@
           <e p="Services.PetSystem.csproj" t="IncludeRecursive" />
         </e>
         <e p="Services.PikachuSystem" t="IncludeRecursive">
+          <e p="ActivityLogService.cs" t="Include" />
           <e p="app.config" t="Include" />
           <e p="BaseService.cs" t="Include" />
           <e p="BillFlowService.cs" t="Include" />
@@ -258,6 +261,18 @@
             <e p="AssemblyInfo.cs" t="Include" />
           </e>
           <e p="Services.PikachuSystem.csproj" t="IncludeRecursive" />
+        </e>
+        <e p="Services.Utils" t="IncludeRecursive">
+          <e p="app.config" t="Include" />
+          <e p="BaseService.cs" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="IdiomsService.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="packages.config" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+          </e>
+          <e p="Services.Utils.csproj" t="IncludeRecursive" />
         </e>
       </e>
     </e>

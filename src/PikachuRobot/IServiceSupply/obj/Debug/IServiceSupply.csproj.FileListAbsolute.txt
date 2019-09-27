@@ -17,4 +17,6 @@ D:\git\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csproj.C
 D:\git\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.dll
 D:\git\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.pdb
 D:\git\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csprojAssemblyReference.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csprojResolveAssemblyReference.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csprojAssemblyReference.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csproj.CoreCompileInputs.cache
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csproj.CopyComplete

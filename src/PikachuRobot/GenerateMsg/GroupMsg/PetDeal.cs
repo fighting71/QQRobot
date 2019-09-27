@@ -27,7 +27,7 @@ namespace GenerateMsg.GroupMsg
         public PetService PetService { get; }
         public MemberInfoService MemberInfoService { get; }
 
-        public string Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
 
             if(Regex.IsMatch(context.Message, @"^[\s|\n|\r]*宠物系统[\s|\n|\r]*$"))
@@ -86,7 +86,7 @@ namespace GenerateMsg.GroupMsg
 
             }
 
-            return string.Empty;
+            return null;
 
         }
 

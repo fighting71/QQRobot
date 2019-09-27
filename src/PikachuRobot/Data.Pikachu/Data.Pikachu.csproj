@@ -64,6 +64,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu\ActivityStateTypes.cs" />
+    <Compile Include="Menu\ActivityTypes.cs" />
     <Compile Include="Menu\BillTypes.cs" />
     <Compile Include="Menu\GroupConfigTypes.cs" />
     <Compile Include="Migrations\201909220955011_Init.cs" />
@@ -91,6 +93,7 @@
       <DependentUpon>201909250927368_MemberAndBill.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ActivityLog.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BillFlow.cs" />
     <Compile Include="Models\ConfigInfo.cs" />
