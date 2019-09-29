@@ -22,7 +22,7 @@ namespace Data.Pikachu.Models
         public ActivityTypes ActivityType { get; set; }
 
         /// <summary>
-        /// 关闭状态
+        /// 活动状态
         /// </summary>
         public ActivityStateTypes ActivityStateType { get; set; }
 
@@ -50,6 +50,11 @@ namespace Data.Pikachu.Models
         /// 群组
         /// </summary>
         public string Group { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Description { get; set; }
 
     }
 }

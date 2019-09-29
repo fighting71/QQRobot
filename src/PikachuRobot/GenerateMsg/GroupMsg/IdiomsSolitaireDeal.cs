@@ -59,7 +59,18 @@ namespace GenerateMsg.GroupMsg
                 // 缓存日志key
                 database.StringSet(CacheConst.GetActivityLogKey(context.FromGroup), logId, CacheConst.GroupActivityExpiry);
 
-                var timer = new Timer(state => {},null,CacheConst.GroupActivityExpiry,TimeSpan.Zero);
+                var timer = new Timer(state => {
+
+                    ActivityLogService.CloseActivity(logId, "活动结束，自动关闭!",out var log);
+
+                    mahuaApi.SendGroupMessage(log.Group).Text($@"
+>>>>>>>>>成语接龙已结束<<<<<<<<<<<<
+    成功次数:{log.SuccessCount.ToString()}
+    失败次数:{log.FailureCount.ToString()}
+希望大家再接再厉！
+").Done();
+
+                },null,CacheConst.GroupActivityExpiry,TimeSpan.Zero);
 
                 
                 return $@"
