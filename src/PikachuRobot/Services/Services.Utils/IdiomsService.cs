@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Utils;
+using Data.Utils.Models;
 
 namespace Services.Utils
 {
@@ -24,15 +26,30 @@ namespace Services.Utils
             return UtilsContext.IdiomInfos.Count();
         }
 
-        public Data.Utils.Models.IdiomInfo GetInfo(int id)
+        public Task<int> GetCountAsync()
+        {
+            return UtilsContext.IdiomInfos.CountAsync();
+        }
+        
+        public IdiomInfo GetInfo(int id)
         {
             return UtilsContext.IdiomInfos.FirstOrDefault(u => u.Id == id);
         }
 
-        public Data.Utils.Models.IdiomInfo GetInfo(string word)
+        public Task<IdiomInfo> GetInfoAsync(int id)
+        {
+            return UtilsContext.IdiomInfos.FirstOrDefaultAsync(u => u.Id == id);
+        }
+        
+        public IdiomInfo GetInfo(string word)
         {
             return UtilsContext.IdiomInfos.FirstOrDefault(u => u.Word == word);
         }
 
+        public Task<IdiomInfo> GetByWordAsync(string word)
+        {
+            return UtilsContext.IdiomInfos.FirstOrDefaultAsync(u => u.Word == word);
+        }
+        
     }
 }

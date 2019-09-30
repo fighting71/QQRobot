@@ -29,7 +29,6 @@ namespace Newbe.Mahua.Plugins.Pikachu
             {
                 new PluginModule(),
                 new MahuaEventsModule(),
-
                 new InitModule(),
                 new ApiModule(),
 

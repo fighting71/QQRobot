@@ -1,16 +1,9 @@
-﻿using Data.Pikachu;
-using Data.Utils;
-using GenerateMsg.CusConst;
+﻿using GenerateMsg.CusConst;
 using IServiceSupply;
-using Newbe.Mahua;
-using Newbe.Mahua.MahuaEvents;
 using Services.PikachuSystem;
 using Services.Utils;
 using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GenerateMsg.GroupMsg
@@ -21,104 +14,124 @@ namespace GenerateMsg.GroupMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class IdiomsSolitaireCacheDeal : IGroupMsgDeal
+    public class IdiomsSolitaireCacheDeal : IGenerateGroupMsgDeal
     {
-        private readonly IDatabase database;
-        private Random random = new Random();
+        private readonly IDatabase _database;
+        private readonly Random _random = new Random();
 
         public IdiomsSolitaireCacheDeal(IdiomsService idiomsService, IDatabase database, BillFlowService billFlowService
             , MemberInfoService memberInfoService, ActivityLogService activityLogService)
         {
             IdiomsService = idiomsService;
-            this.database = database;
+            this._database = database;
             BillFlowService = billFlowService;
             MemberInfoService = memberInfoService;
             ActivityLogService = activityLogService;
         }
 
-        public IdiomsService IdiomsService { get; }
-        public BillFlowService BillFlowService { get; }
-        public MemberInfoService MemberInfoService { get; }
-        public ActivityLogService ActivityLogService { get; }
+        private IdiomsService IdiomsService { get; }
+        private BillFlowService BillFlowService { get; }
+        private MemberInfoService MemberInfoService { get; }
+        private ActivityLogService ActivityLogService { get; }
 
-        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
+            var activityKey = CacheConst.GetGroupActivityKey(groupNo);
 
-            var activityKey = CacheConst.GetGroupActivityKey(context.FromGroup);
-
-            var groupActivity = database.StringGet(activityKey);
-
+            var groupActivity = _database.StringGet(activityKey);
 
             if (CacheConst.IdiomsSolitaire.Equals(groupActivity))
             {
+                var idiomsKey = CacheConst.GetIdiomsKey(groupNo);
+                var idiomsTryCountKey = CacheConst.GetIdiomsTryCountKey(groupNo);
 
-                var logId = int.Parse(database.StringGet(CacheConst.GetActivityLogKey(context.FromGroup)));
+                var logId = int.Parse(await _database.StringGetAsync(CacheConst.GetActivityLogKey(groupNo)));
 
-                // 增加尝试次数
-                var tryCount = database.StringIncrement(CacheConst.GetIdiomsTryCountKey(context.FromGroup));
+                var activityLog = ActivityLogService.GetActivity(logId);
 
-                var word = context.Message.Trim();
-
-                if (word.Length != 4)
+                if(activityLog.ActivityStateType == Data.Pikachu.Menu.ActivityStateTypes.Close)
                 {
-                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "输入格式有误！" }, GetTryCountRes(tryCount, activityKey, logId));
+                    // 移除活动缓存
+                    await _database.KeyDeleteAsync(activityKey);
+
+                    return "成语接龙活动已关闭!";
                 }
 
-                var info = IdiomsService.GetInfo(word);
+                // 增加尝试次数
+                var tryCount = await _database.StringIncrementAsync(idiomsTryCountKey);
+
+                var idiomId = await _database.StringGetAsync(idiomsKey);
+
+                var spell = await IdiomsService.GetInfoAsync(int.Parse(idiomId));
+
+                var confrimStr = $@"
+>>>>>>>>>成语接龙火热进行中<<<<<<<<<<<<
+    当前成语:{spell.Word}
+    尾拼:{spell.LastSpell}
+    成语解析:{spell.Explanation}
+";
+
+                if (msg.Length != 4)
+                {
+                    return GroupRes.GetSuccess(new GroupItemRes() {AtTa = true, Msg = "输入格式有误！"},
+                        await GetTryCountRes(tryCount, activityKey, logId), confrimStr);
+                }
+
+                var info = await IdiomsService.GetByWordAsync(msg);
 
                 if (info == null)
                 {
-                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "词语输入有误！" }, GetTryCountRes(tryCount, activityKey, logId));
+                    return GroupRes.GetSuccess(new GroupItemRes() {AtTa = true, Msg = "词语输入有误！"},
+                        await GetTryCountRes(tryCount, activityKey, logId), confrimStr);
                 }
 
-                var spell = database.StringGet(CacheConst.GetIdiomsKey(context.FromGroup));
-
-                if (!spell.Equals(info.FirstSpell))
+                if (!spell.LastSpell.Equals(info.FirstSpell))
                 {
-                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "你输入的词语并不能接上呢！" }, GetTryCountRes(tryCount, activityKey, logId));
+                    return GroupRes.GetSuccess(new GroupItemRes() {AtTa = true, Msg = "你输入的词语并不能接上呢！"},
+                        await GetTryCountRes(tryCount, activityKey, logId), confrimStr);
                 }
 
                 // 积分奖励
-                var amount = random.Next(100) + 5;
+                var amount = _random.Next(100) + 5;
 
-                ActivityLogService.AddSuccessCount(logId);
+                await ActivityLogService.AddSuccessCountAsync(logId);
 
-                BillFlowService.AddBill(context.FromGroup, context.FromQq, amount, amount, Data.Pikachu.Menu.BillTypes.Reward, "成语接龙奖励");
+                await BillFlowService.AddBillAsync(groupNo, account, amount, amount, Data.Pikachu.Menu.BillTypes.Reward,
+                    "成语接龙奖励");
 
-                MemberInfoService.ChangeAmount(context.FromGroup, context.FromQq, amount);
-
-                // 重新缓存
-                database.StringSet(CacheConst.GetIdiomsKey(context.FromGroup), info.LastSpell, CacheConst.GroupActivityExpiry);
+                await MemberInfoService.ChangeAmountAsync(groupNo, account, amount);
 
                 // 重新缓存
-                database.StringSet(CacheConst.GetIdiomsTryCountKey(context.FromGroup), 0, CacheConst.GroupActivityExpiry);
+                await _database.StringSetAsync(idiomsKey, info.Id, CacheConst.GroupActivityExpiry);
+
+                // 重新缓存
+                await _database.StringSetAsync(idiomsTryCountKey, 0,
+                    CacheConst.GroupActivityExpiry);
 
 
-                return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = $"恭喜你获得{ amount.ToString() }钻石奖励！" },
-                    @"
+                return GroupRes.GetSuccess(new GroupItemRes() {AtTa = true, Msg = $"   恭喜你获得{amount.ToString()}钻石奖励！"},
+                    $@"
 >>>>>>>>>【成语接龙】下一回合<<<<<<<<<<<<
     当前成语:{info.Word}
     尾拼:{info.LastSpell}
     成语解析:{info.Explanation}
 "
-                    );
-
+                );
             }
 
             return null;
         }
 
-        public string GetTryCountRes(long tryCount, string activityKey, int logId)
+        private async Task<string> GetTryCountRes(long tryCount, string activityKey, int logId)
         {
-
-            ActivityLogService.AddFailureCount(logId);
+            await ActivityLogService.AddFailureCountAsync(logId);
 
             if (tryCount == RuleConst.IdiomsMaxTryCount)
             {
                 // 移除活动缓存
-                database.KeyDelete(CacheConst.GetIdiomsKey(activityKey));
+                await _database.KeyDeleteAsync(activityKey);
 
-                ActivityLogService.CloseActivity(logId, "活动结束，挑战次数使用完毕!", out var log);
+                var log = await ActivityLogService.CloseActivityAsync(logId, "活动结束，挑战次数使用完毕!");
 
                 return $@"
 >>>>>>>>>尝试次数已用完，欢迎下次再来挑战!<<<<<<<<<<<<
@@ -128,12 +141,8 @@ namespace GenerateMsg.GroupMsg
 希望大家再接再厉！
 ";
             }
-            else
-            {
-                return $"还剩下{(RuleConst.IdiomsMaxTryCount - tryCount).ToString()} 尝试次数!";
-            }
 
+            return $"还剩下{(RuleConst.IdiomsMaxTryCount - tryCount).ToString()} 尝试次数!";
         }
-
     }
 }

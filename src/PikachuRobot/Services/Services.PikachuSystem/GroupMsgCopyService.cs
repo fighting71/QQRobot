@@ -2,6 +2,7 @@
 using Data.Pikachu.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Services.PikachuSystem
             return PikachuDataContext.GroupMsgCopys.Where(u => u.Person.Equals(loginQq));
         }
 
-        public void RemoveGroupAuth(string fromGroup, string targetGroup, string dealPerson,out string msg)
+        public void RemoveGroupCopy(string fromGroup, string targetGroup, string dealPerson,out string msg)
         {
             var old = PikachuDataContext.GroupMsgCopys.FirstOrDefault(u => u.Person.Equals(dealPerson) && u.FromGroup.Equals(fromGroup) && u.TargetGroup.Equals(targetGroup));
 
@@ -36,7 +37,7 @@ namespace Services.PikachuSystem
             msg = "删除转载成功!";
         }
 
-        public void AddGroupAuth(string fromGroup, string targetGroup, string dealPerson, out string msg)
+        public void AddGroupCopy(string fromGroup, string targetGroup, string dealPerson, out string msg)
         {
             var old = PikachuDataContext.GroupMsgCopys.FirstOrDefault(u => u.Person.Equals(dealPerson) && u.FromGroup.Equals(fromGroup) && u.TargetGroup.Equals(targetGroup));
 
@@ -60,5 +61,48 @@ namespace Services.PikachuSystem
             msg = "添加转载设置成功!";
         }
 
+        /// <summary>
+        /// 删除群转载
+        /// </summary>
+        /// <param name="fromGroup"></param>
+        /// <param name="targetGroup"></param>
+        /// <param name="dealPerson"></param>
+        /// <returns></returns>
+        public async Task RemoveGroupCopyAsync(string fromGroup, string targetGroup, string dealPerson)
+        {
+            var old = await PikachuDataContext.GroupMsgCopys.FirstOrDefaultAsync(u => u.Person.Equals(dealPerson) && u.FromGroup.Equals(fromGroup) && u.TargetGroup.Equals(targetGroup));
+
+            if (old != null)
+            {
+                PikachuDataContext.Entry(old).State = EntityState.Deleted;
+
+                await PikachuDataContext.SaveChangesAsync();
+            }
+        }
+        
+        /// <summary>
+        /// 添加群转载
+        /// </summary>
+        /// <param name="fromGroup"></param>
+        /// <param name="targetGroup"></param>
+        /// <param name="dealPerson"></param>
+        /// <returns></returns>
+        public async Task AddGroupCopyAsync(string fromGroup, string targetGroup, string dealPerson)
+        {
+            var old = await PikachuDataContext.GroupMsgCopys.FirstOrDefaultAsync(u => u.Person.Equals(dealPerson) && u.FromGroup.Equals(fromGroup) && u.TargetGroup.Equals(targetGroup));
+
+            if (old == null)
+            {
+                PikachuDataContext.GroupMsgCopys.Add(new GroupMsgCopy()
+                {
+                    FromGroup = fromGroup,
+                    TargetGroup = targetGroup,
+                    Person = dealPerson
+                });
+                await PikachuDataContext.SaveChangesAsync();
+            }
+
+        }
+        
     }
 }

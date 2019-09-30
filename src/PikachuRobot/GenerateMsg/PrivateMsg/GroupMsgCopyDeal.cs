@@ -1,11 +1,11 @@
 ﻿using IServiceSupply;
-using Newbe.Mahua;
-using Newbe.Mahua.MahuaEvents;
 using Services.PikachuSystem;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace GenerateMsg.PrivateMsg
 {
@@ -15,32 +15,32 @@ namespace GenerateMsg.PrivateMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class GroupMsgCopyDeal : IPrivateMsgDeal
+    public class GroupMsgCopyDeal : IGeneratePrivateMsgDeal
     {
-
         public GroupMsgCopyDeal(GroupMsgCopyService groupMsgCopyService)
         {
             GroupMsgCopyService = groupMsgCopyService;
         }
 
-        public GroupMsgCopyService GroupMsgCopyService { get; }
+        private GroupMsgCopyService GroupMsgCopyService { get; }
 
-        public PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<PrivateRes> Run(string msg, string account, Lazy<string> getLoginAccount)
         {
             Match match;
 
-            if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*查看群转载[\s|\n|\r]*[\s|\n|\r]*$")).Success)
+            if ("查看群转载".Equals(msg))
             {
                 StringBuilder builder = new StringBuilder();
 
-                var list = GroupMsgCopyService.GetByAccount(mahuaApi.GetLoginQq()).OrderByDescending(u => u.Id).ToList();
+                var list = await GroupMsgCopyService.GetByAccount(getLoginAccount.Value).OrderByDescending(u => u.Id)
+                    .ToListAsync();
 
                 if (list.Count == 0)
                 {
                     return "暂无";
                 }
 
-                builder.AppendLine($" 来源群->目标群");
+                builder.AppendLine(" 来源群->目标群");
 
                 for (int i = 0; i < list.Count; i++)
                 {
@@ -53,39 +53,41 @@ namespace GenerateMsg.PrivateMsg
 
                 return builder.ToString();
             }
-            else if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*添加群转载[\s|\n|\r]*(\d*)->(\d*)[\s|\n|\r]*$")).Success)
+
+            if ((match = Regex.Match(msg, @"^添加群转载[\s|\n|\r]*(\d*)->(\d*)$")).Success)
             {
                 var fromGroup = match.Groups[1].Value;
                 var targetGroup = match.Groups[2].Value;
                 if (!(string.IsNullOrWhiteSpace(fromGroup) || string.IsNullOrWhiteSpace(targetGroup)))
                 {
-                    GroupMsgCopyService.AddGroupAuth(fromGroup, targetGroup, mahuaApi.GetLoginQq(),out var msg);
+                    await GroupMsgCopyService.AddGroupCopyAsync(fromGroup, targetGroup, getLoginAccount.Value);
 
-                    var builder = new StringBuilder(msg);
+                    var builder = new StringBuilder();
 
-                    builder.AppendLine();
+                    builder.AppendLine("添加成功！");
                     builder.AppendLine();
                     builder.AppendLine("可使用 [删除群转载] [来源群]->[目标群] 删除配置");
                     builder.AppendLine("示例：删除群转载 10086->10010");
 
                     return builder.ToString();
                 }
+
+                return null;
             }
-            else if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*删除群转载[\s|\n|\r]*(\d*)->(\d*)[\s|\n|\r]*$")).Success)
+
+            if ((match = Regex.Match(msg, @"^删除群转载[\s|\n|\r]*(\d*)->(\d*)$")).Success)
             {
                 var fromGroup = match.Groups[1].Value;
                 var targetGroup = match.Groups[2].Value;
                 if (!(string.IsNullOrWhiteSpace(fromGroup) || string.IsNullOrWhiteSpace(targetGroup)))
                 {
-                    GroupMsgCopyService.RemoveGroupAuth(fromGroup, targetGroup, mahuaApi.GetLoginQq(),out var msg);
+                    await GroupMsgCopyService.RemoveGroupCopyAsync(fromGroup, targetGroup, getLoginAccount.Value);
 
-                    return msg;
-
+                    return "删除转载成功!";
                 }
             }
 
             return null;
         }
-
     }
 }

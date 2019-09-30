@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Data.Entity;
+using Autofac;
 using NLog;
 using System.Linq;
 using System.Threading;
@@ -30,17 +31,17 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
     {
         private static readonly Logger Logger = LogManager.GetLogger(nameof(MahuaModule));
 
-        private static readonly ConnectionMultiplexer ctx = ConnectionMultiplexer.Connect(ConfigConst.RedisClient);
+        private static ConnectionMultiplexer _ctx;
 
-        private T Get<T>() where T : class, new()
+        private static T Get<T>() where T : class, new()
         {
             return ThreadInstanceFactory<T>.Get((() => new T()));
         }
 
-        public IDatabase GetDatabase()
+        private IDatabase GetDatabase()
         {
             int.TryParse(ConfigConst.RedisDb, out var db);
-            return ctx.GetDatabase(db);
+            return _ctx.GetDatabase(db);
         }
 
         public InitModule()
@@ -53,25 +54,34 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
         {
             base.Load(builder);
 
-            builder.RegisterType<PikachuDataContext>(); // 此处若是注入单例 会引起 context 随着依赖的对象释放而释放
+            try
+            {
+                _ctx = ConnectionMultiplexer.Connect(ConfigConst.RedisClient);
 
-            builder.Register(context => InitGroupMsgManage()).SingleInstance();
-            builder.Register(context => InitPrivateMsgManage()).SingleInstance();
+                builder.Register(context => GetDatabase());
+                builder.RegisterType<PikachuDataContext>(); // 此处若是注入单例 会引起 context 随着依赖的对象释放而释放
+
+                builder.Register(context => InitGroupMsgManage()).SingleInstance();
+                builder.Register(context => InitPrivateMsgManage()).SingleInstance();
+            }
+            catch (System.Exception e)
+            {
+                Logger.Error(e);
+            }
         }
 
-        private IPrivateMsgDeal InitPrivateMsgManage()
+        private IGeneratePrivateMsgDeal InitPrivateMsgManage()
         {
-
             PrivateMsgManage manage = new PrivateMsgManage();
 
             manage
                 .AddDeal(
                     () => new ConfigCacheDeal(GetDatabase(), new ConfigService(
                         Get<PikachuDataContext>()
-                    )).Run)
+                    )).Run,nameof(ConfigCacheDeal))
                 .AddDeal(() => new ConfigDeal(GetDatabase(), new ConfigService(
                     Get<PikachuDataContext>()
-                )).Run)
+                )).Run, nameof(ConfigDeal))
                 .AddDeal(
                     () => new GroupManageDeal(new GroupManageService(
                         Get<PikachuDataContext>()
@@ -80,17 +90,19 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                     () => new GroupMsgCopyDeal(new GroupMsgCopyService(
                         Get<PikachuDataContext>()
                     )).Run)
-                .AddDeal(() => (context, api) =>
+                .AddDeal(() => async (context, api, getLoginQq) =>
                 {
-                    return Get<PikachuDataContext>().ConfigInfos
-                        .FirstOrDefault(u => u.Enable && u.Key.Equals("Private.Confirm.Default"))?.Value;
+                    var info = await Get<PikachuDataContext>().ConfigInfos
+                        .FirstOrDefaultAsync(u => u.Enable && u.Key.Equals("Private.Confirm.Default"));
+
+                    return info?.Value;
                 });
 
             return manage;
         }
 
 
-        private IGroupMsgDeal InitGroupMsgManage()
+        private IGenerateGroupMsgDeal InitGroupMsgManage()
         {
             GroupMsgManage manage = new GroupMsgManage();
 
@@ -99,29 +111,32 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                     new IdiomsService(Get<UtilsContext>()),
                     GetDatabase(),
                     new BillFlowService(Get<PikachuDataContext>()),
-                    new MemberInfoService(Get<PikachuDataContext>())
-                    ).Run)
+                    new MemberInfoService(Get<PikachuDataContext>()),
+                    new ActivityLogService(Get<PikachuDataContext>())
+                ).Run)
                 .AddDeal(() => new IdiomsSolitaireDeal(
                     new IdiomsService(Get<UtilsContext>()),
                     GetDatabase(),
                     new ActivityLogService(Get<PikachuDataContext>())
-                    ).Run)
+                ).Run)
                 .AddDeal(() => new MemberAmountDeal(new MemberInfoService(Get<PikachuDataContext>())).Run)
-                .AddDeal(() => new SignDeal(new BillFlowService(Get<PikachuDataContext>()), new MemberInfoService(Get<PikachuDataContext>())).Run)
-                .AddDeal(() => new PetDeal(new PetService(new PetContext()), new MemberInfoService(Get<PikachuDataContext>())).Run)
+                .AddDeal(() => new SignDeal(new BillFlowService(Get<PikachuDataContext>()),
+                    new MemberInfoService(Get<PikachuDataContext>())).Run)
+                .AddDeal(() =>
+                    new PetDeal(new PetService(new PetContext()), new MemberInfoService(Get<PikachuDataContext>())).Run)
                 .AddDeal(() => new GroupConfigDeal(
                     new ManageService(Get<PikachuDataContext>()),
                     new GroupConfigService(Get<PikachuDataContext>())
                 ).Run)
-                .AddDeal(() => (context, api) =>
+                .AddDeal(() => async (msg, account, groupNo, getLoginAccount) =>
                     {
-                        var pikachuDataContext = Get<PikachuDataContext>();
+                        var loginQq = getLoginAccount.Value;
 
-                        var account = api.GetLoginQq();
-
-                        return pikachuDataContext.GroupConfigs.FirstOrDefault(u =>
+                        var info = await Get<PikachuDataContext>().GroupConfigs.FirstOrDefaultAsync(u =>
                             u.Enable && u.GetGroupConfigType == GroupConfigTypes.DefaultConfirm
-                                     && u.Account.Equals(account) && u.Group.Equals(context.FromGroup))?.Value;
+                                     && u.Account.Equals(loginQq) && u.Group.Equals(groupNo));
+                        
+                        return info?.Value;
                     }
                 );
 

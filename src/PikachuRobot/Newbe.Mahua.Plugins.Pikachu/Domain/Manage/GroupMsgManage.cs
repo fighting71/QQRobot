@@ -15,27 +15,18 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// @source : 
     /// @des : 
     /// </summary>
-    public class GroupMsgManage : BaseList<Func<DelGroupMsgDeal>>, IGroupMsgDeal
+    public class GroupMsgManage : BaseList<Func<GenerateGroupMsgDel>>, IGenerateGroupMsgDeal
     {
-
-        private static Logger _logger = LogManager.GetLogger(nameof(GroupMsgManage));
-
-        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
-            GroupRes res = null;
-            for (int i = 0; i < list.Count && res == null; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                try
-                {
-                    res = list[i]()(context, mahuaApi);
-                }
-                catch (Exception e)
-                {
-                    _logger.Error(e);
-                }
+                var res = await list[i]()(msg, account, groupNo, getLoginAccount);
+                if (res == null) continue;
+                return res.Success ? res : null;
             }
 
-            return res;
+            return null;
         }
     }
 }

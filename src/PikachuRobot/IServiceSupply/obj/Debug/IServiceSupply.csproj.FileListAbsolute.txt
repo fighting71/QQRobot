@@ -2,10 +2,6 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\IServiceSu
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\IServiceSupply.pdb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.pdb
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\Autofac.dll
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\Newbe.Mahua.dll
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\Autofac.xml
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\Newbe.Mahua.xml
 D:\git\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csproj.CoreCompileInputs.cache
 D:\git\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\IServiceSupply.dll
 D:\git\QQRobot\src\PikachuRobot\IServiceSupply\bin\Debug\IServiceSupply.pdb
@@ -19,4 +15,3 @@ D:\git\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.pdb
 D:\git\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csprojAssemblyReference.cache
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csprojAssemblyReference.cache
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csproj.CoreCompileInputs.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\IServiceSupply\obj\Debug\IServiceSupply.csproj.CopyComplete

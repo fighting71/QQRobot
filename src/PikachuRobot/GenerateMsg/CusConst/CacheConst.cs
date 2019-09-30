@@ -38,7 +38,7 @@ namespace GenerateMsg.CusConst
         /// <summary>
         /// 群活动操作时长
         /// </summary>
-        public readonly static TimeSpan GroupActivityExpiry = TimeSpan.FromMinutes(30);
+        public readonly static TimeSpan GroupActivityExpiry = TimeSpan.FromMinutes(5);
 
         /// <summary>
         /// 获取配置key
@@ -88,6 +88,16 @@ namespace GenerateMsg.CusConst
         public static string GetActivityLogKey(string group)
         {
             return $"Group_Idioms_Log_Id_{group}";
+        }
+
+        /// <summary>
+        /// 群聊消息缓存key
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        public static string GetGroupListKey(string group,string account)
+        {
+            return $"Group_List_{group}_{account}";
         }
 
     }

@@ -1,6 +1,8 @@
-﻿using Data.PetSystem;
+﻿using System.Data.Entity;
+using Data.PetSystem;
 using Data.PetSystem.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Services.PetSystem
 {
@@ -21,6 +23,11 @@ namespace Services.PetSystem
             return PetContext.PetInfos.FirstOrDefault(u => u.Enable && u.Name.Equals(name));
         }
 
+        public Task<PetInfo> GetInfoByNameAsync (string name)
+        {
+            return PetContext.PetInfos.FirstOrDefaultAsync(u => u.Enable && u.Name.Equals(name));
+        }
+        
         public IQueryable<PetInfo> GetAll()
         {
             return PetContext.PetInfos.Where(u => u.Enable);

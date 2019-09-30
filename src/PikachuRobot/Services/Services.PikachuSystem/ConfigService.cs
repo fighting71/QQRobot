@@ -2,6 +2,7 @@
 using Data.Pikachu.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,5 +98,56 @@ namespace Services.PikachuSystem
             }
         }
 
+        
+        /// <summary>
+        /// 移除配置
+        /// </summary>
+        /// <param name="key"></param>
+        public async Task RemoveKeyAsync(string key)
+        {
+            var search =
+                PikachuDataContext.ConfigInfos.FirstOrDefault(u => u.Enable && u.Key.Equals(key));
+            if (search != null)
+            {
+                search.Enable = false;
+                await PikachuDataContext.SaveChangesAsync();
+            }
+
+        }
+
+        /// <summary>
+        /// 添加配置
+        /// </summary>
+        /// <param name="key">配置key</param>
+        /// <param name="value">配置value</param>
+        /// <param name="description">描述</param>
+        /// <returns></returns>
+        public async Task AddInfoAsync(string key,string value,string description)
+        {
+            var config = new ConfigInfo()
+            {
+                Key = key,
+                Value = value,
+                Description = description,
+                Enable = true
+            };
+
+            var old = await PikachuDataContext.ConfigInfos.FirstOrDefaultAsync(u =>
+                u.Enable && u.Key.Equals(config.Key, StringComparison.CurrentCultureIgnoreCase));
+
+            if (old != null)
+            {
+                old.Value = config.Value;
+                old.UpdateTime = DateTime.Now;
+            }
+            else
+            {
+                config.UpdateTime = DateTime.Now;
+                PikachuDataContext.ConfigInfos.Add(config);
+            }
+
+            await PikachuDataContext.SaveChangesAsync();
+        }
+        
     }
 }

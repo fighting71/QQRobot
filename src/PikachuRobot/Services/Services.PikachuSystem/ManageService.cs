@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,18 @@ namespace Services.PikachuSystem
         /// <returns></returns>
         public bool IsManage(string account)
         {
-            return PikachuDataContext.Managers.Where(u => u.Enable && u.Account.Equals(account)).Any();
+            return PikachuDataContext.Managers.Any(u => u.Enable && u.Account.Equals(account));
         }
 
+        /// <summary>
+        /// 是否为管理员
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public async Task<bool> IsManageAsync(string account)
+        {
+            return await PikachuDataContext.Managers.AnyAsync(u => u.Enable && u.Account.Equals(account));
+        }
+        
     }
 }

@@ -40,9 +40,7 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
 
-            var timer = new Timer(state => {
-                Console.WriteLine("timer test~");
-            }, null, TimeSpan.FromSeconds(3), TimeSpan.Zero);
+            TestCache();
 
             Console.WriteLine("Hello World");
 
@@ -240,6 +238,21 @@ namespace ConsoleTest
 
                 Console.WriteLine($"redis 读取数据:{info}");
             }
+
+            var listKey = "empty.test.list";
+
+            db.ListLeftPush(listKey, "test");
+            db.ListLeftPush(listKey, "test2");
+
+            string test = db.ListLeftPop(listKey);
+            while (!string.IsNullOrWhiteSpace(test))
+            {
+                Console.WriteLine(test);
+                test = db.ListLeftPop(listKey);
+            }
+
+            Console.WriteLine(test);
+
         }
 
         public static void TestDb()

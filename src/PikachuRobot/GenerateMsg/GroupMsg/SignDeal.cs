@@ -1,10 +1,8 @@
 ﻿using IServiceSupply;
-using Newbe.Mahua;
-using Newbe.Mahua.MahuaEvents;
 using Services.PikachuSystem;
 using System;
-using System.Linq;
-using System.Text.RegularExpressions;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace GenerateMsg.GroupMsg
 {
@@ -14,10 +12,10 @@ namespace GenerateMsg.GroupMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class SignDeal : IGroupMsgDeal
+    public class SignDeal : IGenerateGroupMsgDeal
     {
 
-        private Random random = new Random();
+        private readonly Random _random = new Random();
 
         public SignDeal(BillFlowService billFlowService,MemberInfoService memberInfoService)
         {
@@ -25,26 +23,19 @@ namespace GenerateMsg.GroupMsg
             MemberInfoService = memberInfoService;
         }
 
-        public BillFlowService BillFlowService { get; }
-        public MemberInfoService MemberInfoService { get; }
+        private BillFlowService BillFlowService { get; }
+        private MemberInfoService MemberInfoService { get; }
 
-        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
-
-            var math = Regex.Match(context.Message, @"^[\s|\n|\r]*(.{2})[\s|\n|\r]*$");
-
-            if (!math.Success) return null;
-
-            var info = math.Groups[1].Value;
-
-            if ("打卡".Equals(info) || "签到".Equals(info) || "冒泡".Equals(info))
+            if ("打卡".Equals(msg) || "签到".Equals(msg) || "冒泡".Equals(msg))
             {
 
                 var now = DateTime.Now;
                 var today = new DateTime(now.Year, now.Month, now.Day);
                 var tomorrow = today.AddDays(1);
 
-                if (BillFlowService.GetAll().Any(u => u.Group == context.FromGroup && u.Account == context.FromQq
+                if (await BillFlowService.GetAll().AnyAsync(u => u.Group == groupNo && u.Account == account
                   && u.BillType == Data.Pikachu.Menu.BillTypes.Sign && u.CreateTime >= today && u.CreateTime < tomorrow))
                 {
                     return "已签到";
@@ -56,26 +47,26 @@ namespace GenerateMsg.GroupMsg
                 var firstDay = new DateTime(now.Year, now.Month, 1);
                 var nextMon = firstDay.AddMonths(1);
 
-                var count = BillFlowService.GetAll().Count(u=>u.Group == context.FromGroup && u.Account == context.FromQq
+                var count = await BillFlowService.GetAll().CountAsync(u=>u.Group == groupNo && u.Account == account
                  && u.BillType == Data.Pikachu.Menu.BillTypes.Sign && u.CreateTime >= firstDay && u.CreateTime < nextMon);
 
-                if (BillFlowService.GetAll().Any(u => u.Group == context.FromGroup
+                if (await BillFlowService.GetAll().AnyAsync(u => u.Group == groupNo
                    && u.BillType == Data.Pikachu.Menu.BillTypes.Sign && u.CreateTime >= today && u.CreateTime < tomorrow))
                 {
-                    amount = random.Next((count + 1) * 10);
+                    amount = _random.Next((count + 1) * 10);
                     desc = "普通签到";
                 }
                 else
                 {
-                    amount = random.Next((count + 1) * 50);
+                    amount = _random.Next((count + 1) * 50);
                     desc = "首签";
                 }
 
                 amount += 5 + now.Month;
 
-                BillFlowService.AddBill(context.FromGroup, context.FromQq, amount, amount, Data.Pikachu.Menu.BillTypes.Sign, desc);
+                await BillFlowService.AddBillAsync(groupNo, account, amount, amount, Data.Pikachu.Menu.BillTypes.Sign, desc);
 
-                MemberInfoService.ChangeAmount(context.FromGroup, context.FromQq, amount);
+                await MemberInfoService.ChangeAmountAsync(groupNo, account, amount);
 
                 return $"签到成功，此次签到共获取{amount}钻石!";
 

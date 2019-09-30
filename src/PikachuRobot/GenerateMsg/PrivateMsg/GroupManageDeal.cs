@@ -1,11 +1,11 @@
 ﻿using IServiceSupply;
-using Newbe.Mahua;
-using Newbe.Mahua.MahuaEvents;
 using Services.PikachuSystem;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace GenerateMsg.PrivateMsg
 {
@@ -15,26 +15,23 @@ namespace GenerateMsg.PrivateMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class GroupManageDeal : IPrivateMsgDeal
+    public class GroupManageDeal : IGeneratePrivateMsgDeal
     {
-
         public GroupManageDeal(GroupManageService groupManageService)
         {
             GroupManageService = groupManageService;
         }
 
-        public GroupManageService GroupManageService { get; }
+        private GroupManageService GroupManageService { get; }
 
-        public PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<PrivateRes> Run(string msg, string account, Lazy<string> getLoginAccount)
         {
-            Match match;
-
-            if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*查看群授权[\s|\n|\r]*[\s|\n|\r]*$")).Success)
+            if ("查看群授权".Equals(msg))
             {
                 StringBuilder builder = new StringBuilder();
 
-                var list = GroupManageService.GetAll().OrderByDescending(u => u.UpdateTime)
-                    .ThenByDescending(u => u.CreateTime).ToList();
+                var list = await GroupManageService.GetAll().OrderByDescending(u => u.UpdateTime)
+                    .ThenByDescending(u => u.CreateTime).ToListAsync();
 
                 if (list.Count == 0)
                 {
@@ -52,40 +49,41 @@ namespace GenerateMsg.PrivateMsg
 
                 return builder.ToString();
             }
-            else if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*添加群授权[\s|\n|\r]*(\d*)[\s|\n|\r]*$")).Success)
+
+            Match match;
+
+            if ((match = Regex.Match(msg, @"^添加群授权[\s|\n|\r]*(\d*)$")).Success)
             {
                 var info = match.Groups[1].Value;
                 if (!string.IsNullOrWhiteSpace(info))
                 {
+                    await GroupManageService.AddGroupAuthAsync(info);
 
-                    GroupManageService.AddGroupAuth(info, out var msg);
+                    StringBuilder builder = new StringBuilder();
 
-                    StringBuilder builder = new StringBuilder(msg);
-
-                    builder.AppendLine();
+                    builder.AppendLine("添加授权成功!");
                     builder.AppendLine();
                     builder.AppendLine("可使用 [取消群授权] [群号] 来取消授权");
                     builder.AppendLine("示例：取消群授权 10086");
 
                     return builder.ToString();
                 }
+
+                return null;
             }
-            else if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*取消群授权[\s|\n|\r]*(\d*)[\s|\n|\r]*$")).Success)
+
+            if ((match = Regex.Match(msg, @"^取消群授权[\s|\n|\r]*(\d*)$")).Success)
             {
                 var info = match.Groups[1].Value;
 
                 if (!string.IsNullOrWhiteSpace(info))
                 {
-                    GroupManageService.RemoveGroupAuth(info, out var msg);
-                    return msg;
-
+                    await GroupManageService.RemoveGroupAuthAsync(info);
+                    return "取消授权成功!";
                 }
-
             }
 
             return null;
         }
-
-       
     }
 }

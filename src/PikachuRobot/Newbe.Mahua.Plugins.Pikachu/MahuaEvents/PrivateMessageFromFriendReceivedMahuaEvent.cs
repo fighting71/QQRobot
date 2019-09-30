@@ -1,8 +1,10 @@
-﻿using Data.Pikachu;
+﻿using System;
+using Data.Pikachu;
 using Newbe.Mahua.MahuaEvents;
 using System.Linq;
 using IServiceSupply;
 using NLog;
+using System.Threading.Tasks;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 {
@@ -12,34 +14,43 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
     public class PrivateMessageFromFriendReceivedMahuaEvent
         : IPrivateMessageFromFriendReceivedMahuaEvent
     {
-        private static Logger _logger = LogManager.GetLogger(nameof(PrivateMessageFromFriendReceivedMahuaEvent));
+        private static readonly Logger
+            Logger = LogManager.GetLogger(nameof(PrivateMessageFromFriendReceivedMahuaEvent));
 
         private readonly IMahuaApi _mahuaApi;
+        private readonly IGeneratePrivateMsgDeal _generatePrivateMsgDeal;
 
-        private IPrivateMsgDeal _privateMsgDeal;
+        private readonly PikachuDataContext dbContext;
 
-        private PikachuDataContext dbContext;
-
-        public PrivateMessageFromFriendReceivedMahuaEvent(IMahuaApi mahuaApi, IPrivateMsgDeal privateMsgDeal, PikachuDataContext dbContext)
+        public PrivateMessageFromFriendReceivedMahuaEvent(IMahuaApi mahuaApi,
+            IGeneratePrivateMsgDeal generatePrivateMsgDeal, PikachuDataContext dbContext)
         {
             _mahuaApi = mahuaApi;
-            _privateMsgDeal = privateMsgDeal;
+            _generatePrivateMsgDeal = generatePrivateMsgDeal;
             this.dbContext = dbContext;
         }
 
         public void ProcessFriendMessage(PrivateMessageFromFriendReceivedContext context)
         {
 
-            _logger.Debug($"[receiver][private][msg][{context.FromQq}]:{context.Message}");
-
             if (dbContext.Managers.FirstOrDefault(u => u.Enable && u.Account.Equals(context.FromQq)) == null) // 非管理员
             {
                 return;
             }
 
-            var res = _privateMsgDeal.Run(context, _mahuaApi);
+            _ = Run(context);
 
-            if(res != null)
+        }
+
+        private async Task Run(PrivateMessageFromFriendReceivedContext context)
+        {
+
+            context.Message = context.Message.Trim();
+
+            var res = await _generatePrivateMsgDeal
+                .Run(context.Message, context.FromQq, (new Lazy<string>((() => _mahuaApi.GetLoginQq()))));
+
+            if (res != null)
             {
                 foreach (var item in res.Data)
                 {
@@ -48,9 +59,12 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
                     {
                         msg.Shake().Done();
                     }
+
                     msg.Text(item.Msg).Done();
                 }
             }
+
         }
+
     }
 }

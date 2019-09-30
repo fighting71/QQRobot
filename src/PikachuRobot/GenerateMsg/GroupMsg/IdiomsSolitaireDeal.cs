@@ -1,13 +1,12 @@
 ﻿using GenerateMsg.CusConst;
 using IServiceSupply;
-using Newbe.Mahua;
-using Newbe.Mahua.MahuaEvents;
+using Newtonsoft.Json;
 using Services.PikachuSystem;
 using Services.Utils;
 using StackExchange.Redis;
 using System;
-using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace GenerateMsg.GroupMsg
 {
@@ -17,72 +16,86 @@ namespace GenerateMsg.GroupMsg
     /// @source : 
     /// @des : 成语接龙
     /// </summary>
-    public class IdiomsSolitaireDeal : IGroupMsgDeal
+    public class IdiomsSolitaireDeal : IGenerateGroupMsgDeal
     {
-        private readonly IDatabase database;
-        private Random random = new Random();
+        private readonly IDatabase _database;
+        private readonly Random _random = new Random();
 
-        public IdiomsSolitaireDeal(IdiomsService idiomsService, IDatabase database, ActivityLogService activityLogService)
+        public IdiomsSolitaireDeal(IdiomsService idiomsService, IDatabase database,
+            ActivityLogService activityLogService)
         {
             IdiomsService = idiomsService;
-            this.database = database;
+            this._database = database;
             ActivityLogService = activityLogService;
         }
 
-        public IdiomsService IdiomsService { get; }
-        public ActivityLogService ActivityLogService { get; }
+        private IdiomsService IdiomsService { get; }
+        private ActivityLogService ActivityLogService { get; }
 
-        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
-            if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*成语接龙[\s|\n|\r]*$"))
+            if ("成语接龙".Equals(msg))
             {
+                var count = await IdiomsService.GetCountAsync();
 
+                var randIndex = _random.Next(count);
 
-                var count = IdiomsService.GetCount();
-
-                var randIndex = random.Next(count);
-
-                var info = IdiomsService.GetInfo(randIndex + 1);
+                var info = await IdiomsService.GetInfoAsync(randIndex + 1);
 
                 // 写入活动缓存
-                database.StringSet(CacheConst.GetGroupActivityKey(context.FromGroup), CacheConst.IdiomsSolitaire, CacheConst.GroupActivityExpiry);
+                await _database.StringSetAsync(CacheConst.GetGroupActivityKey(groupNo), CacheConst.IdiomsSolitaire,
+                    CacheConst.GroupActivityExpiry);
 
-                // 缓存尾拼
-                database.StringSet(CacheConst.GetIdiomsKey(context.FromGroup), info.LastSpell, CacheConst.GroupActivityExpiry);
+                // 缓存成语id
+                await _database.StringSetAsync(CacheConst.GetIdiomsKey(groupNo), info.Id,
+                    CacheConst.GroupActivityExpiry);
 
                 // 缓存尝试次数
-                database.StringSet(CacheConst.GetIdiomsTryCountKey(context.FromGroup), 0, CacheConst.GroupActivityExpiry);
+                await _database.StringSetAsync(CacheConst.GetIdiomsTryCountKey(groupNo), 0,
+                    CacheConst.GroupActivityExpiry);
 
                 // 添加活动日志
-                var logId = ActivityLogService.OpenActivity(context.FromGroup, Data.Pikachu.Menu.ActivityTypes.IdiomsSolitaire, DateTime.Now.Add(CacheConst.GroupActivityExpiry));
+                var logId = await ActivityLogService.OpenActivityAsync(groupNo,
+                    Data.Pikachu.Menu.ActivityTypes.IdiomsSolitaire, DateTime.Now.Add(CacheConst.GroupActivityExpiry));
 
                 // 缓存日志key
-                database.StringSet(CacheConst.GetActivityLogKey(context.FromGroup), logId, CacheConst.GroupActivityExpiry);
+                await _database.StringSetAsync(CacheConst.GetActivityLogKey(groupNo), logId,
+                    CacheConst.GroupActivityExpiry);
 
-                var timer = new Timer(state => {
+                CreateCloseTime(logId, groupNo, getLoginAccount.Value);
 
-                    ActivityLogService.CloseActivity(logId, "活动结束，自动关闭!",out var log);
-
-                    mahuaApi.SendGroupMessage(log.Group).Text($@"
->>>>>>>>>成语接龙已结束<<<<<<<<<<<<
-    成功次数:{log.SuccessCount.ToString()}
-    失败次数:{log.FailureCount.ToString()}
-希望大家再接再厉！
-").Done();
-
-                },null,CacheConst.GroupActivityExpiry,TimeSpan.Zero);
-
-                
                 return $@"
 >>>>>>>>>全员成语接龙已开启<<<<<<<<<<<<
     当前成语:{info.Word}
     尾拼:{info.LastSpell}
     成语解析:{info.Explanation}
 ";
-
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// 创建一个定时关闭活动的定时器
+        /// </summary>
+        private void CreateCloseTime(int logId, string groupNo, string loginQq)
+        {
+            _ = new Timer(state =>
+            {
+                if (ActivityLogService.CloseActivity(logId, "活动结束，自动关闭!", out var log) > 0)
+                {
+                    _database.ListLeftPush(CacheConst.GetGroupListKey(groupNo, loginQq),
+                        JsonConvert.SerializeObject(new GroupItemRes()
+                        {
+                            Msg = $@"
+>>>>>>>>>成语接龙已结束<<<<<<<<<<<<
+    成功次数:{log.SuccessCount.ToString()}
+    失败次数:{log.FailureCount.ToString()}
+希望大家再接再厉！
+"
+                        }));
+                }
+            }, null, CacheConst.GroupActivityExpiry, TimeSpan.Zero);
         }
     }
 }

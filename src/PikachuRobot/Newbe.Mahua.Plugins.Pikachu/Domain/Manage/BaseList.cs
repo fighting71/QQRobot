@@ -14,8 +14,17 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// </summary>
     public class BaseList<T>
     {
-        
+
+        protected IList<string> flagList = new List<string>();
+
         protected IList<T> list = new List<T>();
+
+        public BaseList<T> AddDeal(T deal,string flag)
+        {
+            list.Add(deal);
+            flagList.Add(flag);
+            return this;
+        }
 
         public BaseList<T> AddDeal(T deal)
         {

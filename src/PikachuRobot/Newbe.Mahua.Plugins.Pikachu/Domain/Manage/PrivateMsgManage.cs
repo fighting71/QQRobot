@@ -15,27 +15,18 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// @source : 
     /// @des : 
     /// </summary>
-    public class PrivateMsgManage : BaseList<Func<DelPrivateMsgDeal>>, IPrivateMsgDeal
+    public class PrivateMsgManage : BaseList<Func<GeneratePrivateMsgDel>>, IGeneratePrivateMsgDeal
     {
-
-        private static Logger _logger = LogManager.GetLogger(nameof(PrivateMsgManage));
-
-        public PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<PrivateRes> Run(string msg, string account, Lazy<string> getLoginAccount)
         {
-            PrivateRes res = null;
-            for (int i = 0; i < list.Count && res == null; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                try
-                {
-                    res = list[i]()(context, mahuaApi);
-                }
-                catch (Exception e)
-                {
-                    _logger.Error(e);
-                }
+                var res = await list[i]()(msg, account, getLoginAccount);
+                if (res == null) continue;
+                return res.Success ? res : null;
             }
 
-            return res;
+            return null;
         }
     }
 }

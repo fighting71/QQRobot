@@ -1,13 +1,6 @@
-﻿using Data.Pikachu;
-using IServiceSupply;
-using Newbe.Mahua;
-using Newbe.Mahua.MahuaEvents;
+﻿using IServiceSupply;
 using Services.PikachuSystem;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace GenerateMsg.GroupMsg
@@ -18,26 +11,22 @@ namespace GenerateMsg.GroupMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class MemberAmountDeal : IGroupMsgDeal
+    public class MemberAmountDeal : IGenerateGroupMsgDeal
     {
-
-
         public MemberAmountDeal(MemberInfoService memberInfoService)
         {
             MemberInfoService = memberInfoService;
         }
 
-        public MemberInfoService MemberInfoService { get; }
+        private MemberInfoService MemberInfoService { get; }
 
-        public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
-
-            if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*[查看积分|我的钱包][\s|\n|\r]*$"))
+            if ("查看积分".Equals(msg) || "我的钱包".Equals(msg))
             {
-                var memberInfo = MemberInfoService.GetInfo(context.FromGroup, context.FromQq);
+                var memberInfo = await MemberInfoService.GetInfoAsync(groupNo, account);
 
                 return $"当前余额为:{memberInfo.Amount}钻石";
-
             }
 
             return null;

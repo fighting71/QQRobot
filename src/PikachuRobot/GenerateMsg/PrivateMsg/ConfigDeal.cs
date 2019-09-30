@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using GenerateMsg.CusConst;
 using IServiceSupply;
-using Newbe.Mahua;
-using Newbe.Mahua.MahuaEvents;
 using Services.PikachuSystem;
 using StackExchange.Redis;
 
@@ -17,12 +17,11 @@ namespace GenerateMsg.PrivateMsg
     /// @source : 
     /// @des : 
     /// </summary>
-    public class ConfigCacheDeal : IPrivateMsgDeal
+    public class ConfigDeal : IGeneratePrivateMsgDeal
     {
+        private readonly IDatabase _database;
 
-        private IDatabase _database;
-
-        public ConfigCacheDeal(IDatabase database, ConfigService configService)
+        public ConfigDeal(IDatabase database, ConfigService configService)
         {
             _database = database;
             ConfigService = configService;
@@ -30,22 +29,21 @@ namespace GenerateMsg.PrivateMsg
 
         private ConfigService ConfigService { get; }
 
-        public PrivateRes Run(PrivateMessageFromFriendReceivedContext context, IMahuaApi mahuaApi)
+        public async Task<PrivateRes> Run(string msg, string account, Lazy<string> getLoginAccount)
         {
-            var key = CacheConst.GetConfigKey(context.FromQq);
+            var key = CacheConst.GetConfigKey(account);
 
-            Match match;
-            if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*配置管理[\s|\n|\r]*$"))
+            if ("配置管理".Equals(msg))
             {
                 return @"当前配置管理支持内容:
 [查看配置] [添加配置] [删除配置]
 ";
             }
 
-            if (Regex.IsMatch(context.Message, @"^[\s|\n|\r]*查看配置[\s|\n|\r]*$"))
+            if ("查看配置".Equals(msg))
             {
-                var list = ConfigService.GetAll().OrderByDescending(u => u.UpdateTime)
-                    .ThenByDescending(u => u.CreateTime).ToList();
+                var list = await ConfigService.GetAll().OrderByDescending(u => u.UpdateTime)
+                    .ThenByDescending(u => u.CreateTime).ToListAsync();
 
                 if (list.Count == 0) return "暂无配置";
 
@@ -66,43 +64,53 @@ namespace GenerateMsg.PrivateMsg
                 return builder.ToString();
             }
 
-            if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*添加配置([\s|\S]*)$")).Success)
+            Match match;
+
+            if ((match = Regex.Match(msg, @"^添加配置([\s|\S]*)$")).Success)
             {
                 var info = match.Groups[1].Value;
                 if (string.IsNullOrWhiteSpace(info))
                 {
                     // 添加标记
-                    if (_database.StringSet(key, CacheConst.AddFlag, CacheConst.PrivateOptExpiry))
-                    {
-                        return "请按照此格式填写你要添加的配置:[配置key]|[配置value]|[配置描述](请注意内容中不要使用'|')";
-                    }
+                    _database.StringSet(key, CacheConst.AddFlag, CacheConst.PrivateOptExpiry);
 
-                    return "缓存key失败！";
+                    return "请按照此格式填写你要添加的配置:[配置key]|[配置value]|[配置描述](请注意内容中不要使用'|')";
                 }
-                ConfigService.AddInfo(info, out var msg);
-                return msg;
+
+                return await AddInfo(info);
             }
 
-            if ((match = Regex.Match(context.Message, @"^[\s|\n|\r]*删除配置([\s|\S]*)$")).Success)
+            if ((match = Regex.Match(msg, @"^删除配置([\s|\S]*)$")).Success)
             {
                 var info = match.Groups[1].Value;
                 if (string.IsNullOrWhiteSpace(info))
                 {
                     // 添加标记
-                    if (_database.StringSet(key, CacheConst.RemoveFlag, CacheConst.PrivateOptExpiry))
-                    {
-                        return "请输入你要删除的'配置key':";
-                    }
-
-                    return "缓存key失败！";
+                    _database.StringSet(key, CacheConst.RemoveFlag, CacheConst.PrivateOptExpiry);
+                    
+                    return "请输入你要删除的'配置key':";
                 }
 
-                ConfigService.RemoveKey(info.Trim(),out var msg);
-                return msg;
+                await ConfigService.RemoveKeyAsync(info.Trim());
+                return "删除成功！";
             }
 
             return null;
         }
 
+        private async Task<string> AddInfo(string msg)
+        {
+            var info = msg.Split('|');
+
+            if (info.Length != 3)
+                return "   输入格式有误！";
+
+            if (string.IsNullOrWhiteSpace(info[0]))
+                return "   配置key不能为空！";
+
+            await ConfigService.AddInfoAsync(info[0].Trim(), info[1], info[2]);
+
+            return "添加成功!";
+        }
     }
 }

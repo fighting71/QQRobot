@@ -66,5 +66,53 @@ namespace Services.PikachuSystem
             msg = "添加授权成功!";
         }
 
+        
+        /// <summary>
+        /// 添加群授权
+        /// </summary>
+        /// <param name="groupNo"></param>
+        public async Task AddGroupAuthAsync(string groupNo)
+        {
+
+            var old = PikachuDataContext.GroupAuths.FirstOrDefault(u => u.GroupNo.Equals(groupNo));
+
+            if (old != null)
+            {
+                old.Enable = true;
+                old.UpdateTime = DateTime.Now;
+            }
+            else
+            {
+                PikachuDataContext.GroupAuths.Add(new GroupAuth()
+                {
+                    GroupNo = groupNo,
+                    UpdateTime = DateTime.Now,
+                    Enable = true
+                });
+                ;
+            }
+
+            await PikachuDataContext.SaveChangesAsync();
+
+        }
+        
+        /// <summary>
+        /// 取消群授权
+        /// </summary>
+        /// <param name="groupNo"></param>
+        public async Task RemoveGroupAuthAsync(string groupNo)
+        {
+
+            var old = PikachuDataContext.GroupAuths.FirstOrDefault(u => u.GroupNo.Equals(groupNo));
+
+            if (old != null)
+            {
+                old.Enable = false;
+                old.UpdateTime = DateTime.Now;
+                await PikachuDataContext.SaveChangesAsync();
+            }
+
+        }
+        
     }
 }

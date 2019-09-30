@@ -42,5 +42,22 @@ namespace Services.PikachuSystem
 
         }
 
+        public Task<int> AddBillAsync(string group,string account,decimal amount,decimal actualAmount, BillTypes type,string desc)
+        {
+            PikachuDataContext.BillFlows.Add(new Data.Pikachu.Models.BillFlow()
+            {
+                Account = account,
+                Amount = amount,
+                ActualAmount = actualAmount,
+                BillType = type,
+                Group = group,
+                Description = desc,
+                Enable = true,
+            });
+
+            return PikachuDataContext.SaveChangesAsync();
+
+        }
+        
     }
 }
