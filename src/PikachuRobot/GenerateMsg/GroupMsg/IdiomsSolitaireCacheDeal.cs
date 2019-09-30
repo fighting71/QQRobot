@@ -26,17 +26,20 @@ namespace GenerateMsg.GroupMsg
         private readonly IDatabase database;
         private Random random = new Random();
 
-        public IdiomsSolitaireCacheDeal(IdiomsService idiomsService, IDatabase database, BillFlowService billFlowService, MemberInfoService memberInfoService)
+        public IdiomsSolitaireCacheDeal(IdiomsService idiomsService, IDatabase database, BillFlowService billFlowService
+            , MemberInfoService memberInfoService, ActivityLogService activityLogService)
         {
             IdiomsService = idiomsService;
             this.database = database;
             BillFlowService = billFlowService;
             MemberInfoService = memberInfoService;
+            ActivityLogService = activityLogService;
         }
 
         public IdiomsService IdiomsService { get; }
         public BillFlowService BillFlowService { get; }
         public MemberInfoService MemberInfoService { get; }
+        public ActivityLogService ActivityLogService { get; }
 
         public GroupRes Run(GroupMessageReceivedContext context, IMahuaApi mahuaApi)
         {
@@ -45,8 +48,11 @@ namespace GenerateMsg.GroupMsg
 
             var groupActivity = database.StringGet(activityKey);
 
+
             if (CacheConst.IdiomsSolitaire.Equals(groupActivity))
             {
+
+                var logId = int.Parse(database.StringGet(CacheConst.GetActivityLogKey(context.FromGroup)));
 
                 // 增加尝试次数
                 var tryCount = database.StringIncrement(CacheConst.GetIdiomsTryCountKey(context.FromGroup));
@@ -55,25 +61,27 @@ namespace GenerateMsg.GroupMsg
 
                 if (word.Length != 4)
                 {
-                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "输入格式有误！" }, GetTryCountRes(tryCount, activityKey));
+                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "输入格式有误！" }, GetTryCountRes(tryCount, activityKey, logId));
                 }
 
                 var info = IdiomsService.GetInfo(word);
 
-                if(info == null)
+                if (info == null)
                 {
-                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "词语输入有误！" }, GetTryCountRes(tryCount, activityKey));
+                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "词语输入有误！" }, GetTryCountRes(tryCount, activityKey, logId));
                 }
 
                 var spell = database.StringGet(CacheConst.GetIdiomsKey(context.FromGroup));
 
                 if (!spell.Equals(info.FirstSpell))
                 {
-                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "你输入的词语并不能接上呢！" }, GetTryCountRes(tryCount, activityKey));
+                    return GroupRes.GetSuccess(new GroupItemRes() { AtTa = true, Msg = "你输入的词语并不能接上呢！" }, GetTryCountRes(tryCount, activityKey, logId));
                 }
 
                 // 积分奖励
                 var amount = random.Next(100) + 5;
+
+                ActivityLogService.AddSuccessCount(logId);
 
                 BillFlowService.AddBill(context.FromGroup, context.FromQq, amount, amount, Data.Pikachu.Menu.BillTypes.Reward, "成语接龙奖励");
 
@@ -100,14 +108,25 @@ namespace GenerateMsg.GroupMsg
             return null;
         }
 
-        public string GetTryCountRes(long tryCount,string activityKey)
+        public string GetTryCountRes(long tryCount, string activityKey, int logId)
         {
 
-            if(tryCount > RuleConst.IdiomsMaxTryCount)
+            ActivityLogService.AddFailureCount(logId);
+
+            if (tryCount == RuleConst.IdiomsMaxTryCount)
             {
                 // 移除活动缓存
                 database.KeyDelete(CacheConst.GetIdiomsKey(activityKey));
-                return "尝试次数已用完，欢迎下次再来挑战!";
+
+                ActivityLogService.CloseActivity(logId, "活动结束，挑战次数使用完毕!", out var log);
+
+                return $@"
+>>>>>>>>>尝试次数已用完，欢迎下次再来挑战!<<<<<<<<<<<<
+本次挑战成果:
+    成功次数:{log.SuccessCount.ToString()}
+    失败次数:{log.FailureCount.ToString()}
+希望大家再接再厉！
+";
             }
             else
             {

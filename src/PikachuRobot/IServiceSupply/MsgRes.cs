@@ -21,7 +21,7 @@ namespace IServiceSupply
 
     }
 
-    public class GroupRes : MsgRes<IEnumerable<GroupItemRes>>
+    public class GroupRes : MsgRes<IList<GroupItemRes>>
     {
         public static GroupRes Failure = new GroupRes();
 
@@ -30,7 +30,7 @@ namespace IServiceSupply
             return new GroupRes { Success = true, Data = data };
         }
 
-        public static GroupRes GetSuccess(IEnumerable<GroupItemRes> data)
+        public static GroupRes GetSuccess(IList<GroupItemRes> data)
         {
             return new GroupRes { Success = true, Data = data };
         }
@@ -52,7 +52,7 @@ namespace IServiceSupply
 
     }
 
-    public class PrivateRes : MsgRes<IEnumerable<PrivateItemRes>>
+    public class PrivateRes : MsgRes<IList<PrivateItemRes>>
     {
 
         public static PrivateRes GetSingleSuccess(PrivateItemRes info)
