@@ -15,7 +15,7 @@ namespace GenerateMsg.PrivateMsg
     /// @auth : monster
     /// @since : 2019/9/23 10:35:17
     /// @source : 
-    /// @des : 
+    /// @des : 配置设置
     /// </summary>
     public class ConfigDeal : IGeneratePrivateMsgDeal
     {
@@ -72,7 +72,7 @@ namespace GenerateMsg.PrivateMsg
                 if (string.IsNullOrWhiteSpace(info))
                 {
                     // 添加标记
-                    _database.StringSet(key, CacheConst.AddFlag, CacheConst.PrivateOptExpiry);
+                    _database.StringSet(key, CacheConst.AddFlag, RuleConst.PrivateOptExpiry);
 
                     return "请按照此格式填写你要添加的配置:[配置key]|[配置value]|[配置描述](请注意内容中不要使用'|')";
                 }
@@ -86,7 +86,7 @@ namespace GenerateMsg.PrivateMsg
                 if (string.IsNullOrWhiteSpace(info))
                 {
                     // 添加标记
-                    _database.StringSet(key, CacheConst.RemoveFlag, CacheConst.PrivateOptExpiry);
+                    _database.StringSet(key, CacheConst.RemoveFlag, RuleConst.PrivateOptExpiry);
                     
                     return "请输入你要删除的'配置key':";
                 }

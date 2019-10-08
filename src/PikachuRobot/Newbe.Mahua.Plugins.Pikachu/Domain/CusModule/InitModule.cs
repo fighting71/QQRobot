@@ -25,7 +25,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
     /// @auth : monster
     /// @since : 2019/9/20 15:09:34
     /// @source : 
-    /// @des : 
+    /// @des : 自定义配置module
     /// </summary>
     public class InitModule : Module
     {
@@ -63,6 +63,30 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
                 builder.Register(context => InitGroupMsgManage()).SingleInstance();
                 builder.Register(context => InitPrivateMsgManage()).SingleInstance();
+
+                //builder.Register(context => Get<PikachuDataContext>());
+                builder.Register(context => Get<PetContext>());
+                builder.Register(context => Get<UtilsContext>());
+                builder.RegisterType<PetService>();
+                builder.RegisterType<UserPetService>();
+                
+                builder.RegisterType<BillFlowService>();
+                builder.RegisterType<ConfigService>();
+                builder.RegisterType<GroupConfigService>();
+                builder.RegisterType<GroupManageService>();
+                builder.RegisterType<GroupMsgCopyService>();
+                builder.RegisterType<ManageService>();
+                builder.RegisterType<MemberInfoService>();
+                
+                builder.RegisterType<IdiomsService>();
+                
+                builder.RegisterType<ConfigCacheDeal>();
+                builder.RegisterType<ConfigDeal>();
+                builder.RegisterType<GroupManageDeal>();
+                builder.RegisterType<GroupMsgCopyDeal>();
+
+                builder.RegisterType<DIPrivateManage>();
+
             }
             catch (System.Exception e)
             {
@@ -70,6 +94,10 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             }
         }
 
+        /// <summary>
+        /// 初始化私聊消息处理管道
+        /// </summary>
+        /// <returns></returns>
         private IGeneratePrivateMsgDeal InitPrivateMsgManage()
         {
             PrivateMsgManage manage = new PrivateMsgManage();
@@ -78,7 +106,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                 .AddDeal(
                     () => new ConfigCacheDeal(GetDatabase(), new ConfigService(
                         Get<PikachuDataContext>()
-                    )).Run,nameof(ConfigCacheDeal))
+                    )).Run, nameof(ConfigCacheDeal))
                 .AddDeal(() => new ConfigDeal(GetDatabase(), new ConfigService(
                     Get<PikachuDataContext>()
                 )).Run, nameof(ConfigDeal))
@@ -101,18 +129,27 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             return manage;
         }
 
-
+        /// <summary>
+        /// 初始化群聊消息处理管道
+        /// </summary>
+        /// <returns></returns>
         private IGenerateGroupMsgDeal InitGroupMsgManage()
         {
             GroupMsgManage manage = new GroupMsgManage();
 
             manage
+                .AddDeal((() => new AddPetCacheDeal(
+                    GetDatabase(),new UserPetService(Get<PetContext>()),
+                    new MemberInfoService(Get<PikachuDataContext>()),new PetService(Get<PetContext>()) ,
+                    new BillFlowService(Get<PikachuDataContext>())
+                    ).Run))
                 .AddDeal(() => new IdiomsSolitaireCacheDeal(
                     new IdiomsService(Get<UtilsContext>()),
                     GetDatabase(),
                     new BillFlowService(Get<PikachuDataContext>()),
                     new MemberInfoService(Get<PikachuDataContext>()),
-                    new ActivityLogService(Get<PikachuDataContext>())
+                    new ActivityLogService(Get<PikachuDataContext>()),
+                    new ManageService(Get<PikachuDataContext>())
                 ).Run)
                 .AddDeal(() => new IdiomsSolitaireDeal(
                     new IdiomsService(Get<UtilsContext>()),
@@ -123,7 +160,10 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                 .AddDeal(() => new SignDeal(new BillFlowService(Get<PikachuDataContext>()),
                     new MemberInfoService(Get<PikachuDataContext>())).Run)
                 .AddDeal(() =>
-                    new PetDeal(new PetService(new PetContext()), new MemberInfoService(Get<PikachuDataContext>())).Run)
+                    new PetDeal(
+                        new PetService(new PetContext()), new MemberInfoService(Get<PikachuDataContext>()),
+                        new UserPetService(Get<PetContext>()), GetDatabase()
+                    ).Run)
                 .AddDeal(() => new GroupConfigDeal(
                     new ManageService(Get<PikachuDataContext>()),
                     new GroupConfigService(Get<PikachuDataContext>())
@@ -135,7 +175,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                         var info = await Get<PikachuDataContext>().GroupConfigs.FirstOrDefaultAsync(u =>
                             u.Enable && u.GetGroupConfigType == GroupConfigTypes.DefaultConfirm
                                      && u.Account.Equals(loginQq) && u.Group.Equals(groupNo));
-                        
+
                         return info?.Value;
                     }
                 );

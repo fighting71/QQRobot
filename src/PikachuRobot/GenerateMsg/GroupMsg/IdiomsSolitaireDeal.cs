@@ -1,6 +1,7 @@
 ﻿using GenerateMsg.CusConst;
 using IServiceSupply;
 using Newtonsoft.Json;
+using NLog;
 using Services.PikachuSystem;
 using Services.Utils;
 using StackExchange.Redis;
@@ -18,6 +19,9 @@ namespace GenerateMsg.GroupMsg
     /// </summary>
     public class IdiomsSolitaireDeal : IGenerateGroupMsgDeal
     {
+
+        private static readonly Logger Logger = LogManager.GetLogger(nameof(IdiomsSolitaireDeal));
+
         private readonly IDatabase _database;
         private readonly Random _random = new Random();
 
@@ -44,23 +48,23 @@ namespace GenerateMsg.GroupMsg
 
                 // 写入活动缓存
                 await _database.StringSetAsync(CacheConst.GetGroupActivityKey(groupNo), CacheConst.IdiomsSolitaire,
-                    CacheConst.GroupActivityExpiry);
+                    RuleConst.GroupActivityExpiry);
 
                 // 缓存成语id
                 await _database.StringSetAsync(CacheConst.GetIdiomsKey(groupNo), info.Id,
-                    CacheConst.GroupActivityExpiry);
+                    RuleConst.GroupActivityExpiry);
 
                 // 缓存尝试次数
                 await _database.StringSetAsync(CacheConst.GetIdiomsTryCountKey(groupNo), 0,
-                    CacheConst.GroupActivityExpiry);
+                    RuleConst.GroupActivityExpiry);
 
                 // 添加活动日志
                 var logId = await ActivityLogService.OpenActivityAsync(groupNo,
-                    Data.Pikachu.Menu.ActivityTypes.IdiomsSolitaire, DateTime.Now.Add(CacheConst.GroupActivityExpiry));
+                    Data.Pikachu.Menu.ActivityTypes.IdiomsSolitaire, DateTime.Now.Add(RuleConst.GroupActivityExpiry));
 
                 // 缓存日志key
                 await _database.StringSetAsync(CacheConst.GetActivityLogKey(groupNo), logId,
-                    CacheConst.GroupActivityExpiry);
+                    RuleConst.GroupActivityExpiry);
 
                 CreateCloseTime(logId, groupNo, getLoginAccount.Value);
 
@@ -80,8 +84,12 @@ namespace GenerateMsg.GroupMsg
         /// </summary>
         private void CreateCloseTime(int logId, string groupNo, string loginQq)
         {
-            _ = new Timer(state =>
+
+            // 使用线程池开启工作项替代timer
+            ThreadPool.QueueUserWorkItem((state =>
             {
+                Thread.Sleep(RuleConst.GroupActivityExpiry);
+                
                 if (ActivityLogService.CloseActivity(logId, "活动结束，自动关闭!", out var log) > 0)
                 {
                     _database.ListLeftPush(CacheConst.GetGroupListKey(groupNo, loginQq),
@@ -95,7 +103,8 @@ namespace GenerateMsg.GroupMsg
 "
                         }));
                 }
-            }, null, CacheConst.GroupActivityExpiry, TimeSpan.Zero);
+                
+            }));
         }
     }
 }

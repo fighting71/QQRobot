@@ -31,15 +31,10 @@ namespace GenerateMsg.CusConst
         public const string IdiomsSolitaire = nameof(IdiomsSolitaire);
 
         /// <summary>
-        /// 私聊操作时长
+        /// 添加宠物标识
         /// </summary>
-        public readonly static TimeSpan PrivateOptExpiry = TimeSpan.FromSeconds(30);
-
-        /// <summary>
-        /// 群活动操作时长
-        /// </summary>
-        public readonly static TimeSpan GroupActivityExpiry = TimeSpan.FromMinutes(5);
-
+        public const string AddPet = nameof(AddPet);
+        
         /// <summary>
         /// 获取配置key
         /// </summary>
@@ -100,5 +95,17 @@ namespace GenerateMsg.CusConst
             return $"Group_List_{group}_{account}";
         }
 
+        /// <summary>
+        /// 获取成员操作key
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="group"></param>
+        /// <param name="flag"></param>
+        /// <returns></returns>
+        public static string GetMemberOptKey(string account,string group,string flag)
+        {
+            return $"Member_Opt_{account}_{group}_{flag}";
+        }
+        
     }
 }

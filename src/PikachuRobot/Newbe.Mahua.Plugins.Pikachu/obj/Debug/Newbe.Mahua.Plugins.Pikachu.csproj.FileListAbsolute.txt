@@ -129,14 +129,4 @@ D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.P
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.Utils.pdb
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.Utils.dll.config
 D:\git\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\StackExchange.Redis.xml
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\MySql.Data.dll
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.Pikachu.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.Utils.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\GenerateMsg.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Data.PetSystem.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.PetSystem.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.PikachuSystem.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Services.Utils.dll.config
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojAssemblyReference.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csproj.CoreCompileInputs.cache
-G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csproj.CopyComplete
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojResolveAssemblyReference.cache

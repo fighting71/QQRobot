@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201909240403044_Little2.Designer.cs">
       <DependentUpon>201909240403044_Little2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910080807161_Little1.cs" />
+    <Compile Include="Migrations\201910080807161_Little1.Designer.cs">
+      <DependentUpon>201910080807161_Little1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\PetInfo.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909240403044_Little2.resx">
       <DependentUpon>201909240403044_Little2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910080807161_Little1.resx">
+      <DependentUpon>201910080807161_Little1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,7 +12,7 @@ namespace GenerateMsg.GroupMsg
     /// @auth : monster
     /// @since : 2019/9/26 16:59:15
     /// @source : 
-    /// @des : 
+    /// @des : 成语接龙处理[考虑缓存]
     /// </summary>
     public class IdiomsSolitaireCacheDeal : IGenerateGroupMsgDeal
     {
@@ -20,19 +20,21 @@ namespace GenerateMsg.GroupMsg
         private readonly Random _random = new Random();
 
         public IdiomsSolitaireCacheDeal(IdiomsService idiomsService, IDatabase database, BillFlowService billFlowService
-            , MemberInfoService memberInfoService, ActivityLogService activityLogService)
+            , MemberInfoService memberInfoService, ActivityLogService activityLogService, ManageService manageService)
         {
             IdiomsService = idiomsService;
             this._database = database;
             BillFlowService = billFlowService;
             MemberInfoService = memberInfoService;
             ActivityLogService = activityLogService;
+            ManageService = manageService;
         }
 
         private IdiomsService IdiomsService { get; }
         private BillFlowService BillFlowService { get; }
         private MemberInfoService MemberInfoService { get; }
         private ActivityLogService ActivityLogService { get; }
+        public ManageService ManageService { get; }
 
         public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
@@ -42,6 +44,7 @@ namespace GenerateMsg.GroupMsg
 
             if (CacheConst.IdiomsSolitaire.Equals(groupActivity))
             {
+
                 var idiomsKey = CacheConst.GetIdiomsKey(groupNo);
                 var idiomsTryCountKey = CacheConst.GetIdiomsTryCountKey(groupNo);
 
@@ -55,6 +58,23 @@ namespace GenerateMsg.GroupMsg
                     await _database.KeyDeleteAsync(activityKey);
 
                     return "成语接龙活动已关闭!";
+                }
+
+
+                if ("关闭活动".Equals(msg) && await ManageService.IsManageAsync(account))// 管理员主动结束活动.
+                {
+                    // 移除活动缓存
+                    await _database.KeyDeleteAsync(activityKey);
+
+                    var log = await ActivityLogService.CloseActivityAsync(logId, "活动结束，管理员主动结束活动!");
+
+                    return $@"
+>>>>>>>>>本次活动已结束，欢迎下次再来挑战!<<<<<<<<<<<<
+本次挑战成果:
+    成功次数:{log.SuccessCount.ToString()}
+    失败次数:{log.FailureCount.ToString()}
+希望大家再接再厉！
+";
                 }
 
                 // 增加尝试次数
@@ -102,11 +122,11 @@ namespace GenerateMsg.GroupMsg
                 await MemberInfoService.ChangeAmountAsync(groupNo, account, amount);
 
                 // 重新缓存
-                await _database.StringSetAsync(idiomsKey, info.Id, CacheConst.GroupActivityExpiry);
+                await _database.StringSetAsync(idiomsKey, info.Id, RuleConst.GroupActivityExpiry);
 
                 // 重新缓存
                 await _database.StringSetAsync(idiomsTryCountKey, 0,
-                    CacheConst.GroupActivityExpiry);
+                    RuleConst.GroupActivityExpiry);
 
 
                 return GroupRes.GetSuccess(new GroupItemRes() {AtTa = true, Msg = $"   恭喜你获得{amount.ToString()}钻石奖励！"},

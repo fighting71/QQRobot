@@ -100,6 +100,7 @@
         </e>
         <e p="GenerateMsg.csproj" t="IncludeRecursive" />
         <e p="GroupMsg" t="Include">
+          <e p="AddPetCacheDeal.cs" t="Include" />
           <e p="GroupConfigDeal.cs" t="Include" />
           <e p="IdiomsSolitaireCacheDeal.cs" t="Include" />
           <e p="IdiomsSolitaireDeal.cs" t="Include" />
@@ -148,6 +149,9 @@
           <e p="201909240403044_Little2.cs" t="Include" />
           <e p="201909240403044_Little2.Designer.cs" t="Include" />
           <e p="201909240403044_Little2.resx" t="Include" />
+          <e p="201910080807161_Little1.cs" t="Include" />
+          <e p="201910080807161_Little1.Designer.cs" t="Include" />
+          <e p="201910080807161_Little1.resx" t="Include" />
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -243,6 +247,7 @@
             <e p="AssemblyInfo.cs" t="Include" />
           </e>
           <e p="Services.PetSystem.csproj" t="IncludeRecursive" />
+          <e p="UserPetService.cs" t="Include" />
         </e>
         <e p="Services.PikachuSystem" t="IncludeRecursive">
           <e p="ActivityLogService.cs" t="Include" />

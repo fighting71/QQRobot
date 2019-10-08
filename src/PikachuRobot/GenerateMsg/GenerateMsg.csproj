@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="CusConst\CacheConst.cs" />
     <Compile Include="CusConst\RuleConst.cs" />
+    <Compile Include="GroupMsg\AddPetCacheDeal.cs" />
     <Compile Include="GroupMsg\GroupConfigDeal.cs" />
     <Compile Include="GroupMsg\IdiomsSolitaireCacheDeal.cs" />
     <Compile Include="GroupMsg\IdiomsSolitaireDeal.cs" />

@@ -109,6 +109,7 @@
     <Compile Include="Domain\Factory\InstanceFactory.cs" />
     <Compile Include="Domain\Factory\ThreadInstanceFactory.cs" />
     <Compile Include="Domain\Manage\BaseList.cs" />
+    <Compile Include="Domain\Manage\DIPrivateManage.cs" />
     <Compile Include="Domain\Manage\GroupMsgManage.cs" />
     <Compile Include="Domain\Manage\PrivateMsgManage.cs" />
     <Compile Include="Domain\Middleware\ConfigMiddleware.cs" />

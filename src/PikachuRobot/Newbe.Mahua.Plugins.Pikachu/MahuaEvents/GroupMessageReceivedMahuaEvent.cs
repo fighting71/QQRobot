@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
 using Data.Pikachu;
 using GenerateMsg.CusConst;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Newtonsoft.Json;
 using NLog;
 using StackExchange.Redis;
@@ -19,6 +21,9 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
     public class GroupMessageReceivedMahuaEvent
         : IGroupMessageReceivedMahuaEvent
     {
+        public IContainer Container { get; }
+        public DIPrivateManage DIPrivateManage { get; }
+
         private static readonly Logger Logger = LogManager.GetLogger(nameof(GroupMessageReceivedMahuaEvent));
 
         private readonly IMahuaApi _mahuaApi;
@@ -26,18 +31,24 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
         private readonly PikachuDataContext _dbContext;
         private readonly IDatabase _database;
+        private readonly IMahuaRobotManager _robotManager;
 
         public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, IGenerateGroupMsgDeal generateGroupMsgDeal,
-            PikachuDataContext dbContext, IDatabase database)
+            PikachuDataContext dbContext, IDatabase database, IMahuaRobotManager robotManager, DIPrivateManage dIPrivateManage)
         {
             _mahuaApi = mahuaApi;
+            //_mahuaApi = robotManager.CreateSession(mahuaApi.GetLoginQq()).MahuaApi;
             _generateGroupMsgDeal = generateGroupMsgDeal;
             this._dbContext = dbContext;
             this._database = database;
+            _robotManager = robotManager;
+            DIPrivateManage = dIPrivateManage;
         }
 
         public void ProcessGroupMessage(GroupMessageReceivedContext context)
         {
+
+            
             Logger.Debug($"[receiver][group][msg][{context.FromGroup}]:{context.Message}");
 
             var loginQq = _mahuaApi.GetLoginQq();
@@ -49,18 +60,16 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
             if (!_dbContext.GroupAuths.Any(u => u.Enable && u.GroupNo.Equals(context.FromGroup))) // 群号尚未授权
                 return;
 
-            if (context.Message.Contains($"[@{loginQq}]"))
-            {
-                context.Message = context.Message.Replace($"[@{loginQq}]", "").Trim();
+            //if (context.Message.Contains($"[@{loginQq}]"))
+            //{
+            //    context.Message = context.Message.Replace($"[@{loginQq}]", "").Trim();
 
-                // mmp 底层做了释放处理 走异步会面临 mahuaApi被释放问题
-                // emm... 
-                Run(context, loginQq).Wait();
-            }
-            else
-            {
-                _mahuaApi.SendGroupMessage(context.FromGroup).Text(context.Message).Done();
-            }
+            Run(context, loginQq).Wait();
+            //}
+            //else
+            //{
+            //    _mahuaApi.SendGroupMessage(context.FromGroup).Text(context.Message).Done();
+            //}
         }
 
         /// <summary>
@@ -108,6 +117,20 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         {
             context.Message = context.Message.Trim();
 
+            if ("定时消息".Equals(context.Message))
+            {
+                ThreadPool.QueueUserWorkItem((state =>
+                {
+                    
+                    Thread.Sleep(TimeSpan.FromSeconds(5));
+                    
+                    _robotManager.CreateSession(loginQq).MahuaApi.SendGroupMessage(context.FromGroup)
+                        .Text("发送定时消息!").Done();
+                }));
+                
+                return;
+            }
+
             var res = await _generateGroupMsgDeal
                 .Run(context.Message, context.FromQq, context.FromGroup,
                     (new Lazy<string>((() => loginQq))));
@@ -119,12 +142,10 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
                     SendMsg(item, context.FromGroup, context.FromQq);
                 }
             }
-
         }
 
         private void SendMsg(GroupItemRes item, string group, string account)
         {
-
             var msg = _mahuaApi.SendGroupMessage(group);
             if (item.AtAll)
             {

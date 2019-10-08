@@ -18,20 +18,24 @@ namespace Services.PetSystem
         {
         }
 
-        public PetInfo GetInfoByName (string name)
+        public PetInfo GetInfoByName(string name)
         {
             return PetContext.PetInfos.FirstOrDefault(u => u.Enable && u.Name.Equals(name));
         }
 
-        public Task<PetInfo> GetInfoByNameAsync (string name)
+        public Task<PetInfo> GetInfoByNameAsync(string name)
         {
             return PetContext.PetInfos.FirstOrDefaultAsync(u => u.Enable && u.Name.Equals(name));
         }
-        
+
         public IQueryable<PetInfo> GetAll()
         {
             return PetContext.PetInfos.Where(u => u.Enable);
         }
 
+        public Task<PetInfo> GetAsync(int id)
+        {
+            return PetContext.PetInfos.FirstOrDefaultAsync(u => u.Enable && u.Id == id);
+        }
     }
 }

@@ -18,6 +18,16 @@ namespace Data.PetSystem.Models
 
 
         /// <summary>
+        /// 名称
+        /// </summary>
+        public string Name { get; set; }
+        
+        /// <summary>
+        /// 昵称
+        /// </summary>
+        public string NickName { get; set; }
+        
+        /// <summary>
         /// 是否有效
         /// </summary>
         public bool Enable { get; set; }
@@ -39,7 +49,12 @@ namespace Data.PetSystem.Models
         /// <summary>
         /// 宠物主人
         /// </summary>
-        public string Owner { get; set; }
+        public string Account { get; set; }
+
+        /// <summary>
+        /// 所属群
+        /// </summary>
+        public string Group { get; set; }
 
         /// <summary>
         /// 健康值

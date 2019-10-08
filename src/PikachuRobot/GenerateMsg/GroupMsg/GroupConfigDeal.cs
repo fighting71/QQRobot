@@ -11,7 +11,7 @@ namespace GenerateMsg.GroupMsg
     /// @auth : monster
     /// @since : 2019/9/25 14:11:38
     /// @source : 
-    /// @des : 
+    /// @des : 群配置
     /// </summary>
     public class GroupConfigDeal : IGenerateGroupMsgDeal
     {

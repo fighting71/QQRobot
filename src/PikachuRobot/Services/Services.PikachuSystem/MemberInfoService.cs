@@ -37,7 +37,7 @@ namespace Services.PikachuSystem
         }
 
         /// <summary>
-        /// 修改成语账户
+        /// 修改成员账户
         /// </summary>
         /// <param name="group"></param>
         /// <param name="account"></param>

@@ -13,7 +13,7 @@ namespace GenerateMsg.PrivateMsg
     /// @auth : monster
     /// @since : 2019/9/23 16:40:05
     /// @source : 
-    /// @des : 
+    /// @des : 群转载
     /// </summary>
     public class GroupMsgCopyDeal : IGeneratePrivateMsgDeal
     {

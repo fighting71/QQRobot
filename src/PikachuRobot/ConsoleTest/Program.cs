@@ -40,11 +40,26 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
 
-            TestCache();
+            Task.Run(() => {
+                TestTimer();
+            });
 
             Console.WriteLine("Hello World");
 
             Console.ReadKey(true);
+        }
+
+        public static void TestTimer()
+        {
+            _ = new Timer(state =>
+            {
+                Console.WriteLine("test timer~");
+            }, null, 60000,-1);
+
+            _ = new Timer(state =>
+            {
+                Console.WriteLine("test timer 2~");
+            }, null, TimeSpan.FromSeconds(60), TimeSpan.Zero);
         }
 
         /// <summary>

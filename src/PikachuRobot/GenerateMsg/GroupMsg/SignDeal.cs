@@ -10,7 +10,7 @@ namespace GenerateMsg.GroupMsg
     /// @auth : monster
     /// @since : 2019/9/25 16:52:54
     /// @source : 
-    /// @des : 
+    /// @des : 签到
     /// </summary>
     public class SignDeal : IGenerateGroupMsgDeal
     {

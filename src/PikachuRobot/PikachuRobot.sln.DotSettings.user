@@ -1,6 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
-  &lt;Assembly Path="G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\packages\Newbe.Mahua.PluginLoader.1.15.1\lib\net452\Newbe.Mahua.PluginLoader.dll" /&gt;&#xD;
   &lt;Assembly Path="G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\packages\Newbe.Mahua.1.16.1\lib\net452\Newbe.Mahua.dll" /&gt;&#xD;
   &lt;Assembly Path="G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\MPQ\Newbe.Mahua.MPQ.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>

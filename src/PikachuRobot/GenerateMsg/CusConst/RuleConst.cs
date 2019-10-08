@@ -20,5 +20,15 @@ namespace GenerateMsg.CusConst
         /// </summary>
         public const long IdiomsMaxTryCount = 6;
 
+        /// <summary>
+        /// 私聊操作时长
+        /// </summary>
+        public static readonly TimeSpan PrivateOptExpiry = TimeSpan.FromSeconds(30);
+
+        /// <summary>
+        /// 群活动操作时长
+        /// </summary>
+        public static readonly TimeSpan GroupActivityExpiry = TimeSpan.FromMinutes(5);
+
     }
 }
