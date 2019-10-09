@@ -148,6 +148,11 @@ namespace Services.PikachuSystem
 
             await PikachuDataContext.SaveChangesAsync();
         }
+
+        public Task<ConfigInfo> Get(string key)
+        {
+            return PikachuDataContext.ConfigInfos.FirstOrDefaultAsync(u => u.Enable && u.Key == key);
+        }
         
     }
 }

@@ -11,6 +11,7 @@ using Newbe.Mahua.MahuaEvents;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Newtonsoft.Json;
 using NLog;
+using Services.PikachuSystem;
 using StackExchange.Redis;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
@@ -22,32 +23,31 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         : IGroupMessageReceivedMahuaEvent
     {
         public IContainer Container { get; }
-        public DIPrivateManage DIPrivateManage { get; }
+        public GroupAuthService GroupAuthService { get; }
+        public GroupMsgCopyService GroupMsgCopyService { get; }
 
         private static readonly Logger Logger = LogManager.GetLogger(nameof(GroupMessageReceivedMahuaEvent));
 
         private readonly IMahuaApi _mahuaApi;
         private readonly IGenerateGroupMsgDeal _generateGroupMsgDeal;
 
-        private readonly PikachuDataContext _dbContext;
         private readonly IDatabase _database;
         private readonly IMahuaRobotManager _robotManager;
 
         public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, IGenerateGroupMsgDeal generateGroupMsgDeal,
-            PikachuDataContext dbContext, IDatabase database, IMahuaRobotManager robotManager, DIPrivateManage dIPrivateManage)
+            GroupAuthService groupAuthService,GroupMsgCopyService groupMsgCopyService, IDatabase database, IMahuaRobotManager robotManager)
         {
             _mahuaApi = mahuaApi;
             //_mahuaApi = robotManager.CreateSession(mahuaApi.GetLoginQq()).MahuaApi;
             _generateGroupMsgDeal = generateGroupMsgDeal;
-            this._dbContext = dbContext;
+            GroupAuthService = groupAuthService;
+            GroupMsgCopyService = groupMsgCopyService;
             this._database = database;
             _robotManager = robotManager;
-            DIPrivateManage = dIPrivateManage;
         }
 
         public void ProcessGroupMessage(GroupMessageReceivedContext context)
         {
-
             
             Logger.Debug($"[receiver][group][msg][{context.FromGroup}]:{context.Message}");
 
@@ -57,7 +57,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
             _ = ShowCacheMsg(context, loginQq);
 
-            if (!_dbContext.GroupAuths.Any(u => u.Enable && u.GroupNo.Equals(context.FromGroup))) // 群号尚未授权
+            if (!GroupAuthService.Exists(context.FromGroup)) // 群号尚未授权
                 return;
 
             //if (context.Message.Contains($"[@{loginQq}]"))
@@ -102,8 +102,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private async Task GroupMsgCopy(GroupMessageReceivedContext context, string loginQq)
         {
             // 存在群消息转载
-            var list = await _dbContext.GroupMsgCopys.Where(u =>
-                u.FromGroup.Equals(context.FromGroup) && u.Person.Equals(loginQq)).ToListAsync();
+            var list = await GroupMsgCopyService.GetList(loginQq,context.FromGroup);
 
             foreach (var item in list)
             {

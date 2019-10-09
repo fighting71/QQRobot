@@ -15,14 +15,14 @@ namespace GenerateMsg.PrivateMsg
     /// @source : 
     /// @des : 群授权
     /// </summary>
-    public class GroupManageDeal : IGeneratePrivateMsgDeal
+    public class GroupAuthDeal : IGeneratePrivateMsgDeal
     {
-        public GroupManageDeal(GroupManageService groupManageService)
+        public GroupAuthDeal(GroupAuthService groupManageService)
         {
             GroupManageService = groupManageService;
         }
 
-        private GroupManageService GroupManageService { get; }
+        private GroupAuthService GroupManageService { get; }
 
         public async Task<PrivateRes> Run(string msg, string account, Lazy<string> getLoginAccount)
         {

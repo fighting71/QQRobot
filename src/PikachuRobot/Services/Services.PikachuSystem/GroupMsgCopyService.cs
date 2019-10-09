@@ -26,6 +26,12 @@ namespace Services.PikachuSystem
             return PikachuDataContext.GroupMsgCopys.Where(u => u.Person.Equals(loginQq));
         }
 
+        public Task<List<GroupMsgCopy>> GetList(string account,string fromGroup)
+        {
+            return PikachuDataContext.GroupMsgCopys.Where(u =>
+                u.FromGroup.Equals(fromGroup) && u.Person.Equals(account)).ToListAsync();
+        }
+
         public void RemoveGroupCopy(string fromGroup, string targetGroup, string dealPerson,out string msg)
         {
             var old = PikachuDataContext.GroupMsgCopys.FirstOrDefault(u => u.Person.Equals(dealPerson) && u.FromGroup.Equals(fromGroup) && u.TargetGroup.Equals(targetGroup));

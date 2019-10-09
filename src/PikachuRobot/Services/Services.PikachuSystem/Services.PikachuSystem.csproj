@@ -56,7 +56,7 @@
     <Compile Include="BillFlowService.cs" />
     <Compile Include="ConfigService.cs" />
     <Compile Include="GroupConfigService.cs" />
-    <Compile Include="GroupManageService.cs" />
+    <Compile Include="GroupAuthService.cs" />
     <Compile Include="GroupMsgCopyService.cs" />
     <Compile Include="ManageService.cs" />
     <Compile Include="MemberInfoService.cs" />

@@ -81,6 +81,11 @@ namespace GenerateMsg.GroupMsg
 
                 var petName = match.Groups[1].Value.Trim();
 
+                if (string.IsNullOrWhiteSpace(petName))
+                {
+                    return "宠物名称不能为空!"; 
+                }
+
                 var pet = await PetService.GetInfoByNameAsync(petName);
 
                 if (pet == null)

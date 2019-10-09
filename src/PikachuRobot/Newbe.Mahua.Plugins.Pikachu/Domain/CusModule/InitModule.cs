@@ -33,11 +33,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
         private static ConnectionMultiplexer _ctx;
 
-        private static T Get<T>() where T : class, new()
-        {
-            return ThreadInstanceFactory<T>.Get((() => new T()));
-        }
-
         private IDatabase GetDatabase()
         {
             int.TryParse(ConfigConst.RedisDb, out var db);
@@ -59,33 +54,27 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                 _ctx = ConnectionMultiplexer.Connect(ConfigConst.RedisClient);
 
                 builder.Register(context => GetDatabase());
-                builder.RegisterType<PikachuDataContext>(); // 此处若是注入单例 会引起 context 随着依赖的对象释放而释放
 
-                builder.Register(context => InitGroupMsgManage()).SingleInstance();
-                builder.Register(context => InitPrivateMsgManage()).SingleInstance();
+                // 注册db
+                builder.RegisterType<PikachuDataContext>().InstancePerLifetimeScope();
+                builder.RegisterType<PetContext>().InstancePerLifetimeScope();
+                builder.RegisterType<UtilsContext>().InstancePerLifetimeScope();
 
-                //builder.Register(context => Get<PikachuDataContext>());
-                builder.Register(context => Get<PetContext>());
-                builder.Register(context => Get<UtilsContext>());
-                builder.RegisterType<PetService>();
-                builder.RegisterType<UserPetService>();
+                // 注册service
+                RegisterUtilService(builder);
                 
-                builder.RegisterType<BillFlowService>();
-                builder.RegisterType<ConfigService>();
-                builder.RegisterType<GroupConfigService>();
-                builder.RegisterType<GroupManageService>();
-                builder.RegisterType<GroupMsgCopyService>();
-                builder.RegisterType<ManageService>();
-                builder.RegisterType<MemberInfoService>();
+                RegisterPetService(builder);
                 
-                builder.RegisterType<IdiomsService>();
-                
-                builder.RegisterType<ConfigCacheDeal>();
-                builder.RegisterType<ConfigDeal>();
-                builder.RegisterType<GroupManageDeal>();
-                builder.RegisterType<GroupMsgCopyDeal>();
+                RegisterPikachuService(builder);
 
-                builder.RegisterType<DIPrivateManage>();
+                // 注册deal
+                RegisterGroupMsgDeal(builder);
+                
+                RegisterPrivateMsgDeal(builder);
+                
+                builder.RegisterType<GroupMsgManage>().As<IGenerateGroupMsgDeal>();
+
+                builder.RegisterType<PrivateMsgManage>().As<IGeneratePrivateMsgDeal>();
 
             }
             catch (System.Exception e)
@@ -94,93 +83,48 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             }
         }
 
-        /// <summary>
-        /// 初始化私聊消息处理管道
-        /// </summary>
-        /// <returns></returns>
-        private IGeneratePrivateMsgDeal InitPrivateMsgManage()
+
+        private void RegisterGroupMsgDeal(ContainerBuilder builder)
         {
-            PrivateMsgManage manage = new PrivateMsgManage();
-
-            manage
-                .AddDeal(
-                    () => new ConfigCacheDeal(GetDatabase(), new ConfigService(
-                        Get<PikachuDataContext>()
-                    )).Run, nameof(ConfigCacheDeal))
-                .AddDeal(() => new ConfigDeal(GetDatabase(), new ConfigService(
-                    Get<PikachuDataContext>()
-                )).Run, nameof(ConfigDeal))
-                .AddDeal(
-                    () => new GroupManageDeal(new GroupManageService(
-                        Get<PikachuDataContext>()
-                    )).Run)
-                .AddDeal(
-                    () => new GroupMsgCopyDeal(new GroupMsgCopyService(
-                        Get<PikachuDataContext>()
-                    )).Run)
-                .AddDeal(() => async (context, api, getLoginQq) =>
-                {
-                    var info = await Get<PikachuDataContext>().ConfigInfos
-                        .FirstOrDefaultAsync(u => u.Enable && u.Key.Equals("Private.Confirm.Default"));
-
-                    return info?.Value;
-                });
-
-            return manage;
+            builder.RegisterType<AddPetCacheDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<GroupConfigDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<IdiomsSolitaireCacheDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<IdiomsSolitaireDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<MemberAmountDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<PetDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<SignDeal>().InstancePerLifetimeScope();
         }
 
-        /// <summary>
-        /// 初始化群聊消息处理管道
-        /// </summary>
-        /// <returns></returns>
-        private IGenerateGroupMsgDeal InitGroupMsgManage()
+        private void RegisterPrivateMsgDeal(ContainerBuilder builder)
         {
-            GroupMsgManage manage = new GroupMsgManage();
-
-            manage
-                .AddDeal((() => new AddPetCacheDeal(
-                    GetDatabase(),new UserPetService(Get<PetContext>()),
-                    new MemberInfoService(Get<PikachuDataContext>()),new PetService(Get<PetContext>()) ,
-                    new BillFlowService(Get<PikachuDataContext>())
-                    ).Run))
-                .AddDeal(() => new IdiomsSolitaireCacheDeal(
-                    new IdiomsService(Get<UtilsContext>()),
-                    GetDatabase(),
-                    new BillFlowService(Get<PikachuDataContext>()),
-                    new MemberInfoService(Get<PikachuDataContext>()),
-                    new ActivityLogService(Get<PikachuDataContext>()),
-                    new ManageService(Get<PikachuDataContext>())
-                ).Run)
-                .AddDeal(() => new IdiomsSolitaireDeal(
-                    new IdiomsService(Get<UtilsContext>()),
-                    GetDatabase(),
-                    new ActivityLogService(Get<PikachuDataContext>())
-                ).Run)
-                .AddDeal(() => new MemberAmountDeal(new MemberInfoService(Get<PikachuDataContext>())).Run)
-                .AddDeal(() => new SignDeal(new BillFlowService(Get<PikachuDataContext>()),
-                    new MemberInfoService(Get<PikachuDataContext>())).Run)
-                .AddDeal(() =>
-                    new PetDeal(
-                        new PetService(new PetContext()), new MemberInfoService(Get<PikachuDataContext>()),
-                        new UserPetService(Get<PetContext>()), GetDatabase()
-                    ).Run)
-                .AddDeal(() => new GroupConfigDeal(
-                    new ManageService(Get<PikachuDataContext>()),
-                    new GroupConfigService(Get<PikachuDataContext>())
-                ).Run)
-                .AddDeal(() => async (msg, account, groupNo, getLoginAccount) =>
-                    {
-                        var loginQq = getLoginAccount.Value;
-
-                        var info = await Get<PikachuDataContext>().GroupConfigs.FirstOrDefaultAsync(u =>
-                            u.Enable && u.GetGroupConfigType == GroupConfigTypes.DefaultConfirm
-                                     && u.Account.Equals(loginQq) && u.Group.Equals(groupNo));
-
-                        return info?.Value;
-                    }
-                );
-
-            return manage;
+            builder.RegisterType<ConfigCacheDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<ConfigDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<GroupAuthDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<GroupMsgCopyDeal>().InstancePerLifetimeScope();
         }
+
+        private void RegisterUtilService(ContainerBuilder builder)
+        {
+            builder.RegisterType<IdiomsService>().InstancePerLifetimeScope();
+        }
+
+        private void RegisterPikachuService(ContainerBuilder builder)
+        {
+            builder.RegisterType<BillFlowService>().InstancePerLifetimeScope();
+            builder.RegisterType<ConfigService>().InstancePerLifetimeScope();
+            builder.RegisterType<GroupConfigService>().InstancePerLifetimeScope();
+            builder.RegisterType<GroupAuthService>().InstancePerLifetimeScope();
+            builder.RegisterType<GroupMsgCopyService>().InstancePerLifetimeScope();
+            builder.RegisterType<ManageService>().InstancePerLifetimeScope();
+            builder.RegisterType<MemberInfoService>().InstancePerLifetimeScope();
+            builder.RegisterType<ActivityLogService>().InstancePerLifetimeScope();
+        }
+        
+        private void RegisterPetService(ContainerBuilder builder)
+        {
+            builder.RegisterType<PetService>().InstancePerLifetimeScope();
+            builder.RegisterType<UserPetService>().InstancePerLifetimeScope();
+        }
+        
     }
 }

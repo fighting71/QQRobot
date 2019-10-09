@@ -116,7 +116,6 @@
     <setting file="file://$PROJECT_DIR$/GenerateMsg/PrivateMsg/ConfigDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/GroupConfigService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8C89C971-D435-4E7E-BE36-3FE2CA0E2628/7e/a6f125cb/TimerHolder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/GroupManageService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/b4/1d1e537c/CommandHandlerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/FE132B24-9579-4ED5-BDB9-4866304CD286/cc/da6cdf7f/MediatR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/GroupMsgCopyService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -163,7 +162,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/9f/b5999294/GetGroupMemebersApiMahuaCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/4d/4328d7b9/IMahuaRobotManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/SendLikeApiMahuaCommandHandler1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GenerateMsg/PrivateMsg/GroupManageDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/bd/217a75f7/ICommandCenter.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -185,7 +183,6 @@
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/ApiModule.cs" />
         <option value="$PROJECT_DIR$/ConsoleTest/Program.cs" />
         <option value="$PROJECT_DIR$/IServiceSupply/IGenerateMsgDeal.cs" />
-        <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ConfigService.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/PrivateMsg/ConfigCacheDeal.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/GroupManageService.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/PrivateMsg/GroupManageDeal.cs" />
@@ -193,16 +190,13 @@
         <option value="$PROJECT_DIR$/GenerateMsg/PrivateMsg/GroupMsgCopyDeal.cs" />
         <option value="$PROJECT_DIR$/IServiceSupply/IGroupMsgDeal.cs" />
         <option value="$PROJECT_DIR$/IServiceSupply/IGeneratePrivateMsgDeal.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ManageService.cs" />
-        <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/GroupConfigService.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/GroupConfigDeal.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/BillFlowService.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ActivityLogService.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/MemberAmountDeal.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/SignDeal.cs" />
         <option value="$PROJECT_DIR$/IServiceSupply/IGenerateGroupMsgDeal.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Services/Services.Utils/IdiomsService.cs" />
         <option value="$PROJECT_DIR$/Module/Data/Data.PetSystem/Models/UserPet.cs" />
@@ -219,6 +213,10 @@
         <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/IdiomsSolitaireDeal.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/GroupConfigService.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" />
+        <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ConfigService.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
       </list>
     </option>
@@ -291,7 +289,8 @@
       <workItem from="1569465225219" duration="3289000" />
       <workItem from="1569549175417" duration="2312000" />
       <workItem from="1569816302477" duration="12089000" />
-      <workItem from="1570501453947" duration="12986000" />
+      <workItem from="1570501453947" duration="13607000" />
+      <workItem from="1570586132596" duration="4529000" />
     </task>
     <servers />
   </component>

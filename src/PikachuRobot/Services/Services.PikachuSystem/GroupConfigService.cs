@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Pikachu;
 using Data.Pikachu.Menu;
+using Data.Pikachu.Models;
 
 namespace Services.PikachuSystem
 {
@@ -108,5 +109,20 @@ UPDATE groupconfigs
 	WHERE Account = {account} AND Group = {group} AND Enable = 1 AND GetGroupConfigType = {(int) type}
 ");
         }
+
+        /// <summary>
+        /// 获取信息[单配置]
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="group"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public Task<GroupConfig> GetSingle(string account,string group,GroupConfigTypes type)
+        {
+            return PikachuDataContext.GroupConfigs.FirstOrDefaultAsync(u =>
+                u.Enable && u.GetGroupConfigType == GroupConfigTypes.DefaultConfirm
+                         && u.Account.Equals(account) && u.Group.Equals(group));
+        } 
+        
     }
 }

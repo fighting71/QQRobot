@@ -14,9 +14,9 @@ namespace Services.PikachuSystem
     /// @source : 
     /// @des : 
     /// </summary>
-    public class GroupManageService:BaseService
+    public class GroupAuthService:BaseService
     {
-        public GroupManageService(PikachuDataContext pikachuDataContext) : base(pikachuDataContext)
+        public GroupAuthService(PikachuDataContext pikachuDataContext) : base(pikachuDataContext)
         {
         }
 
@@ -114,5 +114,15 @@ namespace Services.PikachuSystem
 
         }
         
+        /// <summary>
+        /// 是否存在授权
+        /// </summary>
+        /// <param name="group">群号</param>
+        /// <returns></returns>
+        public bool Exists(string group)
+        {
+            return PikachuDataContext.GroupAuths.Any(u => u.Enable && u.GroupNo.Equals(group));
+        }
+
     }
 }

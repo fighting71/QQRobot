@@ -113,7 +113,7 @@
         <e p="PrivateMsg" t="Include">
           <e p="ConfigCacheDeal.cs" t="Include" />
           <e p="ConfigDeal.cs" t="Include" />
-          <e p="GroupManageDeal.cs" t="Include" />
+          <e p="GroupAuthDeal.cs" t="Include" />
           <e p="GroupMsgCopyDeal.cs" t="Include" />
         </e>
         <e p="Properties" t="Include">
@@ -256,8 +256,8 @@
           <e p="BillFlowService.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="ConfigService.cs" t="Include" />
+          <e p="GroupAuthService.cs" t="Include" />
           <e p="GroupConfigService.cs" t="Include" />
-          <e p="GroupManageService.cs" t="Include" />
           <e p="GroupMsgCopyService.cs" t="Include" />
           <e p="ManageService.cs" t="Include" />
           <e p="MemberInfoService.cs" t="Include" />
