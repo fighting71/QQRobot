@@ -18,6 +18,8 @@ using Services.PetSystem;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Factory;
 using Services.Utils;
 using Data.Utils;
+using Newbe.Mahua.Plugins.Pikachu.MahuaEvents;
+using Newbe.Mahua.MahuaEvents;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 {
@@ -41,7 +43,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
         public InitModule()
         {
-            Logger.Debug("开始进行初始化");
+
         }
 
 
@@ -86,6 +88,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
         private void RegisterGroupMsgDeal(ContainerBuilder builder)
         {
+            // builder.RegisterAssemblyTypes(typeof(SignDeal).Assembly);
             builder.RegisterType<AddPetCacheDeal>().InstancePerLifetimeScope();
             builder.RegisterType<GroupConfigDeal>().InstancePerLifetimeScope();
             builder.RegisterType<IdiomsSolitaireCacheDeal>().InstancePerLifetimeScope();

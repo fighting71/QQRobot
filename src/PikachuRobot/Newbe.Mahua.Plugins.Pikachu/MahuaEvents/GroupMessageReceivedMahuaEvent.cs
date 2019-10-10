@@ -8,6 +8,7 @@ using Data.Pikachu;
 using GenerateMsg.CusConst;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
+using Newbe.Mahua.Plugins.Pikachu.CusJob;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Newtonsoft.Json;
 using NLog;
@@ -33,9 +34,11 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
         private readonly IDatabase _database;
         private readonly IMahuaRobotManager _robotManager;
+        private readonly TestJob testJob;
 
         public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, IGenerateGroupMsgDeal generateGroupMsgDeal,
-            GroupAuthService groupAuthService,GroupMsgCopyService groupMsgCopyService, IDatabase database, IMahuaRobotManager robotManager)
+            GroupAuthService groupAuthService,GroupMsgCopyService groupMsgCopyService, IDatabase database, IMahuaRobotManager robotManager,
+            TestJob testJob)
         {
             _mahuaApi = mahuaApi;
             //_mahuaApi = robotManager.CreateSession(mahuaApi.GetLoginQq()).MahuaApi;
@@ -44,6 +47,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
             GroupMsgCopyService = groupMsgCopyService;
             this._database = database;
             _robotManager = robotManager;
+            this.testJob = testJob;
         }
 
         public void ProcessGroupMessage(GroupMessageReceivedContext context)
@@ -118,15 +122,35 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
             if ("定时消息".Equals(context.Message))
             {
-                ThreadPool.QueueUserWorkItem((state =>
-                {
-                    
-                    Thread.Sleep(TimeSpan.FromSeconds(5));
-                    
-                    _robotManager.CreateSession(loginQq).MahuaApi.SendGroupMessage(context.FromGroup)
-                        .Text("发送定时消息!").Done();
-                }));
-                
+
+                await testJob.Start(context.FromGroup); 
+
+                //ThreadPool.QueueUserWorkItem((state =>
+                //{
+
+                //    Thread.Sleep(TimeSpan.FromSeconds(5));
+
+                //    _robotManager.CreateSession(loginQq).MahuaApi.SendGroupMessage(context.FromGroup)
+                //        .Text("发送定时消息!").Done();
+                //}));
+
+                return;
+            }
+
+            if ("关闭定时消息".Equals(context.Message))
+            {
+
+                await testJob.StopAsnyc(context.FromGroup);
+
+                //ThreadPool.QueueUserWorkItem((state =>
+                //{
+
+                //    Thread.Sleep(TimeSpan.FromSeconds(5));
+
+                //    _robotManager.CreateSession(loginQq).MahuaApi.SendGroupMessage(context.FromGroup)
+                //        .Text("发送定时消息!").Done();
+                //}));
+
                 return;
             }
 

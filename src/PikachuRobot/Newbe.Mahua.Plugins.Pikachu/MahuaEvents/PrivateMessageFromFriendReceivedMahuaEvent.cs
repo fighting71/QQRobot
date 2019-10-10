@@ -5,6 +5,7 @@ using System.Linq;
 using IServiceSupply;
 using NLog;
 using System.Threading.Tasks;
+using Newbe.Mahua.Plugins.Pikachu.Domain.CusInterface;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 {
@@ -21,31 +22,45 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private readonly IGeneratePrivateMsgDeal _generatePrivateMsgDeal;
 
         private readonly PikachuDataContext dbContext;
+        private readonly IWebHost _webHost;
 
         public PrivateMessageFromFriendReceivedMahuaEvent(IMahuaApi mahuaApi,
-            IGeneratePrivateMsgDeal generatePrivateMsgDeal, PikachuDataContext dbContext)
+            IGeneratePrivateMsgDeal generatePrivateMsgDeal, PikachuDataContext dbContext, IWebHost webHost
+        )
         {
             _mahuaApi = mahuaApi;
             _generatePrivateMsgDeal = generatePrivateMsgDeal;
             this.dbContext = dbContext;
+            _webHost = webHost;
         }
 
         public void ProcessFriendMessage(PrivateMessageFromFriendReceivedContext context)
         {
-
             if (dbContext.Managers.FirstOrDefault(u => u.Enable && u.Account.Equals(context.FromQq)) == null) // 非管理员
             {
                 return;
             }
 
             _ = Run(context);
-
         }
 
         private async Task Run(PrivateMessageFromFriendReceivedContext context)
         {
-
             context.Message = context.Message.Trim();
+
+            if ("开启job".Equals(context.Message))
+            {
+                await _webHost.StartAsync("http://localhost:65271", _mahuaApi.GetSourceContainer());
+                _mahuaApi.SendPrivateMessage(context.FromQq).Text("开启成功！").Done();
+                return;
+            }
+
+            if ("关闭job".Equals(context.Message))
+            {
+                await _webHost.StopAsync();
+                _mahuaApi.SendPrivateMessage(context.FromQq).Text("关闭成功！").Done();
+                return;
+            }
 
             var res = await _generatePrivateMsgDeal
                 .Run(context.Message, context.FromQq, (new Lazy<string>((() => _mahuaApi.GetLoginQq()))));
@@ -63,8 +78,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
                     msg.Text(item.Msg).Done();
                 }
             }
-
         }
-
     }
 }

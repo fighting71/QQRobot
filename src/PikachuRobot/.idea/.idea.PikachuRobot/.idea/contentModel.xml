@@ -177,13 +177,20 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="build.bat" t="Include" />
         <e p="build.ps1" t="Include" />
+        <e p="CusJob" t="Include">
+          <e p="TestJob.cs" t="Include" />
+        </e>
         <e p="Domain" t="Include">
           <e p="CusConst" t="Include">
             <e p="ConfigConst.cs" t="Include" />
           </e>
+          <e p="CusInterface" t="Include">
+            <e p="IWebHost.cs" t="Include" />
+          </e>
           <e p="CusModule" t="Include">
             <e p="ApiModule.cs" t="Include" />
             <e p="InitModule.cs" t="Include" />
+            <e p="JobModule.cs" t="Include" />
           </e>
           <e p="Factory" t="Include">
             <e p="InstanceFactory.cs" t="Include" />
@@ -196,6 +203,7 @@
           </e>
           <e p="Middleware" t="Include">
             <e p="ConfigMiddleware.cs" t="Include" />
+            <e p="OwinWebHost.cs" t="Include" />
           </e>
         </e>
         <e p="MahuaApis" t="Include">
@@ -213,6 +221,7 @@
           <e p="GroupMemberDecreasedMahuaEvent.cs" t="Include" />
           <e p="GroupMemberIncreasedMahuaEvent.cs" t="Include" />
           <e p="GroupMessageReceivedMahuaEvent.cs" t="Include" />
+          <e p="InitializationMahuaEvent.cs" t="Include" />
           <e p="MahuaMenuClickedMahuaEvent.cs" t="Include" />
           <e p="PrivateMessageFromFriendReceivedMahuaEvent.cs" t="Include" />
           <e p="readme.md" t="Include" />
@@ -232,6 +241,7 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="run.bat" t="Include" />
+        <e p="StartUp.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="PikachuRobot.sln" t="IncludeFlat" />

@@ -19,7 +19,7 @@ namespace Newbe.Mahua.Plugins.Pikachu
 
         public MahuaModule()
         {
-            _logger.Debug("初始化.....");
+
         }
 
         public Module[] GetModules()
@@ -31,6 +31,7 @@ namespace Newbe.Mahua.Plugins.Pikachu
                 new MahuaEventsModule(),
                 new InitModule(),
                 new ApiModule(),
+                new JobModule(),
 
             };
         }
@@ -81,7 +82,7 @@ namespace Newbe.Mahua.Plugins.Pikachu
 
                 // 无法处理...
                 //builder.RegisterType<FriendAddingRequestMahuaEvent>()
-                    //.As<IFriendAddingRequestMahuaEvent>();
+                //.As<IFriendAddingRequestMahuaEvent>();
 
                 // 无法处理...
                 //builder.RegisterType<GroupJoiningInvitationReceivedMahuaEvent>()
