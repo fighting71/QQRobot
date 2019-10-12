@@ -1,5 +1,4 @@
-﻿using GenerateMsg.CusConst;
-using IServiceSupply;
+﻿using IServiceSupply;
 using Newtonsoft.Json;
 using NLog;
 using Services.PikachuSystem;
@@ -8,6 +7,7 @@ using StackExchange.Redis;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Domain.Command.CusConst;
 
 namespace GenerateMsg.GroupMsg
 {
@@ -19,14 +19,11 @@ namespace GenerateMsg.GroupMsg
     /// </summary>
     public class IdiomsSolitaireDeal : IGenerateGroupMsgDeal
     {
-
-        private static readonly Logger Logger = LogManager.GetLogger(nameof(IdiomsSolitaireDeal));
-
         private readonly IDatabase _database;
         private readonly Random _random = new Random();
 
         public IdiomsSolitaireDeal(IdiomsService idiomsService, IDatabase database,
-            ActivityLogService activityLogService)
+            GroupActivityService activityLogService)
         {
             IdiomsService = idiomsService;
             this._database = database;
@@ -34,7 +31,7 @@ namespace GenerateMsg.GroupMsg
         }
 
         private IdiomsService IdiomsService { get; }
-        private ActivityLogService ActivityLogService { get; }
+        private GroupActivityService ActivityLogService { get; }
 
         public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
@@ -84,15 +81,14 @@ namespace GenerateMsg.GroupMsg
         /// </summary>
         private void CreateCloseTime(int logId, string groupNo, string loginQq)
         {
-
             // 使用线程池开启工作项替代timer
             ThreadPool.QueueUserWorkItem((state =>
             {
                 Thread.Sleep(RuleConst.GroupActivityExpiry);
-                
+
                 if (ActivityLogService.CloseActivity(logId, "活动结束，自动关闭!", out var log) > 0)
                 {
-                    _database.ListLeftPush(CacheConst.GetGroupListKey(groupNo, loginQq),
+                    _database.ListLeftPush(CacheConst.GetGroupMsgListKey(groupNo),
                         JsonConvert.SerializeObject(new GroupItemRes()
                         {
                             Msg = $@"
@@ -103,7 +99,6 @@ namespace GenerateMsg.GroupMsg
 "
                         }));
                 }
-                
             }));
         }
     }

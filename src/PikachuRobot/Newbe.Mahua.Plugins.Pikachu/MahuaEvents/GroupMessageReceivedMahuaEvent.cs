@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using Autofac;
-using Data.Pikachu;
-using GenerateMsg.CusConst;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
-using Newbe.Mahua.Plugins.Pikachu.CusJob;
-using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
-using Newtonsoft.Json;
+using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
 using NLog;
+using PikachuRobot.Job.Hangfire;
+using PikachuRobot.Job.Hangfire.Job;
 using Services.PikachuSystem;
-using StackExchange.Redis;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 {
@@ -23,43 +16,35 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
     public class GroupMessageReceivedMahuaEvent
         : IGroupMessageReceivedMahuaEvent
     {
-        public IContainer Container { get; }
-        public GroupAuthService GroupAuthService { get; }
-        public GroupMsgCopyService GroupMsgCopyService { get; }
+        private GroupAuthService GroupAuthService { get; }
+        private GroupMsgCopyService GroupMsgCopyService { get; }
 
         private static readonly Logger Logger = LogManager.GetLogger(nameof(GroupMessageReceivedMahuaEvent));
 
         private readonly IMahuaApi _mahuaApi;
         private readonly IGenerateGroupMsgDeal _generateGroupMsgDeal;
+        private readonly IWebHost _webHost;
 
-        private readonly IDatabase _database;
-        private readonly IMahuaRobotManager _robotManager;
-        private readonly TestJob testJob;
 
         public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, IGenerateGroupMsgDeal generateGroupMsgDeal,
-            GroupAuthService groupAuthService,GroupMsgCopyService groupMsgCopyService, IDatabase database, IMahuaRobotManager robotManager,
-            TestJob testJob)
+            GroupAuthService groupAuthService, GroupMsgCopyService groupMsgCopyService, IWebHost webHost)
         {
             _mahuaApi = mahuaApi;
-            //_mahuaApi = robotManager.CreateSession(mahuaApi.GetLoginQq()).MahuaApi;
             _generateGroupMsgDeal = generateGroupMsgDeal;
+            _webHost = webHost;
             GroupAuthService = groupAuthService;
             GroupMsgCopyService = groupMsgCopyService;
-            this._database = database;
-            _robotManager = robotManager;
-            this.testJob = testJob;
         }
 
         public void ProcessGroupMessage(GroupMessageReceivedContext context)
         {
-            
             Logger.Debug($"[receiver][group][msg][{context.FromGroup}]:{context.Message}");
 
             var loginQq = _mahuaApi.GetLoginQq();
 
             _ = GroupMsgCopy(context, loginQq);
 
-            _ = ShowCacheMsg(context, loginQq);
+            InitHangFire();
 
             if (!GroupAuthService.Exists(context.FromGroup)) // 群号尚未授权
                 return;
@@ -76,25 +61,11 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
             //}
         }
 
-        /// <summary>
-        /// 输出缓存消息
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        private async Task ShowCacheMsg(GroupMessageReceivedContext context, string loginQq)
+        private void InitHangFire()
         {
-            var key = CacheConst.GetGroupListKey(context.FromGroup, loginQq);
+            if (_webHost.IsOpen()) return;
 
-            string cacheMsgInfo = await _database.ListLeftPopAsync(key);
-
-            while (!string.IsNullOrWhiteSpace(cacheMsgInfo))
-            {
-                GroupItemRes msg = JsonConvert.DeserializeObject<GroupItemRes>(cacheMsgInfo);
-
-                SendMsg(msg, context.FromGroup, context.FromQq);
-
-                cacheMsgInfo = await _database.ListLeftPopAsync(key);
-            }
+            _webHost.StartAsync(ConfigConst.HangFireBaseUrl, _mahuaApi.GetSourceContainer());
         }
 
         /// <summary>
@@ -106,7 +77,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private async Task GroupMsgCopy(GroupMessageReceivedContext context, string loginQq)
         {
             // 存在群消息转载
-            var list = await GroupMsgCopyService.GetList(loginQq,context.FromGroup);
+            var list = await GroupMsgCopyService.GetList(loginQq, context.FromGroup);
 
             foreach (var item in list)
             {
@@ -120,37 +91,19 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         {
             context.Message = context.Message.Trim();
 
-            if ("定时消息".Equals(context.Message))
+            if ("test job".Equals(context.Message))
             {
-
-                await testJob.Start(context.FromGroup); 
-
-                //ThreadPool.QueueUserWorkItem((state =>
-                //{
-
-                //    Thread.Sleep(TimeSpan.FromSeconds(5));
-
-                //    _robotManager.CreateSession(loginQq).MahuaApi.SendGroupMessage(context.FromGroup)
-                //        .Text("发送定时消息!").Done();
-                //}));
-
+                await new TestJob().StartAsync(context.FromGroup, loginQq);
+                await new AutoCloseGroupActivityJob(null, null).StartAsync(context.FromGroup);
+                await new AutoOutGroupMsg(null).StartAsync(context.FromGroup, loginQq);
                 return;
             }
 
-            if ("关闭定时消息".Equals(context.Message))
+            if ("close test job".Equals(context.Message))
             {
-
-                await testJob.StopAsnyc(context.FromGroup);
-
-                //ThreadPool.QueueUserWorkItem((state =>
-                //{
-
-                //    Thread.Sleep(TimeSpan.FromSeconds(5));
-
-                //    _robotManager.CreateSession(loginQq).MahuaApi.SendGroupMessage(context.FromGroup)
-                //        .Text("发送定时消息!").Done();
-                //}));
-
+                await new TestJob().StopAsync(context.FromGroup, loginQq);
+                await AutoCloseGroupActivityJob.StopAsync(context.FromGroup);
+                await AutoCloseGroupActivityJob.StopAsync(context.FromGroup);
                 return;
             }
 
@@ -162,14 +115,14 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
             {
                 foreach (var item in res.Data)
                 {
-                    SendMsg(item, context.FromGroup, context.FromQq);
+                    SendMsg(_mahuaApi, item, context.FromGroup, context.FromQq);
                 }
             }
         }
 
-        private void SendMsg(GroupItemRes item, string group, string account)
+        private void SendMsg(IMahuaApi mahuaApi, GroupItemRes item, string group, string account)
         {
-            var msg = _mahuaApi.SendGroupMessage(group);
+            var msg = mahuaApi.SendGroupMessage(group);
             if (item.AtAll)
             {
                 msg.AtlAll().Text(item.Msg).Done();

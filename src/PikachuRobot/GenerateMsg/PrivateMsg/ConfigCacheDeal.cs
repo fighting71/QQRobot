@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using GenerateMsg.CusConst;
+using Domain.Command.CusConst;
 using IServiceSupply;
 using Services.PikachuSystem;
 using StackExchange.Redis;

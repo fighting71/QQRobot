@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GenerateMsg.CusConst
+﻿namespace Domain.Command.CusConst
 {
     /// <summary>
     /// @auth : monster
@@ -14,7 +8,6 @@ namespace GenerateMsg.CusConst
     /// </summary>
     public class CacheConst
     {
-
         /// <summary>
         /// 添加标识
         /// </summary>
@@ -34,7 +27,7 @@ namespace GenerateMsg.CusConst
         /// 添加宠物标识
         /// </summary>
         public const string AddPet = nameof(AddPet);
-        
+
         /// <summary>
         /// 获取配置key
         /// </summary>
@@ -90,9 +83,9 @@ namespace GenerateMsg.CusConst
         /// </summary>
         /// <param name="group"></param>
         /// <returns></returns>
-        public static string GetGroupListKey(string group,string account)
+        public static string GetGroupMsgListKey(string group)
         {
-            return $"Group_List_{group}_{account}";
+            return $"Group_Msg_List_{group}";
         }
 
         /// <summary>
@@ -102,10 +95,9 @@ namespace GenerateMsg.CusConst
         /// <param name="group"></param>
         /// <param name="flag"></param>
         /// <returns></returns>
-        public static string GetMemberOptKey(string account,string group,string flag)
+        public static string GetMemberOptKey(string account, string group, string flag)
         {
             return $"Member_Opt_{account}_{group}_{flag}";
         }
-        
     }
 }

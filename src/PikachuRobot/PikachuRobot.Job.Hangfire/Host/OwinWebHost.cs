@@ -1,16 +1,11 @@
-﻿using Autofac;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Owin.Hosting;
-using Newbe.Mahua.Plugins.Pikachu.Domain.CusInterface;
-using NLog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Autofac;
+using Microsoft.Owin.Hosting;
+using NLog;
 
-namespace Newbe.Mahua.Plugins.Pikachu.Domain.Middleware
+namespace PikachuRobot.Job.Hangfire.Host
 {
     /// <summary>
     /// @auth : monster
@@ -25,7 +20,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Middleware
         private static volatile int _state;
 
         // 保存Web服务的实例
-        private IDisposable _webhost;
+        private static IDisposable _webhost;
 
         public Task StartAsync(string baseUrl, ILifetimeScope lifetimeScope)
         {
@@ -57,8 +52,13 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Middleware
                     _webhost.Dispose();
                 }
             }
-            _webhost.Dispose();
+            _webhost?.Dispose();
             return Task.FromResult(0);
+        }
+
+        public bool IsOpen()
+        {
+            return _state == 1;
         }
     }
 }

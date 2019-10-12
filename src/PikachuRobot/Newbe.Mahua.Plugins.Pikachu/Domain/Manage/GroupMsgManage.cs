@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Pikachu.Menu;
+using Domain.Command.CusList;
 using GenerateMsg.GroupMsg;
 using Newbe.Mahua.MahuaEvents;
 using NLog;

@@ -1,10 +1,4 @@
 ﻿using Newbe.Mahua.Plugins.Pikachu.Domain.Middleware;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusConst
 {
@@ -26,6 +20,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusConst
         public static readonly string DefaultPrivateMsg = ConfigMiddleware.GetConfig(nameof(DefaultPrivateMsg));
         public static readonly string RedisClient = ConfigMiddleware.GetConfig(nameof(RedisClient));
         public static readonly string RedisDb = ConfigMiddleware.GetConfig(nameof(RedisDb));
+        public static readonly string HangFireBaseUrl = ConfigMiddleware.GetConfig(nameof(HangFireBaseUrl));
 
     }
 }

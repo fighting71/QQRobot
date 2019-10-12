@@ -1,10 +1,10 @@
-﻿using GenerateMsg.CusConst;
-using IServiceSupply;
+﻿using IServiceSupply;
 using Services.PikachuSystem;
 using Services.Utils;
 using StackExchange.Redis;
 using System;
 using System.Threading.Tasks;
+using Domain.Command.CusConst;
 
 namespace GenerateMsg.GroupMsg
 {
@@ -20,7 +20,7 @@ namespace GenerateMsg.GroupMsg
         private readonly Random _random = new Random();
 
         public IdiomsSolitaireCacheDeal(IdiomsService idiomsService, IDatabase database, BillFlowService billFlowService
-            , MemberInfoService memberInfoService, ActivityLogService activityLogService, ManageService manageService)
+            , MemberInfoService memberInfoService, GroupActivityService activityLogService, ManageService manageService)
         {
             IdiomsService = idiomsService;
             this._database = database;
@@ -33,7 +33,7 @@ namespace GenerateMsg.GroupMsg
         private IdiomsService IdiomsService { get; }
         private BillFlowService BillFlowService { get; }
         private MemberInfoService MemberInfoService { get; }
-        private ActivityLogService ActivityLogService { get; }
+        private GroupActivityService ActivityLogService { get; }
         public ManageService ManageService { get; }
 
         public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)

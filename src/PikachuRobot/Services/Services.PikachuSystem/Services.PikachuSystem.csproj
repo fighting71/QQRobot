@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityLogService.cs" />
+    <Compile Include="GroupActivityService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="BillFlowService.cs" />
     <Compile Include="ConfigService.cs" />

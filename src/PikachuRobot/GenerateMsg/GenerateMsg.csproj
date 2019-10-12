@@ -64,8 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CusConst\CacheConst.cs" />
-    <Compile Include="CusConst\RuleConst.cs" />
     <Compile Include="GroupMsg\AddPetCacheDeal.cs" />
     <Compile Include="GroupMsg\GroupConfigDeal.cs" />
     <Compile Include="GroupMsg\IdiomsSolitaireCacheDeal.cs" />
@@ -87,6 +85,10 @@
     <ProjectReference Include="..\Data.Utils\Data.Utils.csproj">
       <Project>{4E90189A-8537-42B0-AE8C-6042CE8D1166}</Project>
       <Name>Data.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.Command\Domain.Command.csproj">
+      <Project>{fc728dce-4754-47d5-9a2e-8c6181827b62}</Project>
+      <Name>Domain.Command</Name>
     </ProjectReference>
     <ProjectReference Include="..\IServiceSupply\IServiceSupply.csproj">
       <Project>{B66A8B91-CE93-4971-8220-590C00C15641}</Project>

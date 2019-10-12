@@ -1,5 +1,4 @@
-﻿using GenerateMsg.CusConst;
-using IServiceSupply;
+﻿using IServiceSupply;
 using Services.PetSystem;
 using StackExchange.Redis;
 using System;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.PetSystem.Menu;
 using Data.Pikachu.Menu;
+using Domain.Command.CusConst;
 using Services.PikachuSystem;
 
 namespace GenerateMsg.GroupMsg

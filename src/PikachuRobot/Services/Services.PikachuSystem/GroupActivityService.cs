@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Data.Pikachu;
 using Data.Pikachu.Menu;
 using Data.Pikachu.Models;
@@ -14,9 +16,9 @@ namespace Services.PikachuSystem
     /// @source : 
     /// @des : 
     /// </summary>
-    public class ActivityLogService : BaseService
+    public class GroupActivityService : BaseService
     {
-        public ActivityLogService(PikachuDataContext pikachuDataContext) : base(pikachuDataContext)
+        public GroupActivityService(PikachuDataContext pikachuDataContext) : base(pikachuDataContext)
         {
         }
 
@@ -27,8 +29,7 @@ namespace Services.PikachuSystem
         /// <returns></returns>
         public int AddSuccessCount(int id)
         {
-
-            var info = PikachuDataContext.ActivityLogs.FirstOrDefault(u => u.Id == id);
+            var info = PikachuDataContext.GroupActivities.FirstOrDefault(u => u.Id == id);
 
             if (info == null) return 0;
 
@@ -45,8 +46,7 @@ namespace Services.PikachuSystem
         /// <returns></returns>
         public async Task<int> AddSuccessCountAsync(int id)
         {
-
-            var info = await PikachuDataContext.ActivityLogs.FirstOrDefaultAsync(u => u.Id == id);
+            var info = await PikachuDataContext.GroupActivities.FirstOrDefaultAsync(u => u.Id == id);
 
             if (info == null) return 0;
 
@@ -55,7 +55,7 @@ namespace Services.PikachuSystem
 
             return await PikachuDataContext.SaveChangesAsync();
         }
-        
+
         /// <summary>
         /// 添加失败次数
         /// </summary>
@@ -63,8 +63,7 @@ namespace Services.PikachuSystem
         /// <returns></returns>
         public int AddFailureCount(int id)
         {
-
-            var info = PikachuDataContext.ActivityLogs.FirstOrDefault(u => u.Id == id);
+            var info = PikachuDataContext.GroupActivities.FirstOrDefault(u => u.Id == id);
 
             if (info == null) return 0;
 
@@ -79,9 +78,9 @@ namespace Services.PikachuSystem
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int CloseActivity(int id, string description,out ActivityLog info)
+        public int CloseActivity(int id, string description, out GroupActivity info)
         {
-            info = PikachuDataContext.ActivityLogs.FirstOrDefault(u => u.Id == id);
+            info = PikachuDataContext.GroupActivities.FirstOrDefault(u => u.Id == id);
 
             if (info == null || info.ActivityStateType == ActivityStateTypes.Close) return 0;
 
@@ -92,7 +91,6 @@ namespace Services.PikachuSystem
             info.Description = description;
 
             return PikachuDataContext.SaveChanges();
-
         }
 
         /// <summary>
@@ -100,9 +98,9 @@ namespace Services.PikachuSystem
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<ActivityLog> CloseActivityAsync(int id, string description)
+        public async Task<GroupActivity> CloseActivityAsync(int id, string description)
         {
-           var info = await PikachuDataContext.ActivityLogs.FirstOrDefaultAsync(u => u.Id == id);
+            var info = await PikachuDataContext.GroupActivities.FirstOrDefaultAsync(u => u.Id == id);
 
             if (info == null || info.ActivityStateType == ActivityStateTypes.Close) return info;
 
@@ -115,17 +113,16 @@ namespace Services.PikachuSystem
             await PikachuDataContext.SaveChangesAsync();
 
             return info;
-
         }
-        
+
         /// <summary>
         /// 获取活动记录
         /// </summary>
         /// <param name="id">活动编号</param>
         /// <returns></returns>
-        public ActivityLog GetActivity(int id)
+        public GroupActivity GetActivity(int id)
         {
-            return PikachuDataContext.ActivityLogs.FirstOrDefault(u=>u.Id == id);
+            return PikachuDataContext.GroupActivities.FirstOrDefault(u => u.Id == id);
         }
 
         /// <summary>
@@ -137,7 +134,7 @@ namespace Services.PikachuSystem
         /// <returns></returns>
         public int OpenActivity(string group, ActivityTypes type, DateTime endTime)
         {
-            var info = new Data.Pikachu.Models.ActivityLog()
+            var info = new Data.Pikachu.Models.GroupActivity()
             {
                 ActivityStateType = ActivityStateTypes.Open,
                 Group = group,
@@ -145,12 +142,11 @@ namespace Services.PikachuSystem
                 PredictEndTime = endTime,
             };
 
-            PikachuDataContext.ActivityLogs.Add(info);
+            PikachuDataContext.GroupActivities.Add(info);
 
             PikachuDataContext.SaveChanges();
 
             return info.Id;
-
         }
 
         /// <summary>
@@ -162,7 +158,7 @@ namespace Services.PikachuSystem
         /// <returns></returns>
         public async Task<int> OpenActivityAsync(string group, ActivityTypes type, DateTime endTime)
         {
-            var info = new ActivityLog()
+            var info = new GroupActivity()
             {
                 ActivityStateType = ActivityStateTypes.Open,
                 Group = group,
@@ -170,14 +166,13 @@ namespace Services.PikachuSystem
                 PredictEndTime = endTime,
             };
 
-            PikachuDataContext.ActivityLogs.Add(info);
+            PikachuDataContext.GroupActivities.Add(info);
 
             await PikachuDataContext.SaveChangesAsync();
 
             return info.Id;
-
         }
-        
+
         /// <summary>
         /// 添加失败次数
         /// </summary>
@@ -185,8 +180,7 @@ namespace Services.PikachuSystem
         /// <returns></returns>
         public async Task<int> AddFailureCountAsync(int id)
         {
-
-            var info = await PikachuDataContext.ActivityLogs.FirstOrDefaultAsync(u => u.Id == id);
+            var info = await PikachuDataContext.GroupActivities.FirstOrDefaultAsync(u => u.Id == id);
 
             if (info == null) return 0;
 
@@ -195,6 +189,34 @@ namespace Services.PikachuSystem
 
             return await PikachuDataContext.SaveChangesAsync();
         }
-        
+
+        /// <summary>
+        /// 自动关闭活动
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<GroupActivity>> AutoCloseAsync()
+        {
+            // 直接sql操作
+//            PikachuDataContext.Database.Connection.Execute(@"
+//SELECT ActivityType
+//	FROM activitylogs
+//WHERE EndTime IS NULL AND PredictEndTime <= NOW()
+//");
+
+            var list = await PikachuDataContext.GroupActivities
+                .Where(u => u.ActivityStateType == ActivityStateTypes.Open && u.PredictEndTime < DateTime.Now)
+                .ToListAsync();
+
+            foreach (var item in list)
+            {
+                item.EndTime = DateTime.Now;
+                item.ActivityStateType = ActivityStateTypes.Close;
+                item.Description = "job 自动关闭";
+            }
+
+            await PikachuDataContext.SaveChangesAsync();
+
+            return list;
+        }
     }
 }

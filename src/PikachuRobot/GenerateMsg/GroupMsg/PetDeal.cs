@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using GenerateMsg.CusConst;
+using Domain.Command.CusConst;
 using StackExchange.Redis;
 
 namespace GenerateMsg.GroupMsg

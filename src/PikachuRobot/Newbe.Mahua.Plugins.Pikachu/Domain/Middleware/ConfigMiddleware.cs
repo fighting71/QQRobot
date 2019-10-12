@@ -1,5 +1,4 @@
-﻿using Commond.Tools;
-using Data.Pikachu;
+﻿using Data.Pikachu;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

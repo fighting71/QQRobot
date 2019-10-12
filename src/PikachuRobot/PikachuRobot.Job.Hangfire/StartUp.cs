@@ -2,23 +2,21 @@
 using Hangfire;
 using Hangfire.MemoryStorage;
 using Microsoft.Owin;
-using NLog;
 using Owin;
+using PikachuRobot.Job.Hangfire;
 
 // 这是Startup的入口标记
-[assembly: OwinStartup(typeof(Newbe.Mahua.Plugins.Pikachu.StartUp))]
-namespace Newbe.Mahua.Plugins.Pikachu
+[assembly: OwinStartup(typeof(StartUp))]
+namespace PikachuRobot.Job.Hangfire
 {
     /// <summary>
     /// @auth : monster
     /// @since : 2019/10/10 15:00:16
-    /// @source : 
-    /// @des : 
+    /// @source : 参考 http://www.newbe.pro/2017/12/31/Newbe.Mahua/Newbe-Mahua-Samples-LiveGirl/
+    /// @des :
     /// </summary>
     public class StartUp
     {
-
-        private static readonly Logger Logger = LogManager.GetLogger(nameof(StartUp));
 
         public void Configuration(IAppBuilder app, ILifetimeScope lifetimeScope)
         {

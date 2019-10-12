@@ -31,7 +31,9 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
                 builder.RegisterMahuaApi<GetGroupMemebersWithModelApiMahuaCommandHandler, GetGroupMemebersWithModelApiMahuaCommand, GetGroupMemebersWithModelApiMahuaCommandResult>(authorName);
 
-                builder.RegisterType<RobotSessionContext>().As<IRobotSessionContext>().InstancePerMatchingLifetimeScope((object)MahuaGlobal.LifeTimeScopes.RobotSession);
+                //builder.RegisterMahuaApi<SendGroupMessageApiMahuaCommandHandler, SendGroupMessageApiMahuaCommand, SendGroupMessageApiMahuaCommandResult>(authorName);
+
+                //builder.RegisterType<RobotSessionContext>().As<IRobotSessionContext>().InstancePerMatchingLifetimeScope((object)MahuaGlobal.LifeTimeScopes.RobotSession);
 
             }
 

@@ -56,10 +56,10 @@
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
-          <e p="ActivityLog.cs" t="Include" />
           <e p="BaseModel.cs" t="Include" />
           <e p="BillFlow.cs" t="Include" />
           <e p="ConfigInfo.cs" t="Include" />
+          <e p="GroupActivity.cs" t="Include" />
           <e p="GroupAuth.cs" t="Include" />
           <e p="GroupConfig.cs" t="Include" />
           <e p="GroupMsgCopy.cs" t="Include" />
@@ -91,13 +91,33 @@
         </e>
         <e p="UtilsContext.cs" t="Include" />
       </e>
+      <e p="Domain" t="Include">
+        <e p="Domain.Command" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="CusConst" t="Include">
+            <e p="CacheConst.cs" t="Include" />
+            <e p="RuleConst.cs" t="Include" />
+          </e>
+          <e p="CusInterface" t="Include">
+            <e p="IGroupJob.cs" t="Include" />
+          </e>
+          <e p="CusList" t="Include">
+            <e p="BaseList.cs" t="Include" />
+          </e>
+          <e p="Domain.Command.csproj" t="IncludeRecursive" />
+          <e p="Factory" t="Include">
+            <e p="InstanceFactory.cs" t="Include" />
+            <e p="ThreadInstanceFactory.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
       <e p="GenerateMsg" t="IncludeRecursive">
         <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="CusConst" t="Include">
-          <e p="CacheConst.cs" t="Include" />
-          <e p="RuleConst.cs" t="Include" />
-        </e>
         <e p="GenerateMsg.csproj" t="IncludeRecursive" />
         <e p="GroupMsg" t="Include">
           <e p="AddPetCacheDeal.cs" t="Include" />
@@ -177,33 +197,21 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="build.bat" t="Include" />
         <e p="build.ps1" t="Include" />
-        <e p="CusJob" t="Include">
-          <e p="TestJob.cs" t="Include" />
-        </e>
         <e p="Domain" t="Include">
           <e p="CusConst" t="Include">
             <e p="ConfigConst.cs" t="Include" />
-          </e>
-          <e p="CusInterface" t="Include">
-            <e p="IWebHost.cs" t="Include" />
           </e>
           <e p="CusModule" t="Include">
             <e p="ApiModule.cs" t="Include" />
             <e p="InitModule.cs" t="Include" />
             <e p="JobModule.cs" t="Include" />
           </e>
-          <e p="Factory" t="Include">
-            <e p="InstanceFactory.cs" t="Include" />
-            <e p="ThreadInstanceFactory.cs" t="Include" />
-          </e>
           <e p="Manage" t="Include">
-            <e p="BaseList.cs" t="Include" />
             <e p="GroupMsgManage.cs" t="Include" />
             <e p="PrivateMsgManage.cs" t="Include" />
           </e>
           <e p="Middleware" t="Include">
             <e p="ConfigMiddleware.cs" t="Include" />
-            <e p="OwinWebHost.cs" t="Include" />
           </e>
         </e>
         <e p="MahuaApis" t="Include">
@@ -211,6 +219,7 @@
             <e p="GetGroupMemebersWithModelApiMahuaCommandHandler.cs" t="Include" />
             <e p="MpqApiMahuaCommandHandlerBase.cs" t="Include" />
             <e p="MpqHelper.cs" t="Include" />
+            <e p="SendGroupMessageApiMahuaCommandHandler.cs" t="Include" />
           </e>
           <e p="readme.md" t="Include" />
           <e p="SendLikeApiMahuaCommandHandler1.cs" t="Include" />
@@ -221,7 +230,6 @@
           <e p="GroupMemberDecreasedMahuaEvent.cs" t="Include" />
           <e p="GroupMemberIncreasedMahuaEvent.cs" t="Include" />
           <e p="GroupMessageReceivedMahuaEvent.cs" t="Include" />
-          <e p="InitializationMahuaEvent.cs" t="Include" />
           <e p="MahuaMenuClickedMahuaEvent.cs" t="Include" />
           <e p="PrivateMessageFromFriendReceivedMahuaEvent.cs" t="Include" />
           <e p="readme.md" t="Include" />
@@ -241,9 +249,28 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="run.bat" t="Include" />
-        <e p="StartUp.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="PikachuRobot.Job.Hangfire" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Host" t="Include">
+          <e p="OwinWebHost.cs" t="Include" />
+        </e>
+        <e p="IWebHost.cs" t="Include" />
+        <e p="Job" t="Include">
+          <e p="AutoCloseGroupActivityJob.cs" t="Include" />
+          <e p="AutoOutGroupMsg.cs" t="Include" />
+          <e p="TestJob.cs" t="Include" />
+        </e>
+        <e p="MahuaApiHelper.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="PikachuRobot.Job.Hangfire.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="StartUp.cs" t="Include" />
+      </e>
       <e p="PikachuRobot.sln" t="IncludeFlat" />
       <e p="Services" t="Include">
         <e p="Services.PetSystem" t="IncludeRecursive">
@@ -260,12 +287,12 @@
           <e p="UserPetService.cs" t="Include" />
         </e>
         <e p="Services.PikachuSystem" t="IncludeRecursive">
-          <e p="ActivityLogService.cs" t="Include" />
           <e p="app.config" t="Include" />
           <e p="BaseService.cs" t="Include" />
           <e p="BillFlowService.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="ConfigService.cs" t="Include" />
+          <e p="GroupActivityService.cs" t="Include" />
           <e p="GroupAuthService.cs" t="Include" />
           <e p="GroupConfigService.cs" t="Include" />
           <e p="GroupMsgCopyService.cs" t="Include" />

@@ -3,7 +3,6 @@ using Autofac;
 using NLog;
 using System.Linq;
 using System.Threading;
-using Commond.Tools;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Data.Pikachu;
 using GenerateMsg.PrivateMsg;
@@ -15,7 +14,6 @@ using Data.PetSystem;
 using Data.Pikachu.Menu;
 using Services.PikachuSystem;
 using Services.PetSystem;
-using Newbe.Mahua.Plugins.Pikachu.Domain.Factory;
 using Services.Utils;
 using Data.Utils;
 using Newbe.Mahua.Plugins.Pikachu.MahuaEvents;
@@ -120,7 +118,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             builder.RegisterType<GroupMsgCopyService>().InstancePerLifetimeScope();
             builder.RegisterType<ManageService>().InstancePerLifetimeScope();
             builder.RegisterType<MemberInfoService>().InstancePerLifetimeScope();
-            builder.RegisterType<ActivityLogService>().InstancePerLifetimeScope();
+            builder.RegisterType<GroupActivityService>().InstancePerLifetimeScope();
         }
         
         private void RegisterPetService(ContainerBuilder builder)

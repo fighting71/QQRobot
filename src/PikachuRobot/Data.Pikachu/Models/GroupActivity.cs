@@ -11,9 +11,9 @@ namespace Data.Pikachu.Models
     /// @auth : monster
     /// @since : 2019/9/27 10:57:24
     /// @source : 
-    /// @des : 活动记录日志
+    /// @des : 群组活动
     /// </summary>
-    public class ActivityLog:BaseModel<int>
+    public class GroupActivity:BaseModel<int>
     {
 
         /// <summary>

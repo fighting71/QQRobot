@@ -40,9 +40,18 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
 
-            Task.Run(() => {
-                TestTimer();
-            });
+            PikachuDataContext context = new PikachuDataContext();
+
+            var list = context.GroupActivities.Where(u => u.Id == 1).ToList();
+
+            foreach (var item in list)
+            {
+                item.Description = "test";
+            }
+
+            context.SaveChanges();
+            
+            //Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.fffffff"));
 
             Console.WriteLine("Hello World");
 
@@ -276,6 +285,8 @@ namespace ConsoleTest
 
             context.Database.CreateIfNotExists();
 
+            var dbCommand = context.Database.Connection.CreateCommand();
+            
             context.SaveChanges();
         }
     }

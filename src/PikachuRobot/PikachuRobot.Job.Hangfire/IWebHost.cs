@@ -1,7 +1,7 @@
-﻿using Autofac;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Autofac;
 
-namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusInterface
+namespace PikachuRobot.Job.Hangfire
 {
     /// <summary>
     /// @auth : monster
@@ -22,5 +22,12 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusInterface
         /// 停止
         /// </summary>
         Task StopAsync();
+
+        /// <summary>
+        /// 是否已开启
+        /// </summary>
+        /// <returns></returns>
+        bool IsOpen();
+
     }
 }

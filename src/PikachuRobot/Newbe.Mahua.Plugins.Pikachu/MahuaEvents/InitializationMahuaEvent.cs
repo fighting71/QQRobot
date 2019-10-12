@@ -1,7 +1,6 @@
 ﻿using Newbe.Mahua.MahuaEvents;
-using Newbe.Mahua.Plugins.Pikachu.Domain.CusInterface;
 using NLog;
-using System;
+using PikachuRobot.Job.Hangfire;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 {
