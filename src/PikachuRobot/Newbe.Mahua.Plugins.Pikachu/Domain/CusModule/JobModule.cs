@@ -10,7 +10,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
     /// @auth : monster
     /// @since : 2019/10/10 14:48:14
     /// @source : 
-    /// @des : 
+    /// @des : job 相关注册
     /// </summary>
     public class JobModule : Module
     {

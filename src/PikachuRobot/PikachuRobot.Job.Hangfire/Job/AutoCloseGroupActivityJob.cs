@@ -25,34 +25,34 @@ namespace PikachuRobot.Job.Hangfire.Job
             _database = database;
         }
 
-        private static string GetJobId(string groupNo)
+        private static string GetJobId()
         {
-            return $"group.activity.autoClose.{groupNo}";
+            return $"group.activity.autoClose";
         }
 
-        public Task StartAsync(string groupNo)
+        public Task StartAsync()
         {
             // 添加定时任务 分钟/次
-            RecurringJob.AddOrUpdate(GetJobId(groupNo), () => DealMessage(groupNo), "* */1 * * * *");
+            RecurringJob.AddOrUpdate(GetJobId(), () => DealMessage(), "*/1 * * * *");
 
             return Task.FromResult(0);
         }
 
-        public static Task StopAsync(string groupNo)
+        public static Task StopAsync()
         {
             // 移除任务
-            RecurringJob.RemoveIfExists(GetJobId(groupNo));
+            RecurringJob.RemoveIfExists(GetJobId());
             return Task.FromResult(0);
         }
 
-        public async Task DealMessage(string groupNo)
+        public async Task DealMessage()
         {
             var list = await _groupActivityService.AutoCloseAsync();
 
-            var key = CacheConst.GetGroupMsgListKey(groupNo);
-
             foreach (var item in list)
             {
+                var key = CacheConst.GetGroupMsgListKey(item.Group);
+
                 _database.ListLeftPush(key,
                     JsonConvert.SerializeObject(new GroupItemRes()
                     {

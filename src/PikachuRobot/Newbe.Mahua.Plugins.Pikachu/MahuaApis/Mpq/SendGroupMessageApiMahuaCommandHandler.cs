@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newbe.Mahua.MahuaEvents;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaApis.Mpq
 {
@@ -22,7 +23,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaApis.Mpq
 
         public override SendGroupMessageApiMahuaCommandResult Handle(SendGroupMessageApiMahuaCommand message)
         {
-
+IInitializationMahuaEvent
             // 需传递发送人
             var res = MpqApi.Api_SendMsg(null, 2, 0, message.ToGroup, null, message.Message);
 

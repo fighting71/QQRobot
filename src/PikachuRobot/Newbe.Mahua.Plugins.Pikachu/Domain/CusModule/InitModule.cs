@@ -29,7 +29,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
     /// </summary>
     public class InitModule : Module
     {
-        private static readonly Logger Logger = LogManager.GetLogger(nameof(MahuaModule));
+        private static readonly Logger Logger = LogManager.GetLogger(nameof(InitModule));
 
         private static ConnectionMultiplexer _ctx;
 
@@ -38,12 +38,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             int.TryParse(ConfigConst.RedisDb, out var db);
             return _ctx.GetDatabase(db);
         }
-
-        public InitModule()
-        {
-
-        }
-
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -62,20 +56,19 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
                 // 注册service
                 RegisterUtilService(builder);
-                
+
                 RegisterPetService(builder);
-                
+
                 RegisterPikachuService(builder);
 
                 // 注册deal
                 RegisterGroupMsgDeal(builder);
-                
+
                 RegisterPrivateMsgDeal(builder);
-                
+
                 builder.RegisterType<GroupMsgManage>().As<IGenerateGroupMsgDeal>();
 
                 builder.RegisterType<PrivateMsgManage>().As<IGeneratePrivateMsgDeal>();
-
             }
             catch (System.Exception e)
             {
@@ -120,12 +113,11 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             builder.RegisterType<MemberInfoService>().InstancePerLifetimeScope();
             builder.RegisterType<GroupActivityService>().InstancePerLifetimeScope();
         }
-        
+
         private void RegisterPetService(ContainerBuilder builder)
         {
             builder.RegisterType<PetService>().InstancePerLifetimeScope();
             builder.RegisterType<UserPetService>().InstancePerLifetimeScope();
         }
-        
     }
 }

@@ -49,28 +49,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         {
             context.Message = context.Message.Trim();
 
-            #region hangfire server
-            
-            if ("开启hangfire".Equals(context.Message))
-            {
-                // 获取全局容器
-                //_mahuaApi.GetSourceContainer();
-                // 获取当前scope 不能使用此scope 因为此scope随着当前实例的释放而释放 无法作用于hangfire
-                //_mahuaApi.GetLifetimeScope();
-                await _webHost.StartAsync(ConfigConst.HangFireBaseUrl, _mahuaApi.GetSourceContainer());
-                _mahuaApi.SendPrivateMessage(context.FromQq).Text("开启成功！").Done();
-                return;
-            }
-
-            if ("关闭hangfire".Equals(context.Message))
-            {
-                await _webHost.StopAsync();
-                _mahuaApi.SendPrivateMessage(context.FromQq).Text("关闭成功！").Done();
-                return;
-            }
-
-            #endregion
-
             var res = await _generatePrivateMsgDeal
                 .Run(context.Message, context.FromQq, (new Lazy<string>((() => _mahuaApi.GetLoginQq()))));
 

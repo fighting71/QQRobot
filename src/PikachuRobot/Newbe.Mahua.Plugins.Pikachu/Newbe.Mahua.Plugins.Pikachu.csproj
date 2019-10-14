@@ -104,8 +104,8 @@
     <Reference Include="Newbe.Mahua, Version=1.16.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Newbe.Mahua.1.16.1\lib\net452\Newbe.Mahua.dll</HintPath>
     </Reference>
-    <Reference Include="Newbe.Mahua.CQP.ApiExtensions, Version=1.15.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newbe.Mahua.CQP.ApiExtensions.1.15.1\lib\net452\Newbe.Mahua.CQP.ApiExtensions.dll</HintPath>
+    <Reference Include="Newbe.Mahua.MPQ, Version=1.17.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>bin\MPQ\Newbe.Mahua.MPQ.dll</HintPath>
     </Reference>
     <Reference Include="Newbe.Mahua.PluginLoader, Version=1.16.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Newbe.Mahua.PluginLoader.1.16.1\lib\net452\Newbe.Mahua.PluginLoader.dll</HintPath>
@@ -159,9 +159,14 @@
   <ItemGroup>
     <Compile Include="ApiExtension\MahuaApiExt.cs" />
     <Compile Include="Domain\CusConst\ConfigConst.cs" />
-    <Compile Include="Domain\CusModule\ApiModule.cs" />
+    <Compile Include="Domain\CusModule\CommandApiModule.cs" />
+    <Compile Include="Domain\CusModule\CommandEventModule.cs" />
     <Compile Include="Domain\CusModule\InitModule.cs" />
     <Compile Include="Domain\CusModule\JobModule.cs" />
+    <Compile Include="Domain\CusModule\MpqModule.cs" />
+    <Compile Include="Domain\CusModule\PluginModule.cs" />
+    <Compile Include="Domain\EventFuns\Mqp\CusEventFun10000.cs" />
+    <Compile Include="Domain\EventFuns\Mqp\ISystemInitEvent.cs" />
     <Compile Include="Domain\Manage\GroupMsgManage.cs" />
     <Compile Include="Domain\Manage\PrivateMsgManage.cs" />
     <Compile Include="Domain\Middleware\ConfigMiddleware.cs" />
@@ -176,6 +181,7 @@
     <Compile Include="MahuaEvents\GroupMemberIncreasedMahuaEvent.cs" />
     <Compile Include="MahuaEvents\GroupMessageReceivedMahuaEvent.cs" />
     <Compile Include="MahuaEvents\MahuaMenuClickedMahuaEvent.cs" />
+    <Compile Include="MahuaEvents\Mpq\SystemInitEvent.cs" />
     <Compile Include="MahuaEvents\PrivateMessageFromFriendReceivedMahuaEvent.cs" />
     <Compile Include="MahuaModule.cs" />
     <Compile Include="MyMenuProvider.cs" />

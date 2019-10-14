@@ -3,4 +3,5 @@
   &lt;Assembly Path="G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\packages\Newbe.Mahua.1.16.1\lib\net452\Newbe.Mahua.dll" /&gt;&#xD;
   &lt;Assembly Path="G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\MPQ\Newbe.Mahua.MPQ.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
-	<s:Boolean x:Key="/Default/Environment/Hierarchy/EntityFrameworkOptions/IsAlreadyNotifiedAboutEntityFramework/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/Environment/Hierarchy/EntityFrameworkOptions/IsAlreadyNotifiedAboutEntityFramework/@EntryValue">True</s:Boolean>
+	</wpf:ResourceDictionary>

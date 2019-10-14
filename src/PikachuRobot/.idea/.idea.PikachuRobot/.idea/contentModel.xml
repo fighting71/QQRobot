@@ -53,6 +53,9 @@
           <e p="201909300321270_Little1.cs" t="Include" />
           <e p="201909300321270_Little1.Designer.cs" t="Include" />
           <e p="201909300321270_Little1.resx" t="Include" />
+          <e p="201910121001536_Table_Change.cs" t="Include" />
+          <e p="201910121001536_Table_Change.Designer.cs" t="Include" />
+          <e p="201910121001536_Table_Change.resx" t="Include" />
           <e p="Configuration.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -202,9 +205,18 @@
             <e p="ConfigConst.cs" t="Include" />
           </e>
           <e p="CusModule" t="Include">
-            <e p="ApiModule.cs" t="Include" />
+            <e p="CommandApiModule.cs" t="Include" />
+            <e p="CommandEventModule.cs" t="Include" />
             <e p="InitModule.cs" t="Include" />
             <e p="JobModule.cs" t="Include" />
+            <e p="MpqModule.cs" t="Include" />
+            <e p="PluginModule.cs" t="Include" />
+          </e>
+          <e p="EventFuns" t="Include">
+            <e p="Mqp" t="Include">
+              <e p="CusEventFun10000.cs" t="Include" />
+              <e p="ISystemInitEvent.cs" t="Include" />
+            </e>
           </e>
           <e p="Manage" t="Include">
             <e p="GroupMsgManage.cs" t="Include" />
@@ -231,6 +243,9 @@
           <e p="GroupMemberIncreasedMahuaEvent.cs" t="Include" />
           <e p="GroupMessageReceivedMahuaEvent.cs" t="Include" />
           <e p="MahuaMenuClickedMahuaEvent.cs" t="Include" />
+          <e p="Mpq" t="Include">
+            <e p="SystemInitEvent.cs" t="Include" />
+          </e>
           <e p="PrivateMessageFromFriendReceivedMahuaEvent.cs" t="Include" />
           <e p="readme.md" t="Include" />
         </e>
@@ -252,6 +267,7 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="PikachuRobot.Job.Hangfire" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Host" t="Include">
           <e p="OwinWebHost.cs" t="Include" />

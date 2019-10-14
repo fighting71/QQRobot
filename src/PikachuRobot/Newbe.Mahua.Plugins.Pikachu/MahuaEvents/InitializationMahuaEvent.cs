@@ -6,7 +6,9 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 {
     /// <summary>
     /// 插件初始化事件
-    /// mypcqq free 无效...
+    /// mypcqq free 无效... 
+    /// 查找源码 此事件跟随着热更新触发。。 即 hash.txt 文件变更，启动热更新。
+    /// 跟系统初始化没太多关系 [mpq是这样的]
     /// </summary>
     public class InitializationMahuaEvent
         : IInitializationMahuaEvent

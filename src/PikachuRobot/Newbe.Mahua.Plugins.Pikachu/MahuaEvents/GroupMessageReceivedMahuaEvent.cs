@@ -2,10 +2,7 @@
 using System.Threading.Tasks;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
-using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
 using NLog;
-using PikachuRobot.Job.Hangfire;
-using PikachuRobot.Job.Hangfire.Job;
 using Services.PikachuSystem;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
@@ -23,15 +20,13 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
         private readonly IMahuaApi _mahuaApi;
         private readonly IGenerateGroupMsgDeal _generateGroupMsgDeal;
-        private readonly IWebHost _webHost;
 
 
         public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, IGenerateGroupMsgDeal generateGroupMsgDeal,
-            GroupAuthService groupAuthService, GroupMsgCopyService groupMsgCopyService, IWebHost webHost)
+            GroupAuthService groupAuthService, GroupMsgCopyService groupMsgCopyService)
         {
             _mahuaApi = mahuaApi;
             _generateGroupMsgDeal = generateGroupMsgDeal;
-            _webHost = webHost;
             GroupAuthService = groupAuthService;
             GroupMsgCopyService = groupMsgCopyService;
         }
@@ -43,8 +38,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
             var loginQq = _mahuaApi.GetLoginQq();
 
             _ = GroupMsgCopy(context, loginQq);
-
-            InitHangFire();
 
             if (!GroupAuthService.Exists(context.FromGroup)) // 群号尚未授权
                 return;
@@ -59,13 +52,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
             //{
             //    _mahuaApi.SendGroupMessage(context.FromGroup).Text(context.Message).Done();
             //}
-        }
-
-        private void InitHangFire()
-        {
-            if (_webHost.IsOpen()) return;
-
-            _webHost.StartAsync(ConfigConst.HangFireBaseUrl, _mahuaApi.GetSourceContainer());
         }
 
         /// <summary>
@@ -90,23 +76,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private async Task Run(GroupMessageReceivedContext context, string loginQq)
         {
             context.Message = context.Message.Trim();
-
-            if ("test job".Equals(context.Message))
-            {
-                await new TestJob().StartAsync(context.FromGroup, loginQq);
-                await new AutoCloseGroupActivityJob(null, null).StartAsync(context.FromGroup);
-                await new AutoOutGroupMsg(null).StartAsync(context.FromGroup, loginQq);
-                return;
-            }
-
-            if ("close test job".Equals(context.Message))
-            {
-                await new TestJob().StopAsync(context.FromGroup, loginQq);
-                await AutoCloseGroupActivityJob.StopAsync(context.FromGroup);
-                await AutoCloseGroupActivityJob.StopAsync(context.FromGroup);
-                return;
-            }
-
+            
             var res = await _generateGroupMsgDeal
                 .Run(context.Message, context.FromQq, context.FromGroup,
                     (new Lazy<string>((() => loginQq))));

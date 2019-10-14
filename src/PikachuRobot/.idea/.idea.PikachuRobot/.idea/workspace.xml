@@ -80,6 +80,7 @@
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupJoiningInvitationReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/61/45a58717/ContainerBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/80/4ce7958d/IMahuaMenuClickedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/8c/ec889f22/EventFunOutput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/ef/2f544784/RobotSessionContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -88,34 +89,51 @@
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/ApiExtension/MahuaApiExt.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/f0/bf033814/PluginHotUpgradedCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoOutGroupMsg.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/08/c6bfedae/IPluginHotUpgradedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/CusEventFun10000.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/2c/7388c2db/PluginLoaderMahuaModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/GroupActivityService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/ISystemInitEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Workspace/源代码/1.源代码/浪花微服务/LH.MicroServicesSolution/Application/OrdersApplication/IntegrationEventHandlers/OrderChange_LtgEvtHdl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/a5/1a773d7c/IPluginHotUpgradingMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/IServiceSupply/IGeneratePrivateMsgDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1032FE2-F4A7-4569-9658-20B6275D769D/89/da461b8d/EventFunInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/IServiceSupply/IGenerateGroupMsgDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/32/4e4052ef/DiscussMessageReceivedMahuaEventContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/8a/b2d93658/SendGroupJoiningInvitationApiMahuaCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Module/Data/Data.PetSystem/PetContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/08/bb62b13f/MpqMahuaModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/08/bb62b13f/MpqMahuaModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/aa/514dc621/IPlatfromExitedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/59/bde207c1/SendGroupMessageApiMahuaCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/ApiModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/93/519e9327/IPluginDisabledMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/b4/ed8de0ae/IEventFunOutput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Module/Data/Data.PetSystem/Models/UserPet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/GroupMsg/IdiomsSolitaireDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/ItemTemplate/MahuaEvent/InitializationMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/1a/4804e0f3/IPlatformExitedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/b6/b5983e85/IMessageCancelToken.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86FF289F-F21E-4E16-B08B-EA76D4201C99/dd/781e030d/MessageBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/8a/820a8a74/IPluginEnabledMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PetSystem/PetService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/3c/78eafda5/ResolutionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/35/8b92fd21/IPrivateMessageStep2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/ConfigService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/GroupConfigService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8C89C971-D435-4E7E-BE36-3FE2CA0E2628/7e/a6f125cb/TimerHolder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/FE132B24-9579-4ED5-BDB9-4866304CD286/cc/da6cdf7f/MediatR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/GroupMsgCopyService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/d3/3c11d977/ConcreteReflectionActivatorData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/ManageService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1749DCA5-FC16-4360-9A7E-C30EE2F37CE5/ae/61081a7b/IMahuaRobotManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/6e/2e9d4bd7/EventFun10000.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/8a/019ca4ba/IRobotSessionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.Utils/IdiomsService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/f8/a6da8146/SendGroupMessageApiMahuaCommandResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/fa/60528548/IContainerSaver.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/CommandEventModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/MpqModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/PluginModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/CommandApiModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/a2/d523c9b7/MpqApiMahuaCommandHandlerBase`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/PrivateMsg/ConfigCacheDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/PrivateMsg/GroupMsgCopyDeal.cs" root0="FORCE_HIGHLIGHTING" />
@@ -125,42 +143,57 @@
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MyMenuProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/SendGroupMessageApiMahuaCommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/GroupMsg/GroupConfigDeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/MpqApiMahuaCommandHandlerBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/GetGroupMemebersWithModelApiMahuaCommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/c9/09f68a71/GetGroupMemebersWithModelApiMahuaCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data.Pikachu/Menu/GroupConfigTypes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/GroupMsg/SignDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/PluginInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/GroupMsg/MemberAmountDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsoleTest/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/19/4cf8390a/GetGroupMemebersWithModelApiMahuaCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86FF289F-F21E-4E16-B08B-EA76D4201C99/ba/6ab22239/IMpqApi.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8C89C971-D435-4E7E-BE36-3FE2CA0E2628/27/6b7af154/Timer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/73/0c86f9b9/IFriendAddedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/68/f3d5715c/IMpqApi.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/9f/b5999294/GetGroupMemebersApiMahuaCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/9d/69bef130/IEventFun.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/4d/4328d7b9/IMahuaRobotManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/bd/217a75f7/ICommandCenter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/06/95dd5f90/MessageBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/d1/c88711c7/IRobotSession.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/202A1CAB-5DF3-4ED4-BE5A-FCCACB546743/cd/b90ba0e5/ContainerSaver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/42/e368b774/IRegistrationBuilder`3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/202A1CAB-5DF3-4ED4-BE5A-FCCACB546743/75/1a58c4bb/CommandCenterMahuaApi.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Host/OwinWebHost.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/64/503d600c/IInitializationMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/202A1CAB-5DF3-4ED4-BE5A-FCCACB546743/15/d8dda628/RobotSession.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8C89C971-D435-4E7E-BE36-3FE2CA0E2628/cc/d25deff4/ThreadLocal`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoCloseGroupActivityJob.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/StartUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/202A1CAB-5DF3-4ED4-BE5A-FCCACB546743/88/dbaa2083/IQqProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/GroupMsg/AddPetCacheDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PetSystem/UserPetService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/JobModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/202A1CAB-5DF3-4ED4-BE5A-FCCACB546743/bd/933daf50/MahuaRobotManagerImpl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/IWebHost.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/77/6513b093/IMahuaApi.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1032FE2-F4A7-4569-9658-20B6275D769D/31/1a62b2e9/CreateDiscussApiMahuaCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/b7/faa551f6/CommandCenterMahuaApi.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusConst/ConfigConst.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Middleware/ConfigMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/9c/d2898f2f/MahuaApiRegistrations.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/CusTools/CatchTools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1032FE2-F4A7-4569-9658-20B6275D769D/73/d4cec08a/QqProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/a4/9f6012c4/RobotSession.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Domain.Command/CusInterface/IGroupJob.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Domain.Command/CusConst/RuleConst.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/PrivateMsg/ConfigDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Domain.Command/CusConst/CacheConst.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1032FE2-F4A7-4569-9658-20B6275D769D/58/cd33f5a5/MpqApiMahuaCommandHandlerBase`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/b4/1d1e537c/CommandHandlerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Domain.Command/Factory/ThreadInstanceFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Domain/Domain.Command/Factory/InstanceFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -168,46 +201,46 @@
     <setting file="file://$PROJECT_DIR$/IServiceSupply/MsgRes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data.Pikachu/PikachuDataContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6F1C57DA-A38A-4D04-9434-FBAF9B11154B/75/5cb02240/IDatabase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/InitializationMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/16D5DBF4-2581-46E9-AEA8-7FD31238BD9C/d3/4318f973/Cron.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/InitializationMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/cf/522f0013/Module.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/c3/30addea5/EventFun2002.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86FF289F-F21E-4E16-B08B-EA76D4201C99/f8/fda4a684/PrivateMessageFromFriendReceivedContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/99/20a0b749/IMahuaModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/e1/cc7114d3/IFriendAddingRequestMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/08/062af107/EventFun1000.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/b5/8a081055/EventFun2005.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8C89C971-D435-4E7E-BE36-3FE2CA0E2628/08/e25c5bee/TimerQueueTimer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/74/544e8882/ContainerSaver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/91/9073c220/RegistrationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/20/e22787fb/IGroupMemberIncreasedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/Mpq/SystemInitEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/b5/5fe77172/MahuaGlobal.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/b9/1ca6b712/MahuaPlatformValueProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/61/018a6974/CrossAppDomainPluginLoader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GenerateMsg/GroupMsg/IdiomsSolitaireCacheDeal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C101F240-EDF4-404A-9868-47DCDE6BA974/9a/6b75982d/SqlCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/65/8e609168/MahuaPlatform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/f6/854fb398/Newbe.Mahua.MPQ.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C101F240-EDF4-404A-9868-47DCDE6BA974/37/3c199981/DbCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/f7/4c39bb10/MpqCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/165C6443-6907-4657-A7F1-4A90981B921C/a7/d8a2fb2d/Newbe.Mahua.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/1c/ef5149a4/EventFun1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/B5FA972E-670F-4382-8AF4-DC2C6CBE31D7/be/e63159ce/Newbe.Mahua.MPQ.Native.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/fe/9d80d568/PluginInstanceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/TestJob.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/MahuaApiHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/eb/d283e450/PluginHotUpgradedCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/63/498d1ff9/MahuaRobotManagerImpl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/SendLikeApiMahuaCommandHandler1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BA56C11E-6DAD-4C6A-8E7E-E8FF7B4C16B0/f9/2b74705e/IContainer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/3f/f2b93879/MahuaRobotManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/3f/f2b93879/MahuaRobotManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ManageService.cs" />
-        <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/GroupConfigDeal.cs" />
-        <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/BillFlowService.cs" />
-        <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/MemberAmountDeal.cs" />
-        <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/SignDeal.cs" />
-        <option value="$PROJECT_DIR$/IServiceSupply/IGenerateGroupMsgDeal.cs" />
-        <option value="$PROJECT_DIR$/Services/Services.Utils/IdiomsService.cs" />
-        <option value="$PROJECT_DIR$/Module/Data/Data.PetSystem/Models/UserPet.cs" />
-        <option value="$PROJECT_DIR$/Services/Services.PetSystem/PetService.cs" />
-        <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/PetDeal.cs" />
-        <option value="$PROJECT_DIR$/Services/Services.PetSystem/UserPetService.cs" />
-        <option value="$PROJECT_DIR$/IServiceSupply/MsgRes.cs" />
-        <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/MemberInfoService.cs" />
-        <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/AddPetCacheDeal.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/CusConst/CacheConst.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/CusConst/RuleConst.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/IdiomsSolitaireCacheDeal.cs" />
@@ -217,12 +250,10 @@
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ConfigService.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/InitializationMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/CusJob/TestJob.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusConst/ConfigConst.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/app.config" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusInterface/IWebHost.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Middleware/OwinWebHost.cs" />
         <option value="$PROJECT_DIR$/Domain/Domain.Command/CusConst/RuleConst.cs" />
@@ -238,13 +269,29 @@
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/IWebHost.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Host/OwinWebHost.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/MahuaApiHelper.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/JobModule.cs" />
-        <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/TestJob.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoOutGroupMsg.cs" />
         <option value="$PROJECT_DIR$/Domain/Domain.Command/CusConst/CacheConst.cs" />
-        <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoCloseGroupActivityJob.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/IdiomsSolitaireDeal.cs" />
+        <option value="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/08/bb62b13f/MpqMahuaModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventData/ISystemInitEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/GetGroupMemebersWithModelApiMahuaCommandHandler.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/ApiModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/PluginModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/CommandEventModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/CommandApiModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/JobModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/ISystemInitEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/CusEventFun10000.cs" />
+        <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoCloseGroupActivityJob.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" />
+        <option value="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/63/498d1ff9/MahuaRobotManagerImpl.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/MpqModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/Mpq/SystemInitEvent.cs" />
+        <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/TestJob.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/SendGroupMessageApiMahuaCommandHandler.cs" />
       </list>
     </option>
   </component>
@@ -322,7 +369,9 @@
       <workItem from="1570687542556" duration="4716000" />
       <workItem from="1570786191483" duration="598000" />
       <workItem from="1570850312642" duration="1075000" />
-      <workItem from="1570861208715" duration="10601000" />
+      <workItem from="1570861208715" duration="11212000" />
+      <workItem from="1571018428391" duration="11413000" />
+      <workItem from="1571035868460" duration="1663000" />
     </task>
     <servers />
   </component>

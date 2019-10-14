@@ -1,19 +1,15 @@
 ﻿using Autofac;
-using Consoles.Tools;
-using Data.PetSystem;
 using Data.Pikachu;
 using Data.Utils;
 using Data.Utils.Models;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace ConsoleTest
 {
@@ -29,6 +25,9 @@ namespace ConsoleTest
         }
     }
 
+    /// <summary>
+    /// 临时测试类...
+    /// </summary>
     class Program
     {
 
@@ -281,6 +280,7 @@ namespace ConsoleTest
 
         public static void TestDb()
         {
+
             PikachuDataContext context = new PikachuDataContext();
 
             context.Database.CreateIfNotExists();
@@ -288,6 +288,7 @@ namespace ConsoleTest
             var dbCommand = context.Database.Connection.CreateCommand();
             
             context.SaveChanges();
+
         }
     }
 }
