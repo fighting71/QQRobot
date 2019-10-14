@@ -66,9 +66,9 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
                 RegisterPrivateMsgDeal(builder);
 
-                builder.RegisterType<GroupMsgManage>().As<IGenerateGroupMsgDeal>();
+                builder.RegisterType<GroupMsgManage>();
 
-                builder.RegisterType<PrivateMsgManage>().As<IGeneratePrivateMsgDeal>();
+                builder.RegisterType<PrivateMsgManage>();
             }
             catch (System.Exception e)
             {
@@ -80,21 +80,21 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
         private void RegisterGroupMsgDeal(ContainerBuilder builder)
         {
             // builder.RegisterAssemblyTypes(typeof(SignDeal).Assembly);
-            builder.RegisterType<AddPetCacheDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<GroupConfigDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<IdiomsSolitaireCacheDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<IdiomsSolitaireDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<MemberAmountDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<PetDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<SignDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<AddPetCacheDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
+            builder.RegisterType<IdiomsSolitaireCacheDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
+            builder.RegisterType<GroupConfigDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
+            builder.RegisterType<IdiomsSolitaireDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
+            builder.RegisterType<MemberAmountDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
+            builder.RegisterType<PetDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
+            builder.RegisterType<SignDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
         }
 
         private void RegisterPrivateMsgDeal(ContainerBuilder builder)
         {
-            builder.RegisterType<ConfigCacheDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<ConfigDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<GroupAuthDeal>().InstancePerLifetimeScope();
-            builder.RegisterType<GroupMsgCopyDeal>().InstancePerLifetimeScope();
+            builder.RegisterType<ConfigCacheDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
+            builder.RegisterType<ConfigDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
+            builder.RegisterType<GroupAuthDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
+            builder.RegisterType<GroupMsgCopyDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
         }
 
         private void RegisterUtilService(ContainerBuilder builder)

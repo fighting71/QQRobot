@@ -22,7 +22,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
         public void ProcessManhuaMenuClicked(MahuaMenuClickedContext context)
         {
-
             _logger.Info($"菜单-{context.Menu}被点击");
 
             // todo 填充处理逻辑

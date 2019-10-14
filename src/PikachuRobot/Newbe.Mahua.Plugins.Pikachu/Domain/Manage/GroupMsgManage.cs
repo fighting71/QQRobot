@@ -21,30 +21,27 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// </summary>
     public class GroupMsgManage : BaseList<GenerateGroupMsgDel>, IGenerateGroupMsgDeal
     {
+        private readonly GroupConfigService _groupConfigService;
 
-        public GroupMsgManage(AddPetCacheDeal addPetCacheDeal, GroupConfigDeal groupConfigDeal,
-            IdiomsSolitaireCacheDeal idiomsSolitaireCacheDeal,
-            IdiomsSolitaireDeal idiomsSolitaireDeal, MemberAmountDeal memberAmountDeal, PetDeal petDeal,
-            SignDeal signDeal,GroupConfigService groupConfigService)
+        public GroupMsgManage(IList<IGenerateGroupMsgDeal> list, GroupConfigService groupConfigService)
         {
-            this.AddDeal(addPetCacheDeal.Run)
-                .AddDeal(idiomsSolitaireCacheDeal.Run)
-                .AddDeal(idiomsSolitaireDeal.Run)
-                .AddDeal(groupConfigDeal.Run)
-                .AddDeal(memberAmountDeal.Run)
-                .AddDeal(petDeal.Run)
-                .AddDeal(signDeal.Run)
-                .AddDeal(async (msg, account, groupNo, getLoginAccount) =>
-                    {
-                        var loginQq = getLoginAccount.Value;
+            _groupConfigService = groupConfigService;
+            foreach (var item in list)
+            {
+                AddDeal(item.Run);
+            }
 
-                        var info = await groupConfigService.GetSingle(loginQq, groupNo, GroupConfigTypes.DefaultConfirm);
+            AddDeal(async (msg, account, groupNo, getLoginAccount) =>
+                {
+                    var loginQq = getLoginAccount.Value;
 
-                        return info?.Value;
-                    }
-                );
+                    var info = await groupConfigService.GetSingle(loginQq, groupNo, GroupConfigTypes.DefaultConfirm);
+
+                    return info?.Value;
+                }
+            );
         }
-        
+
         public async Task<GroupRes> Run(string msg, string account, string groupNo, Lazy<string> getLoginAccount)
         {
             for (int i = 0; i < list.Count; i++)

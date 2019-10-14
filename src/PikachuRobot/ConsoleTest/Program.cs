@@ -5,6 +5,7 @@ using Data.Utils.Models;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -25,32 +26,53 @@ namespace ConsoleTest
         }
     }
 
+    interface IWork
+    {
+        void Run();
+    }
+
+    class A:IWork
+    {
+        public void Run()
+        {
+            Console.WriteLine("a work");
+        }
+    }
+    
+    class B:IWork
+    {
+        public void Run()
+        {
+            Console.WriteLine("b work");
+        }
+    }
+    
+    class WorkContainer
+    {
+        public WorkContainer(IList<IWork> works)
+        {
+            
+        }
+    }
+    
     /// <summary>
     /// 临时测试类...
     /// </summary>
     class Program
     {
 
-        public Program()
-        {
-            Console.WriteLine($"{Thread.CurrentThread.ManagedThreadId.ToString()} 构建了一个Program");
-        }
-
         static void Main(string[] args)
         {
 
-            PikachuDataContext context = new PikachuDataContext();
+            ContainerBuilder containerBuilder = new ContainerBuilder();
 
-            var list = context.GroupActivities.Where(u => u.Id == 1).ToList();
+            containerBuilder.RegisterType<A>().AsSelf().As<IWork>();
+            containerBuilder.RegisterType<B>().AsSelf().As<IWork>();
+            containerBuilder.RegisterType<WorkContainer>();
 
-            foreach (var item in list)
-            {
-                item.Description = "test";
-            }
+            var container = containerBuilder.Build();
 
-            context.SaveChanges();
-            
-            //Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.fffffff"));
+            var workContainer = container.Resolve<WorkContainer>();
 
             Console.WriteLine("Hello World");
 

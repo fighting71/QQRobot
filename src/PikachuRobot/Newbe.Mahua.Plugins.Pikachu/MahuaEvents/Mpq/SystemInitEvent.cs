@@ -46,15 +46,15 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents.Mpq
                 //    Logger.Debug("添加默认账号成功！"); 
                 //} 测试失败...
 
-                await _webHost.StartAsync(ConfigConst.HangFireBaseUrl, _mahuaApi.GetSourceContainer());
-                Logger.Debug("开启hangfire成功！");
+                //await _webHost.StartAsync(ConfigConst.HangFireBaseUrl, _mahuaApi.GetSourceContainer());
+                //Logger.Debug("开启hangfire成功！");
 
-                await new TestJob().StartAsync();
+                //await new TestJob().StartAsync();
 
                 //await new AutoCloseGroupActivityJob(null, null).StartAsync();
                 //await new AutoOutGroupMsg(null).StartAsync(context.FromGroup, loginQq);
 
-                Logger.Debug("添加job成功");
+                //Logger.Debug("添加job成功");
             }
             catch (Exception e)
             {

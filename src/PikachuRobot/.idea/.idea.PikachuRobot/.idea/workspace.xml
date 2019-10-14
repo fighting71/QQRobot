@@ -241,15 +241,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/GenerateMsg/CusConst/CacheConst.cs" />
-        <option value="$PROJECT_DIR$/GenerateMsg/CusConst/RuleConst.cs" />
-        <option value="$PROJECT_DIR$/GenerateMsg/GroupMsg/IdiomsSolitaireCacheDeal.cs" />
         <option value="$PROJECT_DIR$/GenerateMsg/PrivateMsg/ConfigDeal.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/GroupConfigService.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ConfigService.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/InitializationMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/CusJob/TestJob.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusConst/ConfigConst.cs" />
@@ -263,7 +257,6 @@
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/StartUp.cs" />
         <option value="$PROJECT_DIR$/Domain/Domain.Command/CusInterface/IGroupJob.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/GroupMsgCacheOutJob.cs" />
-        <option value="$PROJECT_DIR$/ConsoleTest/Program.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/ActivityLogService.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/GroupActivityService.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/IWebHost.cs" />
@@ -284,14 +277,21 @@
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/ISystemInitEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/CusEventFun10000.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoCloseGroupActivityJob.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" />
         <option value="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/63/498d1ff9/MahuaRobotManagerImpl.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/MpqModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/Mpq/SystemInitEvent.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/TestJob.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/SendGroupMessageApiMahuaCommandHandler.cs" />
+        <option value="$PROJECT_DIR$/ConsoleTest/Program.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/MahuaMenuClickedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMemberIncreasedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/FriendAddingRequestMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupJoiningInvitationReceivedMahuaEvent.cs" />
       </list>
     </option>
   </component>
@@ -371,7 +371,7 @@
       <workItem from="1570850312642" duration="1075000" />
       <workItem from="1570861208715" duration="11212000" />
       <workItem from="1571018428391" duration="11413000" />
-      <workItem from="1571035868460" duration="1663000" />
+      <workItem from="1571035868460" duration="3293000" />
     </task>
     <servers />
   </component>

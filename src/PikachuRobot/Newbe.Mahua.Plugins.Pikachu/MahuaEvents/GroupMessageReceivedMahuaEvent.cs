@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using NLog;
 using Services.PikachuSystem;
 
@@ -22,7 +23,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private readonly IGenerateGroupMsgDeal _generateGroupMsgDeal;
 
 
-        public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, IGenerateGroupMsgDeal generateGroupMsgDeal,
+        public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, GroupMsgManage generateGroupMsgDeal,
             GroupAuthService groupAuthService, GroupMsgCopyService groupMsgCopyService)
         {
             _mahuaApi = mahuaApi;
@@ -76,7 +77,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private async Task Run(GroupMessageReceivedContext context, string loginQq)
         {
             context.Message = context.Message.Trim();
-            
+
             var res = await _generateGroupMsgDeal
                 .Run(context.Message, context.FromQq, context.FromGroup,
                     (new Lazy<string>((() => loginQq))));

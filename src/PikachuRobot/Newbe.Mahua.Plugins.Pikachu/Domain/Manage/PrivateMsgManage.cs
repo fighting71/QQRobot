@@ -20,21 +20,21 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// </summary>
     public class PrivateMsgManage : BaseList<GeneratePrivateMsgDel>, IGeneratePrivateMsgDeal
     {
-
-        public PrivateMsgManage(ConfigCacheDeal configCacheDeal,ConfigDeal configDeal,GroupAuthDeal groupAuthDeal, GroupMsgCopyDeal groupMsgCopyDeal,
+        public PrivateMsgManage(IList<IGeneratePrivateMsgDeal> list,
             ConfigService configService)
         {
-            this.AddDeal(configCacheDeal.Run)
-                .AddDeal(configDeal.Run)
-                .AddDeal(groupAuthDeal.Run)
-                .AddDeal(groupMsgCopyDeal.Run)
-                .AddDeal(async (context, api, getLoginQq) =>
-                {
-                    var info = await configService.Get("Private.Confirm.Default");
-                    return info?.Value;
-                });
+            foreach (var item in list)
+            {
+                AddDeal(item.Run);
+            }
+
+            AddDeal(async (context, api, getLoginQq) =>
+            {
+                var info = await configService.Get("Private.Confirm.Default");
+                return info?.Value;
+            });
         }
-        
+
         public async Task<PrivateRes> Run(string msg, string account, Lazy<string> getLoginAccount)
         {
             for (int i = 0; i < list.Count; i++)

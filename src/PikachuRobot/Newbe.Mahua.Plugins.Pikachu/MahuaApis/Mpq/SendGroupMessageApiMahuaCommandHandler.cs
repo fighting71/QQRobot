@@ -23,9 +23,8 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaApis.Mpq
 
         public override SendGroupMessageApiMahuaCommandResult Handle(SendGroupMessageApiMahuaCommand message)
         {
-IInitializationMahuaEvent
             // 需传递发送人
-            var res = MpqApi.Api_SendMsg(null, 2, 0, message.ToGroup, null, message.Message);
+            var info = MpqApi.Api_SendMsg(null, 2, 0, message.ToGroup, null, message.Message);
 
             return null;
 

@@ -6,6 +6,7 @@ using IServiceSupply;
 using NLog;
 using System.Threading.Tasks;
 using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using PikachuRobot.Job.Hangfire;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
@@ -26,7 +27,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private readonly IWebHost _webHost;
 
         public PrivateMessageFromFriendReceivedMahuaEvent(IMahuaApi mahuaApi,
-            IGeneratePrivateMsgDeal generatePrivateMsgDeal, PikachuDataContext dbContext, IWebHost webHost
+            PrivateMsgManage generatePrivateMsgDeal, PikachuDataContext dbContext, IWebHost webHost
         )
         {
             _mahuaApi = mahuaApi;
