@@ -104,6 +104,7 @@
     <Compile Include="Job\AutoCloseGroupActivityJob.cs" />
     <Compile Include="Host\OwinWebHost.cs" />
     <Compile Include="IWebHost.cs" />
+    <Compile Include="Job\CustomerJob.cs" />
     <Compile Include="Job\TestJob.cs" />
     <Compile Include="MahuaApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

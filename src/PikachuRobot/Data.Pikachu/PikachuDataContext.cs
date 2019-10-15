@@ -28,5 +28,7 @@ namespace Data.Pikachu
 
         public DbSet<GroupActivity> GroupActivities { get; set; }
 
+        public DbSet<JobConfig> JobConfigs { get; set; }
+
     }
 }

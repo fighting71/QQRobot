@@ -41,7 +41,9 @@ api修正(参考GetGroupMemebersWithModelApiMahuaCommandHandler)
 
 IInitializationMahuaEvent 说明是插件初始化事件，查看源码后，发现是跟随着热更新触发的，然后再去Newbe.Mahua.MPQ 查看10000(初始化对应的EventId)的实现基本上是空的。。。 
 
-然后就是mpq的添加账号添不进去等... 
+mpq添加qq无效...
+
+>  12,MPQ,未知,16:11:59,Api_AddQQ已废止使用.给您造成的不便还请谅解.m( _
 
 ----------
 

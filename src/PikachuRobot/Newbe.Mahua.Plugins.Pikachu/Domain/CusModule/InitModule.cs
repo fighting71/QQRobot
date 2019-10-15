@@ -50,6 +50,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                 builder.Register(context => GetDatabase());
 
                 // 注册db
+                // InstancePerLifetimeScope 为了共享db...
                 builder.RegisterType<PikachuDataContext>().InstancePerLifetimeScope();
                 builder.RegisterType<PetContext>().InstancePerLifetimeScope();
                 builder.RegisterType<UtilsContext>().InstancePerLifetimeScope();
@@ -112,6 +113,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             builder.RegisterType<ManageService>().InstancePerLifetimeScope();
             builder.RegisterType<MemberInfoService>().InstancePerLifetimeScope();
             builder.RegisterType<GroupActivityService>().InstancePerLifetimeScope();
+            builder.RegisterType<JobConfigService>().InstancePerLifetimeScope();
         }
 
         private void RegisterPetService(ContainerBuilder builder)

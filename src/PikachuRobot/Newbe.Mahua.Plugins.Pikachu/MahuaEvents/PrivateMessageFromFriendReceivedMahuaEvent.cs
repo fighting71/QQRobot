@@ -5,9 +5,7 @@ using System.Linq;
 using IServiceSupply;
 using NLog;
 using System.Threading.Tasks;
-using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
-using PikachuRobot.Job.Hangfire;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 {
@@ -24,16 +22,14 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private readonly IGeneratePrivateMsgDeal _generatePrivateMsgDeal;
 
         private readonly PikachuDataContext dbContext;
-        private readonly IWebHost _webHost;
 
         public PrivateMessageFromFriendReceivedMahuaEvent(IMahuaApi mahuaApi,
-            PrivateMsgManage generatePrivateMsgDeal, PikachuDataContext dbContext, IWebHost webHost
+            PrivateMsgManage generatePrivateMsgDeal, PikachuDataContext dbContext
         )
         {
             _mahuaApi = mahuaApi;
             _generatePrivateMsgDeal = generatePrivateMsgDeal;
             this.dbContext = dbContext;
-            _webHost = webHost;
         }
 
         public void ProcessFriendMessage(PrivateMessageFromFriendReceivedContext context)

@@ -67,6 +67,7 @@
     <Compile Include="Menu\ActivityStateTypes.cs" />
     <Compile Include="Menu\ActivityTypes.cs" />
     <Compile Include="Menu\BillTypes.cs" />
+    <Compile Include="Menu\ConfirmTypes.cs" />
     <Compile Include="Menu\GroupConfigTypes.cs" />
     <Compile Include="Migrations\201909220955011_Init.cs" />
     <Compile Include="Migrations\201909220955011_Init.Designer.cs">
@@ -100,7 +101,12 @@
     <Compile Include="Migrations\201910121001536_Table_Change.Designer.cs">
       <DependentUpon>201910121001536_Table_Change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910150847345_Add_Table.cs" />
+    <Compile Include="Migrations\201910150847345_Add_Table.Designer.cs">
+      <DependentUpon>201910150847345_Add_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\JobConfig.cs" />
     <Compile Include="Models\GroupActivity.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BillFlow.cs" />
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910121001536_Table_Change.resx">
       <DependentUpon>201910121001536_Table_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910150847345_Add_Table.resx">
+      <DependentUpon>201910150847345_Add_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

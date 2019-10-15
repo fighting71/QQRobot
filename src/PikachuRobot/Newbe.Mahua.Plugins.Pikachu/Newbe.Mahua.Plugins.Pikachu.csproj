@@ -104,8 +104,9 @@
     <Reference Include="Newbe.Mahua, Version=1.16.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Newbe.Mahua.1.16.1\lib\net452\Newbe.Mahua.dll</HintPath>
     </Reference>
-    <Reference Include="Newbe.Mahua.MPQ, Version=1.17.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>bin\MPQ\Newbe.Mahua.MPQ.dll</HintPath>
+    <Reference Include="Newbe.Mahua.MPQ, Version=1.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newbe.Mahua.MPQ.1.17.0\tools\NewbeLibs\Platform\CLR\Newbe.Mahua.MPQ.dll</HintPath>
     </Reference>
     <Reference Include="Newbe.Mahua.PluginLoader, Version=1.16.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Newbe.Mahua.PluginLoader.1.16.1\lib\net452\Newbe.Mahua.PluginLoader.dll</HintPath>
@@ -167,6 +168,9 @@
     <Compile Include="Domain\CusModule\PluginModule.cs" />
     <Compile Include="Domain\EventFuns\Mqp\CusEventFun10000.cs" />
     <Compile Include="Domain\EventFuns\Mqp\ISystemInitEvent.cs" />
+    <Compile Include="Domain\Extension\Mpq\CusEventFun10000.cs" />
+    <Compile Include="Domain\Extension\Mpq\ExternApi.cs" />
+    <Compile Include="Domain\Extension\Mpq\ISystemInitEvent.cs" />
     <Compile Include="Domain\Manage\GroupMsgManage.cs" />
     <Compile Include="Domain\Manage\PrivateMsgManage.cs" />
     <Compile Include="Domain\Middleware\ConfigMiddleware.cs" />

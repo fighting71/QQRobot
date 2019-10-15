@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Newbe.Mahua.MPQ;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.EventFuns.Mqp
 {

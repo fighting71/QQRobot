@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Extension.Mpq;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using NLog;
 using Services.PikachuSystem;
@@ -74,9 +75,16 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
             }
         }
 
+
         private async Task Run(GroupMessageReceivedContext context, string loginQq)
         {
             context.Message = context.Message.Trim();
+
+            if ("test".Equals(context.Message))
+            {
+            
+                return;
+            }
 
             var res = await _generateGroupMsgDeal
                 .Run(context.Message, context.FromQq, context.FromGroup,

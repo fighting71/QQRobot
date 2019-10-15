@@ -22,10 +22,11 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
                 .As<IWebHost>()
                 .SingleInstance();
 
-            builder.RegisterType<TestJob>().AsSelf();
+            builder.RegisterType<TestJob>();
             
-            builder.RegisterType<AutoCloseGroupActivityJob>().AsSelf();
-            builder.RegisterType<AutoOutGroupMsg>().AsSelf();
+            builder.RegisterType<AutoCloseGroupActivityJob>();
+            builder.RegisterType<AutoOutGroupMsg>();
+            builder.RegisterType<CustomerJob>();
         }
     }
 }
