@@ -1,8 +1,5 @@
-﻿using System.Data.Entity;
-using Autofac;
+﻿using Autofac;
 using NLog;
-using System.Linq;
-using System.Threading;
 using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Data.Pikachu;
 using GenerateMsg.PrivateMsg;
@@ -11,13 +8,7 @@ using StackExchange.Redis;
 using IServiceSupply;
 using GenerateMsg.GroupMsg;
 using Data.PetSystem;
-using Data.Pikachu.Menu;
-using Services.PikachuSystem;
-using Services.PetSystem;
-using Services.Utils;
 using Data.Utils;
-using Newbe.Mahua.Plugins.Pikachu.MahuaEvents;
-using Newbe.Mahua.MahuaEvents;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 {
@@ -67,9 +58,9 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
                 RegisterPrivateMsgDeal(builder);
 
-                builder.RegisterType<GroupMsgManage>();
+                builder.RegisterType<GroupMsgManage>().InstancePerLifetimeScope();
 
-                builder.RegisterType<PrivateMsgManage>();
+                builder.RegisterType<PrivateMsgManage>().InstancePerLifetimeScope();
             }
             catch (System.Exception e)
             {
@@ -82,7 +73,8 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
         {
             // builder.RegisterAssemblyTypes(typeof(SignDeal).Assembly);
             builder.RegisterType<AddPetCacheDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
-            builder.RegisterType<IdiomsSolitaireCacheDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
+            builder.RegisterType<IdiomsSolitaireCacheDeal>().InstancePerLifetimeScope().AsSelf()
+                .As<IGenerateGroupMsgDeal>();
             builder.RegisterType<GroupConfigDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
             builder.RegisterType<IdiomsSolitaireDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
             builder.RegisterType<MemberAmountDeal>().InstancePerLifetimeScope().AsSelf().As<IGenerateGroupMsgDeal>();
@@ -100,26 +92,23 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
         private void RegisterUtilService(ContainerBuilder builder)
         {
-            builder.RegisterType<IdiomsService>().InstancePerLifetimeScope();
+            builder.RegisterTypes(typeof(Services.Utils.BaseService).Assembly.GetTypes())
+                .Except<Services.Utils.BaseService>()
+                .InstancePerLifetimeScope();
         }
 
         private void RegisterPikachuService(ContainerBuilder builder)
         {
-            builder.RegisterType<BillFlowService>().InstancePerLifetimeScope();
-            builder.RegisterType<ConfigService>().InstancePerLifetimeScope();
-            builder.RegisterType<GroupConfigService>().InstancePerLifetimeScope();
-            builder.RegisterType<GroupAuthService>().InstancePerLifetimeScope();
-            builder.RegisterType<GroupMsgCopyService>().InstancePerLifetimeScope();
-            builder.RegisterType<ManageService>().InstancePerLifetimeScope();
-            builder.RegisterType<MemberInfoService>().InstancePerLifetimeScope();
-            builder.RegisterType<GroupActivityService>().InstancePerLifetimeScope();
-            builder.RegisterType<JobConfigService>().InstancePerLifetimeScope();
+            builder.RegisterTypes(typeof(Services.PikachuSystem.BaseService).Assembly.GetTypes())
+                .Except<Services.PikachuSystem.BaseService>()
+                .InstancePerLifetimeScope();
         }
 
         private void RegisterPetService(ContainerBuilder builder)
         {
-            builder.RegisterType<PetService>().InstancePerLifetimeScope();
-            builder.RegisterType<UserPetService>().InstancePerLifetimeScope();
+            builder.RegisterTypes(typeof(Services.PetSystem.BaseService).Assembly.GetTypes())
+                .Except<Services.PetSystem.BaseService>()
+                .InstancePerLifetimeScope();
         }
     }
 }

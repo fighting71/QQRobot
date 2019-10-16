@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Autofac.Core;
 
 
 namespace ConsoleTest
@@ -31,44 +32,47 @@ namespace ConsoleTest
         void Run();
     }
 
-    class A:IWork
+    class A : IWork
     {
         public void Run()
         {
             Console.WriteLine("a work");
         }
     }
-    
-    class B:IWork
+
+    class B : IWork
     {
         public void Run()
         {
             Console.WriteLine("b work");
         }
     }
-    
+
     class WorkContainer
     {
         public WorkContainer(IList<IWork> works)
         {
-            
+        }
+
+        public WorkContainer(IList<IWork> works, string str)
+        {
         }
     }
-    
+
     /// <summary>
     /// 临时测试类...
     /// </summary>
     class Program
     {
-
         static void Main(string[] args)
         {
-
             ContainerBuilder containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterType<A>().AsSelf().As<IWork>();
             containerBuilder.RegisterType<B>().AsSelf().As<IWork>();
-            containerBuilder.RegisterType<WorkContainer>();
+            containerBuilder.RegisterType<WorkContainer>().WithParameter(
+                new ResolvedParameter(((info, context) => info.ParameterType == typeof(string)),
+                    ((info, context) => "test")));
 
             var container = containerBuilder.Build();
 
@@ -81,15 +85,10 @@ namespace ConsoleTest
 
         public static void TestTimer()
         {
-            _ = new Timer(state =>
-            {
-                Console.WriteLine("test timer~");
-            }, null, 60000,-1);
+            _ = new Timer(state => { Console.WriteLine("test timer~"); }, null, 60000, -1);
 
-            _ = new Timer(state =>
-            {
-                Console.WriteLine("test timer 2~");
-            }, null, TimeSpan.FromSeconds(60), TimeSpan.Zero);
+            _ = new Timer(state => { Console.WriteLine("test timer 2~"); }, null, TimeSpan.FromSeconds(60),
+                TimeSpan.Zero);
         }
 
         /// <summary>
@@ -108,7 +107,6 @@ namespace ConsoleTest
             int start = utilsContext.IdiomInfos.Count(), count = list.Length;
             while (start <= count)
             {
-
                 utilsContext.IdiomInfos.AddRange(list.Skip(start).Take(1000).Select(u =>
                     {
                         var spellArr = u.pinyin.Split(' ');
@@ -129,7 +127,6 @@ namespace ConsoleTest
                 start += 1000;
                 Console.WriteLine("添加成功！");
             }
-
         }
 
         /// <summary>
@@ -141,22 +138,27 @@ namespace ConsoleTest
             /// 来源
             /// </summary>
             public string derivation { get; set; }
+
             /// <summary>
             /// 示例
             /// </summary>
             public string example { get; set; }
+
             /// <summary>
             /// 解释
             /// </summary>
             public string explanation { get; set; }
+
             /// <summary>
             /// 拼音
             /// </summary>
             public string pinyin { get; set; }
+
             /// <summary>
             /// 词语
             /// </summary>
             public string word { get; set; }
+
             /// <summary>
             /// 首字母组合
             /// </summary>
@@ -179,15 +181,14 @@ namespace ConsoleTest
 
         public static void DeserGroupMemberB()
         {
-
-            var json = "_GroupMember_Callback({\"code\":0,\"data\":{\"alpha\":0,\"bbscount\":0,\"class\":10012,\"create_time\":1569138527,\"filecount\":0,\"finger_memo\":\"\",\"group_memo\":\"\",\"group_name\":\"PikachuRobot\",\"item\":[{\"iscreator\":1,\"ismanager\":0,\"nick\":\".\",\"uin\":1844867503},{\"iscreator\":0,\"ismanager\":0,\"nick\":\"小黑\",\"uin\":2758938447}],\"level\":0,\"nick\":\"小黑\",\"option\":2,\"total\":3},\"default\":0,\"message\":\"\",\"subcode\":0});";
+            var json =
+                "_GroupMember_Callback({\"code\":0,\"data\":{\"alpha\":0,\"bbscount\":0,\"class\":10012,\"create_time\":1569138527,\"filecount\":0,\"finger_memo\":\"\",\"group_memo\":\"\",\"group_name\":\"PikachuRobot\",\"item\":[{\"iscreator\":1,\"ismanager\":0,\"nick\":\".\",\"uin\":1844867503},{\"iscreator\":0,\"ismanager\":0,\"nick\":\"小黑\",\"uin\":2758938447}],\"level\":0,\"nick\":\"小黑\",\"option\":2,\"total\":3},\"default\":0,\"message\":\"\",\"subcode\":0});";
 
             var match = Regex.Match(json, @"^_GroupMember_Callback\(([\s|\S]*)\);$");
 
             if (match.Success)
             {
                 var info = match.Groups[1].Value;
-
             }
         }
 
@@ -195,18 +196,9 @@ namespace ConsoleTest
         {
             InstanceFactory<Program>.Get((() => new Program()));
 
-            ThreadPool.QueueUserWorkItem((state =>
-            {
-                InstanceFactory<Program>.Get((() => new Program()));
-            }));
-            ThreadPool.QueueUserWorkItem((state =>
-            {
-                InstanceFactory<Program>.Get((() => new Program()));
-            }));
-            ThreadPool.QueueUserWorkItem((state =>
-            {
-                InstanceFactory<Program>.Get((() => new Program()));
-            }));
+            ThreadPool.QueueUserWorkItem((state => { InstanceFactory<Program>.Get((() => new Program())); }));
+            ThreadPool.QueueUserWorkItem((state => { InstanceFactory<Program>.Get((() => new Program())); }));
+            ThreadPool.QueueUserWorkItem((state => { InstanceFactory<Program>.Get((() => new Program())); }));
 
             InstanceFactory<Program>.Get((() => new Program()));
             InstanceFactory<Program>.Get((() => new Program()));
@@ -297,20 +289,17 @@ namespace ConsoleTest
             }
 
             Console.WriteLine(test);
-
         }
 
         public static void TestDb()
         {
-
             PikachuDataContext context = new PikachuDataContext();
 
             context.Database.CreateIfNotExists();
 
             var dbCommand = context.Database.Connection.CreateCommand();
-            
-            context.SaveChanges();
 
+            context.SaveChanges();
         }
     }
 }

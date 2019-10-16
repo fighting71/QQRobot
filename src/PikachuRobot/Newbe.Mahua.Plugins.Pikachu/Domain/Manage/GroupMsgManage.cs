@@ -1,14 +1,9 @@
 ﻿using IServiceSupply;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Data.Pikachu.Menu;
 using Domain.Command.CusList;
-using GenerateMsg.GroupMsg;
-using Newbe.Mahua.MahuaEvents;
-using NLog;
 using Services.PikachuSystem;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
@@ -21,11 +16,9 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage
     /// </summary>
     public class GroupMsgManage : BaseList<GenerateGroupMsgDel>, IGenerateGroupMsgDeal
     {
-        private readonly GroupConfigService _groupConfigService;
 
         public GroupMsgManage(IList<IGenerateGroupMsgDeal> list, GroupConfigService groupConfigService)
         {
-            _groupConfigService = groupConfigService;
             foreach (var item in list)
             {
                 AddDeal(item.Run);

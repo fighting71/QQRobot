@@ -1,7 +1,7 @@
 # QQRobot
  qq聊天机器人
 
-- 感谢[newbe36524](https://github.com/newbe36524/)的[Newbe.Mahua.Framework](https://github.com/newbe36524/Newbe.Mahua.Framework)框架的支持。 虽然有坑...
+- 感谢[newbe36524](https://github.com/newbe36524/)的[Newbe.Mahua.Framework](https://github.com/newbe36524/Newbe.Mahua.Framework)框架的支持。 虽然有坑... 阅读开始--Newbe.Mahua.CrossAppDomainPluginLoader
 
 - 全程使用mpq测试开发....
 

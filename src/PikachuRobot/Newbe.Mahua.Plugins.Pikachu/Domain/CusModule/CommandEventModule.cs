@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Core;
+using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using Newbe.Mahua.Plugins.Pikachu.MahuaEvents;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
@@ -15,7 +18,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
     /// @source : 
     /// @des : 通用事件注册
     /// </summary>
-    public class CommandEventModule: Module
+    public class CommandEventModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -23,10 +26,16 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
 
             // 将需要监听的事件注册，若缺少此注册，则不会调用相关的实现类
             builder.RegisterType<PrivateMessageFromFriendReceivedMahuaEvent>()
-                .As<IPrivateMessageFromFriendReceivedMahuaEvent>();
+                .As<IPrivateMessageFromFriendReceivedMahuaEvent>()
+                .WithParameter(new ResolvedParameter(
+                    ((info, context) => info.ParameterType == typeof(IGeneratePrivateMsgDeal)),
+                    ((info, context) => context.Resolve<PrivateMsgManage>())));
 
             builder.RegisterType<GroupMessageReceivedMahuaEvent>()
-                .As<IGroupMessageReceivedMahuaEvent>();
+                .As<IGroupMessageReceivedMahuaEvent>()
+                .WithParameter(new ResolvedParameter(
+                    ((info, context) => info.ParameterType == typeof(IGenerateGroupMsgDeal)),
+                    ((info, context) => context.Resolve<GroupMsgManage>())));
 
             builder.RegisterType<MahuaMenuClickedMahuaEvent>()
                 .As<IMahuaMenuClickedMahuaEvent>();
@@ -44,7 +53,6 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             // 无法处理...
             //builder.RegisterType<GroupJoiningInvitationReceivedMahuaEvent>()
             //    .As<IGroupJoiningInvitationReceivedMahuaEvent>();
-
         }
     }
 }

@@ -217,12 +217,6 @@
             <e p="MpqModule.cs" t="Include" />
             <e p="PluginModule.cs" t="Include" />
           </e>
-          <e p="EventFuns" t="Include">
-            <e p="Mqp" t="Include">
-              <e p="CusEventFun10000.cs" t="Include" />
-              <e p="ISystemInitEvent.cs" t="Include" />
-            </e>
-          </e>
           <e p="Extension" t="Include">
             <e p="Mpq" t="Include">
               <e p="CusEventFun10000.cs" t="Include" />

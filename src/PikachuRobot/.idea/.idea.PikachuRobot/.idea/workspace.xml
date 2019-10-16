@@ -90,12 +90,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/f0/bf033814/PluginHotUpgradedCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoOutGroupMsg.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/08/c6bfedae/IPluginHotUpgradedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/CusEventFun10000.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data.Pikachu/Models/GroupActivity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/2c/7388c2db/PluginLoaderMahuaModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/Services.PikachuSystem/GroupActivityService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/16D5DBF4-2581-46E9-AEA8-7FD31238BD9C/ac/20a82ffa/RecurringJob.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/ISystemInitEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Workspace/源代码/1.源代码/浪花微服务/LH.MicroServicesSolution/Application/OrdersApplication/IntegrationEventHandlers/OrderChange_LtgEvtHdl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/a5/1a773d7c/IPluginHotUpgradingMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data.Pikachu/Menu/ConfirmTypes.cs" root0="FORCE_HIGHLIGHTING" />
@@ -287,7 +285,6 @@
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/GetGroupMemebersWithModelApiMahuaCommandHandler.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/ApiModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/PluginModule.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/CommandEventModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/CommandApiModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/EventFuns/Mqp/ISystemInitEvent.cs" />
@@ -297,7 +294,6 @@
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/MpqModule.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/TestJob.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaApis/Mpq/SendGroupMessageApiMahuaCommandHandler.cs" />
-        <option value="$PROJECT_DIR$/ConsoleTest/Program.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/PrivateMsgManage.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Manage/GroupMsgManage.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/MahuaMenuClickedMahuaEvent.cs" />
@@ -305,18 +301,20 @@
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/FriendAddingRequestMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupJoiningInvitationReceivedMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/Extension/Mpq/ExternApi.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
         <option value="$PROJECT_DIR$/Data.Pikachu/Menu/ConfirmTypes.cs" />
         <option value="$PROJECT_DIR$/Data.Pikachu/Models/ConfirmJob.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/ConfirmJob.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/MahuaApiHelper.cs" />
         <option value="$PROJECT_DIR$/Data.Pikachu/Models/JobConfig.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/Mpq/SystemInitEvent.cs" />
-        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/JobModule.cs" />
         <option value="$PROJECT_DIR$/Services/Services.PikachuSystem/JobConfigService.cs" />
         <option value="$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/CustomerJob.cs" />
+        <option value="$PROJECT_DIR$/ConsoleTest/Program.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/CommandEventModule.cs" />
         <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/GroupMessageReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/PrivateMessageFromFriendReceivedMahuaEvent.cs" />
+        <option value="$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/Domain/CusModule/InitModule.cs" />
       </list>
     </option>
   </component>
@@ -397,7 +395,8 @@
       <workItem from="1570861208715" duration="11212000" />
       <workItem from="1571018428391" duration="11413000" />
       <workItem from="1571035868460" duration="8834000" />
-      <workItem from="1571104890383" duration="13321000" />
+      <workItem from="1571104890383" duration="14070000" />
+      <workItem from="1571216094728" duration="2650000" />
     </task>
     <servers />
   </component>

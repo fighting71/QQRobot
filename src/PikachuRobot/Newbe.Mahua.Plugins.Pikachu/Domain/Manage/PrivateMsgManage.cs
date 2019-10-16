@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Domain.Command.CusList;
-using GenerateMsg.PrivateMsg;
 using IServiceSupply;
-using Newbe.Mahua.MahuaEvents;
-using NLog;
 using Services.PikachuSystem;
 
 namespace Newbe.Mahua.Plugins.Pikachu.Domain.Manage

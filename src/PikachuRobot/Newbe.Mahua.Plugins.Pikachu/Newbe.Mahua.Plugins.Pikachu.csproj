@@ -166,8 +166,6 @@
     <Compile Include="Domain\CusModule\JobModule.cs" />
     <Compile Include="Domain\CusModule\MpqModule.cs" />
     <Compile Include="Domain\CusModule\PluginModule.cs" />
-    <Compile Include="Domain\EventFuns\Mqp\CusEventFun10000.cs" />
-    <Compile Include="Domain\EventFuns\Mqp\ISystemInitEvent.cs" />
     <Compile Include="Domain\Extension\Mpq\CusEventFun10000.cs" />
     <Compile Include="Domain\Extension\Mpq\ExternApi.cs" />
     <Compile Include="Domain\Extension\Mpq\ISystemInitEvent.cs" />

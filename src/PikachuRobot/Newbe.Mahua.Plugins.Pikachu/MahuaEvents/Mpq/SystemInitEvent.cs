@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using Newbe.Mahua.NativeApi;
 using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
-using Newbe.Mahua.Plugins.Pikachu.Domain.EventFuns.Mqp;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Extension.Mpq;
 using NLog;
 using PikachuRobot.Job.Hangfire;
 using PikachuRobot.Job.Hangfire.Job;

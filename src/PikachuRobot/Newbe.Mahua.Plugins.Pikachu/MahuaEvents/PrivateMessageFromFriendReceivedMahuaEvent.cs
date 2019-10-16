@@ -5,7 +5,6 @@ using System.Linq;
 using IServiceSupply;
 using NLog;
 using System.Threading.Tasks;
-using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 
 namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 {
@@ -24,7 +23,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private readonly PikachuDataContext dbContext;
 
         public PrivateMessageFromFriendReceivedMahuaEvent(IMahuaApi mahuaApi,
-            PrivateMsgManage generatePrivateMsgDeal, PikachuDataContext dbContext
+            IGeneratePrivateMsgDeal generatePrivateMsgDeal, PikachuDataContext dbContext
         )
         {
             _mahuaApi = mahuaApi;

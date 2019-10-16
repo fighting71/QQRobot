@@ -2,7 +2,7 @@
 using Newbe.Mahua.Apis;
 using Newbe.Mahua.MPQ;
 using Newbe.Mahua.Plugins.Pikachu.Domain.CusConst;
-using Newbe.Mahua.Plugins.Pikachu.Domain.EventFuns.Mqp;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Extension.Mpq;
 using Newbe.Mahua.Plugins.Pikachu.MahuaApis.Mpq;
 using Newbe.Mahua.Plugins.Pikachu.MahuaEvents.Mpq;
 

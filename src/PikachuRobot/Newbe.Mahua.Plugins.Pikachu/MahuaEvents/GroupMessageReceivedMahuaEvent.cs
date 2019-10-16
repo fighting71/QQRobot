@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
-using Newbe.Mahua.Plugins.Pikachu.Domain.Extension.Mpq;
-using Newbe.Mahua.Plugins.Pikachu.Domain.Manage;
 using NLog;
 using Services.PikachuSystem;
 
@@ -24,7 +22,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
         private readonly IGenerateGroupMsgDeal _generateGroupMsgDeal;
 
 
-        public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, GroupMsgManage generateGroupMsgDeal,
+        public GroupMessageReceivedMahuaEvent(IMahuaApi mahuaApi, IGenerateGroupMsgDeal generateGroupMsgDeal,
             GroupAuthService groupAuthService, GroupMsgCopyService groupMsgCopyService)
         {
             _mahuaApi = mahuaApi;
