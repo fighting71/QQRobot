@@ -38,6 +38,8 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents.Mpq
 
         public async Task Handle()
         {
+            return;
+
             Logger.Info("开始初始化mqp插件");
 
             try

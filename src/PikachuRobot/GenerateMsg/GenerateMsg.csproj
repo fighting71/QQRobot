@@ -74,6 +74,7 @@
     <Compile Include="PrivateMsg\ConfigCacheDeal.cs" />
     <Compile Include="PrivateMsg\ConfigDeal.cs" />
     <Compile Include="PrivateMsg\GroupAuthDeal.cs" />
+    <Compile Include="PrivateMsg\RetellDeal.cs" />
     <Compile Include="PrivateMsg\GroupMsgCopyDeal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

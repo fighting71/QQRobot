@@ -86,7 +86,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8AE95AC8-8D80-43FB-A9A0-7399C77E26D9/ef/2f544784/RobotSessionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/MahuaMenuClickedMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/MahuaEvents/FriendAddingRequestMahuaEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Newbe.Mahua.Plugins.Pikachu/ApiExtension/MahuaApiExt.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6385BBE5-4433-4ADC-8BF1-6766016CC1BC/f0/bf033814/PluginHotUpgradedCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PikachuRobot.Job.Hangfire/Job/AutoOutGroupMsg.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/165C6443-6907-4657-A7F1-4A90981B921C/08/c6bfedae/IPluginHotUpgradedMahuaEvent.cs" root0="SKIP_HIGHLIGHTING" />
@@ -396,7 +395,8 @@
       <workItem from="1571018428391" duration="11413000" />
       <workItem from="1571035868460" duration="8834000" />
       <workItem from="1571104890383" duration="14070000" />
-      <workItem from="1571216094728" duration="2650000" />
+      <workItem from="1571216094728" duration="3092000" />
+      <workItem from="1571279669443" duration="1229000" />
     </task>
     <servers />
   </component>

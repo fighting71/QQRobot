@@ -72,5 +72,52 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.Extension.Mpq
         [DllImport("message.dll")]
         public static extern string Api_AddTaotao(string account, string content);
 
+        /// <summary>
+        /// 创建一个讨论组 成功返回讨论组ID 失败返回空 注:每24小时只能创建100个讨论组 悠着点用
+        /// 无效
+        /// </summary>
+        /// <param name="account">响应的QQ</param>
+        /// <returns></returns>
+        [DllImport("message.dll")]
+        public static extern string Api_CreateDG(string account);
+
+        /// <summary>
+        /// 邀请对象加入群 失败返回错误理由
+        /// </summary>
+        /// <param name="account">响应的QQ</param>
+        /// <param name="groupNo">群号</param>
+        /// <param name="members">成员组, 文本型, , 多个成员用换行符分割</param>
+        /// <returns></returns>
+        [DllImport("message.dll")]
+        public static extern string Api_GroupInvitation(string account,string members,string groupNo);
+
+        /// <summary>
+        /// 邀请对象加入讨论组 成功返回空 失败返回理由
+        /// </summary>
+        /// <param name="account">响应的QQ</param>
+        /// <param name="groupId">讨论组ID</param>
+        /// <param name="members">成员组, 文本型, , 多个成员用换行符分割</param>
+        /// <returns></returns>
+        [DllImport("message.dll")]
+        public static extern string Api_DGInvitation(string account,string groupId,string members);
+
+        /// <summary>
+        /// 成功返回以换行符分割的讨论组号列表.最大为100个讨论组  失败返回空
+        /// 
+        /// </summary>
+        /// <param name="account">响应的QQ</param>
+        /// <returns></returns>
+        [DllImport("message.dll")]
+        public static extern string Api_GetDGList(string account);
+
+        /// <summary>
+        /// 文本型, 通过qun.qq.com接口取得群成员列表 成功返回转码后的JSON格式文本
+        /// </summary>
+        /// <param name="account">响应的QQ</param>
+        /// <param name="groupNo">群号</param>
+        /// <returns></returns>
+        [DllImport("message.dll")]
+        public static extern string Api_GetGroupMemberA(string account,string groupNo);
+
     }
 }

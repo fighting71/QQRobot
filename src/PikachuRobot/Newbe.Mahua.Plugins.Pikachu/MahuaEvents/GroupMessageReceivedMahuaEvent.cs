@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using IServiceSupply;
 using Newbe.Mahua.MahuaEvents;
+using Newbe.Mahua.Plugins.Pikachu.Domain.Extension.Mpq;
 using NLog;
 using Services.PikachuSystem;
 
@@ -80,7 +81,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.MahuaEvents
 
             if ("test".Equals(context.Message))
             {
-            
+
                 return;
             }
 

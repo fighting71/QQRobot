@@ -158,7 +158,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiExtension\MahuaApiExt.cs" />
     <Compile Include="Domain\CusConst\ConfigConst.cs" />
     <Compile Include="Domain\CusModule\CommandApiModule.cs" />
     <Compile Include="Domain\CusModule\CommandEventModule.cs" />

@@ -88,6 +88,7 @@ namespace Newbe.Mahua.Plugins.Pikachu.Domain.CusModule
             builder.RegisterType<ConfigDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
             builder.RegisterType<GroupAuthDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
             builder.RegisterType<GroupMsgCopyDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
+            builder.RegisterType<RetellDeal>().InstancePerLifetimeScope().AsSelf().As<IGeneratePrivateMsgDeal>();
         }
 
         private void RegisterUtilService(ContainerBuilder builder)

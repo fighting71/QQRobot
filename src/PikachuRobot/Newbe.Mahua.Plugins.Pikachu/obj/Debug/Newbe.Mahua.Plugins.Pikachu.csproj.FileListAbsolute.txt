@@ -168,4 +168,5 @@ G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Deb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\PikachuRobot.Job.Hangfire.pdb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.MPQ.pdb
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\Newbe.Mahua.MPQ.dll
+G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\bin\Debug\MySql.Data.dll
 G:\dick\git\QQRobot\QQRobot\src\PikachuRobot\Newbe.Mahua.Plugins.Pikachu\obj\Debug\Newbe.Mahua.Plugins.Pikachu.csprojResolveAssemblyReference.cache
